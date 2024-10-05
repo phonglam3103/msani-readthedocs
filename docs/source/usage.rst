@@ -1,7 +1,8 @@
 Usage
-=====
+#####
+
 Preparing the input file
-------------------------
+************************
 
 The program requires a white-space or tab-delimited file containing two columns (SMILES, moleculeID) without headers. The program also supports the Enamine file format by the added `-e` or `--enamine` flag.
 
@@ -15,7 +16,7 @@ The program requires a white-space or tab-delimited file containing two columns 
 
 
 Overview
---------
+************************
 
 The pipeline contains six preparation and/or filtering steps, which can be used simultaneously to prepare the database:
 
@@ -38,18 +39,23 @@ The program by default will conduct the preparation and filtering in the order b
 .. image:: https://github.com/phonglam3103/msani-readthedocs/blob/main/plots/Workflow.png?raw=true
    :width: 1000px
 
+Available filters and preparation steps
+***************************************
+
 Remove salts
------------------------------
+============
+
 To use the remove salts function, simply use the ``--removesalts`` flag. The program uses a predefined salt list in `MolSanitizer/Data/salt_stripping.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/salt_stripping.txt>`_ to remove the salts, which contain both organic and inorganic salts commonly used in medicinal chemistry.
 
-*Caution:* If the entry is an organic salt (e.g., sodium acetate CH\ :sub:`3`COO\ :sup:`-`Na\ :sup:`+`), the whole entry will be removed.
+*Caution:* If the entry is an organic salt (e.g., sodium acetate CH\ :sub:`3` COO\ :sup:`-` Na\ :sup:`+`), the whole entry will be removed.
 
 .. code-block:: bash
 
     $ msani -i example.smi --removesalts
 
 Tautomers standardization
------------------------------
+============================
+
 
 The tautomers could be generated using the ``--tautomers`` flag. MolSanitizer uses a two-step approach for the enumeration of tautomers. First, the canonical tautomer from the scoring function of ``rdMolStandardize.TautomerEnumerator`` is used. Then, the exceptions are corrected using the expert-curated SMARTS rules. The SMARTS rules are readily accessible at `MolSanitizer/Data/tautomers.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/tautomers.txt>`_.
 
@@ -77,7 +83,8 @@ Example of the **_rejected** output is as below:
     CCCCN(Cc1ccc(OS(=O)(=O)F)cc1)Cc1ccccc1O           Z4607533150   "PAINS violation: Mannich_a(296)"
 
 Unwanted substructures filtering
---------------------------------
+============================
+
 
 Molecules that contain unwanted substructures can be efficiently eliminated using the ``--unwanted`` flag. MolSanitizer uses an expert-curated list that contains undesirable substructures, accompanied by the reasons and references for filtering. The list can be obtained from `MolSanitizer/Data/filter_out.csv <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/filter_out.csv>`_.
 
@@ -104,7 +111,8 @@ The first two columns (SMARTS and LABEL) are required for the program to parse, 
     $ msani -i example.smi --unwanted all --custom templates.tsv
 
 Protonation
----------------------
+============================
+
 
 The protonation stage can be assigned to the molecules using the ``--protonation`` flag. The program uses SMARTS reactions to iteratively assign the protonation stages to the atoms. The SMARTS reactions can be obtained from `MolSanitizer/Data/ionizations.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/ionizations.txt>`_. If there are multiple possibilities of protonation, the output will be expanded.
 
@@ -119,14 +127,15 @@ The protonation stage can be assigned to the molecules using the ``--protonation
    O=C(N1C(C2C(C1)C2O)C(O)=O)CN3CCNCC3 mol4_editted
 
    Output:
-   O=C([O-])C1C2C(O)C2CN1C(=O)CN1CC[NH2+]CC1 mol4_editted_1
-   O=C([O-])C1C2C(O)C2CN1C(=O)C[NH+]1CCNCC1 mol4_editted_2
+   O=C([O-])C1C2C(O)C2CN1C(=O)CN1CC[NH2+]CC1 mol4_editted.1
+   O=C([O-])C1C2C(O)C2CN1C(=O)C[NH+]1CCNCC1 mol4_editted.2
 
 
 Stereoisomers enumeration
--------------------------
+============================
 
-Stereoisomers enumeration will be considered for unspecified chiral centers using the ``--stereoisomers`` flag. For an entry that contains multiple stereoisomers, its ID will be expanded (e.g., mol8 -> mol8_1, mol8_2).
+
+Stereoisomers enumeration will be considered for unspecified chiral centers using the ``--stereoisomers`` flag. For an entry that contains multiple stereoisomers, its ID will be expanded (e.g., mol8 -> mol8.1, mol8.2).
 
 .. code-block:: bash
 
@@ -148,7 +157,8 @@ It is possible to define the maximum number of stereoisomers generated for each 
     $ msani -i example.smi --stereoisomers --max_isomers 30
 
 DB2 generation for DOCK 3.8
----------------------------
+============================
+
 
 The DB2 format ready for docking using DOCK 3.8 can be obtained using the ``--db2`` flag. MolSanitizer employs the `ETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ method of Rdkit to generate 10 or 300 initial conformations (this arbitrary value is derived from `Ebejer et al. <https://pubs.acs.org/doi/abs/10.1021/ci2004658>`_), which will be energy minimized using the `MMFF94s <https://doi.org/10.1186/s13321-014-0037-3>`_ forcefield. The number of initial conformations will be adapted based on the flexibility of the molecule to save time and workload. The energy-minimum conformer will then be used as the initial conformer for torsional sampling using the Monte Carlo (stochastic) method. The program employs AMSOL for assigning the desolvation penalties and partial charges of the ligand's atoms. OpenBabel is used for the conversion of SDF and MOL2 format. Finally, the information from the solvation file and the MOL2 file is aggregated using the `mol2db2.py <https://github.com/ryancoleman/mol2db2>`_ program.
 
@@ -162,7 +172,7 @@ It is possible to define the maximum number of conformers generated by MolSaniti
 
 
 Running in batch mode
----------------------
+************************
 
 MolSanitizer now supports the batch mode ``msani_batch``, which allows handling bigger SMILES databases on the SLURM-based cluster. Nearly all the flags supported by the standalone MolSanitizer are supported by the batch mode. In principle, ``msani_batch`` will split the input file into chunks of smaller input files, which is defined by the ``-l`` or ``--lines_per_job`` flag (default: 1000). The split files will then be submitted to the SLURM cluster using an array of jobs. By default, a maximum of 100 jobs will be submitted simultaneously to avoid interfering with other users within the same project, but you can change this limit with the ``--max_jobs`` flag.
 
@@ -191,4 +201,4 @@ It is also possible to submit the batch jobs for multiple input files. The progr
 
     $ msani_batch -i example.smi example2.smi --db2 --protonation --stereoisomers
 
-    
+
