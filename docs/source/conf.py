@@ -6,7 +6,7 @@ project = 'MolSanitizer'
 copyright = "2024, Carlsson's Lab, Uppsala University"
 author = 'Phong Lam, Israel Cabeza de Vaca, Szymon Pach'
 
-release = '0.1.0'
+release = '0.1.3'
 version = '0.1.3'
 
 # -- General configuration

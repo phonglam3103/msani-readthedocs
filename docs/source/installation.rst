@@ -3,7 +3,23 @@ Installation
 
 .. _installation:
 
-CONDA environment (recommended)
+Dependencies
+------------
+
+MolSanitizer is built upon the following packages:
+
+- RDKit 2024.09.1 (`Reference <https://www.rdkit.org/docs/Install.html>`_)
+
+- OpenBabel 3.1.1 (`Reference <https://openbabel.org/docs/dev/Installation/install.html>`_)
+
+- Mol2DB2 (`Reference <https://github.com/ryancoleman/mol2db2>`_)
+
+- AMSOL 7.1 (`Reference <https://comp.chem.umn.edu/sds/>`_)
+
+By default, pip will install all the dependencies, except for AMSOL, which is licensed under the Apache License, Version 2.0. The user is asked to download and compille the source code from the `official website <https://comp.chem.umn.edu/sds/>`_.
+
+
+Installation
 ------------
 
 We will set up the environment using `Anaconda <https://docs.anaconda.com/anaconda/install/index.html>`_.
@@ -23,13 +39,15 @@ Example of how to set up a working conda environment to run the code:
    $ pip install -e MolSanitizer
 
 
-Dependencies
-------------
+Testing
+-------
 
-MolSanitizer is built upon the following packages:
-- RDKit 2024.09.1 (`Reference <https://www.rdkit.org/docs/Install.html>`_)
-- OpenBabel 3.1.1 (`Reference <https://openbabel.org/docs/dev/Installation/install.html>`_)
-- Mol2DB2 (`Reference <https://github.com/ryancoleman/mol2db2>`_)
-- AMSOL 7.1 (`Reference <https://comp.chem.umn.edu/sds/>`_)
+MolSanitizer uses `pytest <https://docs.pytest.org/en/stable/>`_ for testing. To run the tests, use the following command:
 
-By default, pip will install all the dependencies, except for AMSOL, which is licensed under the Apache License, Version 2.0. The user is asked to download and compille the source code from the `official website <https://comp.chem.umn.edu/sds/>`_.
+In the MolSanitizer directory, use:
+
+.. code-block:: console
+
+   $ python -m pytest MolSanitizer/test/
+
+The test takes around 1-2 minutes to complete.
