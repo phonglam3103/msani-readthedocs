@@ -23,8 +23,8 @@ This is an example of a lazy pipeline that uses all the preparation and processi
 
 .. code-block:: bash
 
-    msani -i example.smi --enamine --lazy  # For enamine format
-    msani -i example.smi --lazy
+    $ msani -i example.smi --enamine --lazy  # For enamine format
+    $ msani -i example.smi --lazy
 
     # This is equivalent to:
     # msani -i example.smi --removesalts --tautomers --pains --unwanted all --stereoisomers --protonation
@@ -46,7 +46,7 @@ To use the remove salts function, simply use the ``--removesalts`` flag. The pro
 
 .. code-block:: bash
 
-    msani -i example.smi --removesalts
+    $ msani -i example.smi --removesalts
 
 Tautomers standardization
 -----------------------------
@@ -55,7 +55,7 @@ The tautomers could be generated using the ``--tautomers`` flag. MolSanitizer us
 
 .. code-block:: bash
 
-    msani -i example.smi --tautomers
+    $ msani -i example.smi --tautomers
 
 PAINS filtering
 ---------------
@@ -64,7 +64,7 @@ Molecules that contain PAINS substructures can be efficiently eliminated using t
 
 .. code-block:: bash
 
-    msani -i example.smi --pains
+    $ msani -i example.smi --pains
 
 Example of the **_rejected** output is as below:
 
@@ -85,10 +85,10 @@ There are four options accompanied by the ``--unwanted`` flag, which are *['all'
 
 .. code-block:: bash
 
-    msani -i example.smi --unwanted
-    msani -i example.smi --unwanted regular  # By default
-    msani -i example.smi --unwanted regular special
-    msani -i example.smi --unwanted all
+    $ msani -i example.smi --unwanted
+    $ msani -i example.smi --unwanted regular  # By default
+    $ msani -i example.smi --unwanted regular special
+    $ msani -i example.smi --unwanted all
 
 It is also possible to filter out customized unwanted substructures, depending on the user's preference, using a customized SMARTS list. To generate a template for this list, use the ``--create_custom`` flag. This will result in the **templates.tsv** file.
 
@@ -100,8 +100,8 @@ The first two columns (SMARTS and LABEL) are required for the program to parse, 
 
 .. code-block:: bash
 
-    msani -i example.smi --custom templates.tsv
-    msani -i example.smi --unwanted all --custom templates.tsv
+    $ msani -i example.smi --custom templates.tsv
+    $ msani -i example.smi --unwanted all --custom templates.tsv
 
 Protonation
 ---------------------
@@ -110,7 +110,7 @@ The protonation stage can be assigned to the molecules using the ``--protonation
 
 .. code-block:: bash
 
-    msani -i example.smi --protonation
+    $ msani -i example.smi --protonation
 
 
 .. code-block:: text
@@ -130,7 +130,7 @@ Stereoisomers enumeration will be considered for unspecified chiral centers usin
 
 .. code-block:: bash
 
-    msani -i example.smi --stereoisomers
+    $ msani -i example.smi --stereoisomers
 
 .. code-block:: text
 
@@ -145,7 +145,7 @@ It is possible to define the maximum number of stereoisomers generated for each 
 
 .. code-block:: bash
 
-    msani -i example.smi --stereoisomers --max_isomers 30
+    $ msani -i example.smi --stereoisomers --max_isomers 30
 
 DB2 generation for DOCK 3.8
 ---------------------------
@@ -175,35 +175,20 @@ The additional flags supported by ``msani_batch`` so far:
     -t, --time                  Time limit in hours for each SLURM job (default: 2)
     --max_jobs                  Maximum number of jobs to run simultaneously (default: 100)
 
-The default values of these additional flags can be modified in the `MolSanitizer/batch_configurations.yaml <https://github.com/Isra3l/MolSanitizer/blob/main/batch_configurations.yaml>`_ file.
-
-**Contents of the batch_configurations.yaml file**:
-
-.. code-block:: console
-
-    SLURM_ACCOUNT: 'naiss2023-3-39'
-    LINES_PER_JOB: 50
-    TIME_LIMIT: 2
-    MAX_JOBS: 100
+The default values of these additional flags can be modified in the **`MolSanitizer/batch_configurations.yaml <https://github.com/Isra3l/MolSanitizer/blob/main/batch_configurations.yaml>`_ ** file.
 
 **Usage**:
 
 .. code-block:: console
 
-    msani_batch -i example.smi -l 50 --db2
-    msani_batch -i example.smi -l 50 --stereosiomers --protonation --db2 --nocleanup
-    msani_batch -i example.smi -l 50 -n snic2021-3-32 -t 2 --db2
+    $ msani_batch -i example.smi -l 50 --db2
+    $ msani_batch -i example.smi -l 50 --stereosiomers --protonation --db2 --nocleanup
+    $ msani_batch -i example.smi -l 50 -n snic2021-3-32 -t 2 --db2
 
-**Expected Output**:
+It is also possible to submit the batch jobs for multiple input files. The program will automatically detect the input files and submit the jobs accordingly.
 
-.. code-block:: text
+.. code-block:: console
 
-    Starting MolSanitizer in batch mode
+    $ msani_batch -i example.smi example2.smi --db2 --protonation --stereoisomers
 
-    Using project name (-p): snic2021-3-32
-    Time limit for each job (-t): 2 hours
-    Maximum number of jobs running parallel (--max_jobs): 100
-    Number of compounds per job (-l): 50 lines
-
-    Submitting 9 jobs
-
+    
