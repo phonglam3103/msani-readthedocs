@@ -25,4 +25,11 @@ Example of how to set up a working conda environment to run the code:
 
 Dependencies
 ------------
-- AMSOL 7.1 (could be downloaded for free `here <https://comp.chem.umn.edu/sds/>`_)
+
+MolSanitizer is built upon the following packages:
+- RDKit 2024.09.1 (`Reference <https://www.rdkit.org/docs/Install.html>`_)
+- OpenBabel 3.1.1 (`Reference <https://openbabel.org/docs/dev/Installation/install.html>`_)
+- Mol2DB2 (`Reference <https://github.com/ryancoleman/mol2db2>`_)
+- AMSOL 7.1 (`Reference <https://comp.chem.umn.edu/sds/>`_)
+
+By default, pip will install all the dependencies, except for AMSOL, which is licensed under the Apache License, Version 2.0. The user is asked to download and compille the source code from the `official website <https://comp.chem.umn.edu/sds/>`_.
