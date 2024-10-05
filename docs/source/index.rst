@@ -18,7 +18,6 @@ Contents
 ************************
 
 .. toctree::
-   index
    installation
    theory
    usage
