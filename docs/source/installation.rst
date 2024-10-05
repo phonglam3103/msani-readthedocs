@@ -16,7 +16,7 @@ MolSanitizer is built upon the following packages:
 
 - AMSOL 7.1 (`Reference <https://comp.chem.umn.edu/sds/>`_)
 
-By default, pip will install all the dependencies, except for AMSOL, which is licensed under the Apache License, Version 2.0. The user is asked to download and compille the source code from the `official website <https://comp.chem.umn.edu/sds/>`_.
+By default, conda will install all the dependencies, except for AMSOL, which is required for the generation of DB2 files. The user is asked to download and compille the source code from the `official website <https://comp.chem.umn.edu/sds/>`_.
 
 
 Installation
@@ -48,6 +48,6 @@ In the MolSanitizer directory, use:
 
 .. code-block:: console
 
-   $ python -m pytest MolSanitizer/test/
+   $ python -m pytest test/
 
 The test takes around 1-2 minutes to complete.
