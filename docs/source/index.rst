@@ -4,7 +4,7 @@ Welcome to MolSanitizer's documentation!
 **MolSanitizer** (msani) is a Python package for preparation (remove salts, stereoisomers enumeration, protonation, ...) and filtering undesirable substructures (PAINS, reactive functional groups, ...) for drug discovery projects. MolSanitizer is also capable of building DB2 files for docking used by DOCK 3.8 program.
 
 Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+how to :doc:`installation` the project.
 
 .. note::
 
@@ -16,5 +16,6 @@ Contents
 
 .. toctree::
    installation
+   theory
    usage
    feedback
