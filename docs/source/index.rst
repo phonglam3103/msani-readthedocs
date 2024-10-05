@@ -1,4 +1,4 @@
-Welcome to MolSanitizer's documentation!
+MolSanitizer's documentation
 #########################################
 
 About MolSanitizer
@@ -18,7 +18,6 @@ Contents
 ************************
 
 .. toctree::
-   :maxdepth: 2
    index
    installation
    theory
