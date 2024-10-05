@@ -1,10 +1,7 @@
-Welcome to Lumache's documentation!
+Welcome to MolSanitizer's documentation!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**MolSanitizer** (msani) is a Python package for preparation (remove salts, stereoisomers enumeration, protonation, ...) and filtering undesirable substructures (PAINS, reactive functional groups, ...) for drug discovery projects. MolSanitizer is also capable of building DB2 files for docking used by DOCK 3.8 program.
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
@@ -17,6 +14,6 @@ Contents
 --------
 
 .. toctree::
-
+   installation
    usage
    api
