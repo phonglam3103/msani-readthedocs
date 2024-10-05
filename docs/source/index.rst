@@ -9,6 +9,7 @@ how to :ref:`installation` the project.
 .. note::
 
    This project is under active development.
+   For any feedback, please refer to the :doc:`feedback` section.
 
 Contents
 --------
@@ -16,4 +17,4 @@ Contents
 .. toctree::
    installation
    usage
-   api
+   feedback
