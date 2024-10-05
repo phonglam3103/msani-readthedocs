@@ -112,13 +112,16 @@ The protonation stage can be assigned to the molecules using the ``--protonation
 
     msani -i example.smi --protonation
 
+
 .. code-block:: text
+
    Input:
    O=C(N1C(C2C(C1)C2O)C(O)=O)CN3CCNCC3 mol4_editted
 
    Output:
    O=C([O-])C1C2C(O)C2CN1C(=O)CN1CC[NH2+]CC1 mol4_editted_1
    O=C([O-])C1C2C(O)C2CN1C(=O)C[NH+]1CCNCC1 mol4_editted_2
+
 
 Stereoisomers enumeration
 -------------------------
@@ -130,6 +133,7 @@ Stereoisomers enumeration will be considered for unspecified chiral centers usin
     msani -i example.smi --stereoisomers
 
 .. code-block:: text
+
    Input:
    C1C2CC3CC1CC(C2)(C3O)N                            mol8
 
@@ -192,7 +196,7 @@ The default values of these additional flags can be modified in the `MolSanitize
 
 **Expected Output**:
 
-.. code-block:: console
+.. code-block:: text
 
     Starting MolSanitizer in batch mode
 
