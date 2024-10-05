@@ -25,4 +25,4 @@ Example of how to set up a working conda environment to run the code:
 
 Dependencies
 ------------
-- AMSOL 7.1 (could be downloaded for free `here <https://comp.chem.umn.edu/sds/>`)
+- AMSOL 7.1 (could be downloaded for free `here <https://comp.chem.umn.edu/sds/>`_)
