@@ -10,6 +10,6 @@ MolSanitizer is a rule-based program that relies on our experience from previous
 Contact
 ----------
 
-1. Thua-Phong Lam, phong.lam@icm.uu.se
-2. Szymon Pach, szymon.pach@icm.uu.se
-3. Israel Cabeza de Vaca Lopez, israel.cabezadevaca@icm.uu.se
+1. Phong Lam (for general questions - maintainer), phong.lam@icm.uu.se
+2. Szymon Pach (for chemical-related questions), szymon.pach@icm.uu.se
+3. Israel Cabeza de Vaca Lopez (for technical questions), israel.cabezadevaca@icm.uu.se

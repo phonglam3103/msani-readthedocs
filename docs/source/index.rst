@@ -18,7 +18,8 @@ Contents
 ************************
 
 .. toctree::
-   installation
    theory
+   validation
+   installation
    usage
    feedback

@@ -1,5 +1,7 @@
 Theory
 ======
+(Updating soon...)
+
 
 SMARTS reactions
 ----------------
