@@ -1,4 +1,4 @@
-name: Sync CHANGELOG
+name: Sync CHANGELOG and Convert to RST
 
 on:
   push:
@@ -23,23 +23,32 @@ jobs:
         cd MolSanitizer
         git fetch --all
 
-    - name: Copy CHANGELOG.md
+    - name: Install Pandoc for Conversion
       run: |
-        cp MolSanitizer/CHANGELOG.md ./
+        sudo apt-get update
+        sudo apt-get install -y pandoc
 
-    - name: Commit and push to the documentation repository
-      env:
-        TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+    - name: Copy and Convert CHANGELOG.md
       run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/msani-readthedocs
-        cp CHANGELOG.md msani-readthedocs/docs
-        cd msani-readthedocs
-        if ! git diff --quiet docs/CHANGELOG.md; then
-          git add docs/CHANGELOG.md
-          git commit -m "Crawl CHANGELOG.md from MolSanitizer"
-          git push origin main
+        cp MolSanitizer/CHANGELOG.md ./CHANGELOG.md
+        if ! git diff --quiet CHANGELOG.md; then
+          # Convert to RST
+          pandoc CHANGELOG.md -o changes.rst
+          # Clone the documentation repository
+          git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/msani-readthedocs
+          # Copy the converted RST file
+          cp changes.rst msani-readthedocs/docs/source/
+          cd msani-readthedocs
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          # Commit changes only if there are differences
+          if ! git diff --quiet docs/source/changes.rst; then
+            git add docs/source/changes.rst
+            git commit -m "Update changes.rst from the software repository"
+            git push origin main
+          else
+            echo "No changes detected in changes.rst. Skipping commit."
+          fi
         else
-          echo "No changes detected in CHANGELOG.md. Skipping commit."
+          echo "No changes detected in CHANGELOG.md. Skipping RST conversion and commit."
         fi
