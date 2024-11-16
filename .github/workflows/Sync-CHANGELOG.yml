@@ -36,10 +36,24 @@ jobs:
 
     - name: Compare CHANGELOG.md and Convert to RST
       run: |
-        # Compare CHANGELOG.md files
-        diff_output=$(diff MolSanitizer/CHANGELOG.md msani-readthedocs/docs/CHANGELOG.md || true)
-        if [ -n "$diff_output" ]; then
-          echo "Detected changes in CHANGELOG.md. Proceeding with RST conversion."
+        # Check if the file exists in the documentation repo
+        if [ ! -f msani-readthedocs/docs/CHANGELOG.md ]; then
+          echo "CHANGELOG.md not found in documentation repository. Treating as a change."
+          proceed_with_conversion=true
+        else
+          # Compare CHANGELOG.md files
+          diff_output=$(diff MolSanitizer/CHANGELOG.md msani-readthedocs/docs/CHANGELOG.md || true)
+          if [ -n "$diff_output" ]; then
+            echo "Detected changes in CHANGELOG.md. Proceeding with RST conversion."
+            proceed_with_conversion=true
+          else
+            echo "No changes detected in CHANGELOG.md. Skipping RST conversion and commit."
+            proceed_with_conversion=false
+          fi
+        fi
+
+        # Convert to RST and commit if changes are detected or file is missing
+        if [ "$proceed_with_conversion" = true ]; then
           # Convert to RST
           pandoc MolSanitizer/CHANGELOG.md -o changes.rst
           # Copy the converted RST file
@@ -55,6 +69,4 @@ jobs:
           else
             echo "No changes detected in changes.rst. Skipping commit."
           fi
-        else
-          echo "No changes detected in CHANGELOG.md. Skipping RST conversion and commit."
         fi
