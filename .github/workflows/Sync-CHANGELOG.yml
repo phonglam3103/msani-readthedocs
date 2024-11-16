@@ -3,7 +3,7 @@ name: Sync CHANGELOG and Convert to RST
 on:
   push:
     branches:
-      - '**'
+      - '**'  # Trigger on all branch pushes
   schedule:
     - cron: '0 0 * * *'  # Trigger daily at midnight UTC
 
@@ -23,25 +23,31 @@ jobs:
         cd MolSanitizer
         git fetch --all
 
+    - name: Clone the documentation repository
+      env:
+        TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      run: |
+        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/msani-readthedocs.git
+
     - name: Install Pandoc for Conversion
       run: |
         sudo apt-get update
         sudo apt-get install -y pandoc
 
-    - name: Copy and Convert CHANGELOG.md
+    - name: Compare CHANGELOG.md and Convert to RST
       run: |
-        cp MolSanitizer/CHANGELOG.md ./CHANGELOG.md
-        if ! git diff --quiet CHANGELOG.md; then
+        # Compare CHANGELOG.md files
+        diff_output=$(diff MolSanitizer/CHANGELOG.md msani-readthedocs/docs/CHANGELOG.md || true)
+        if [ -n "$diff_output" ]; then
+          echo "Detected changes in CHANGELOG.md. Proceeding with RST conversion."
           # Convert to RST
-          pandoc CHANGELOG.md -o changes.rst
-          # Clone the documentation repository
-          git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/msani-readthedocs
+          pandoc MolSanitizer/CHANGELOG.md -o changes.rst
           # Copy the converted RST file
           cp changes.rst msani-readthedocs/docs/source/
           cd msani-readthedocs
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          # Commit changes only if there are differences
+          # Commit changes only if there are differences in changes.rst
           if ! git diff --quiet docs/source/changes.rst; then
             git add docs/source/changes.rst
             git commit -m "Update changes.rst from the software repository"
