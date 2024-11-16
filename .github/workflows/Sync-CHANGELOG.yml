@@ -36,6 +36,10 @@ jobs:
         git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/msani-readthedocs
         cp CHANGELOG.md msani-readthedocs/docs
         cd msani-readthedocs
-        git add docs/CHANGELOG.md
-        git commit -m "Update CHANGELOG.md from the software repository"
-        git push origin main
+        if ! git diff --quiet docs/CHANGELOG.md; then
+          git add docs/CHANGELOG.md
+          git commit -m "Crawl CHANGELOG.md from MolSanitizer"
+          git push origin main
+        else
+          echo "No changes detected in CHANGELOG.md. Skipping commit."
+        fi
