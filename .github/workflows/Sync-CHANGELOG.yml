@@ -3,7 +3,7 @@ name: Sync CHANGELOG and Convert to RST
 on:
   push:
     branches:
-      - main  # Trigger when pushing to the main branch
+      - '**'
   schedule:
     - cron: '0 0 * * *'  # Trigger daily at midnight UTC
 
