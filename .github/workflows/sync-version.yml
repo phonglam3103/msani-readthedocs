@@ -1,0 +1,56 @@
+name: Sync version to the software repo
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Trigger daily at midnight UTC
+
+jobs:
+  update-conf:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone the MolSanitizer repository
+      env:
+        TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      run: |
+        git clone https://x-access-token:${TOKEN}@github.com/Isra3l/MolSanitizer.git
+        cd MolSanitizer
+        # Fetch the latest tag
+        latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+        echo "Latest tag: $latest_tag"
+        echo "latest_tag=$latest_tag" >> $GITHUB_ENV
+
+    - name: Clone the documentation repository
+      env:
+        TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      run: |
+        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/msani-readthedocs.git
+
+    - name: Update conf.py with the latest tag
+      run: |
+        cd msani-readthedocs
+        conf_file="docs/source/conf.py"
+        if [ -f "$conf_file" ]; then
+          # Update the version and release in conf.py
+          sed -i "s/^release = .*/release = '$latest_tag'/" $conf_file
+          sed -i "s/^version = .*/version = '$latest_tag'/" $conf_file
+          echo "Updated version and release to $latest_tag in $conf_file"
+        else
+          echo "Error: $conf_file not found."
+          exit 1
+        fi
+
+    - name: Commit and push changes
+      env:
+        TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      run: |
+        cd msani-readthedocs
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        if ! git diff --quiet; then
+          git add docs/source/conf.py
+          git commit -m "Update version and release in conf.py to $latest_tag"
+          git push origin main
+        else
+          echo "No changes detected in conf.py. Skipping commit."
+        fi
