@@ -21,5 +21,6 @@ Contents
    theory
    validation
    installation
+   changes
    usage
    feedback
