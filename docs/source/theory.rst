@@ -3,11 +3,50 @@ Theory
 (Updating soon...)
 
 
-SMARTS reactions
-----------------
+SMARTS Matching and Reactions
+=============================
 
-SMARTS reactions are used for assignning charges, adding hydrogens, and removing salts. The following SMARTS reactions are used in MolSanitizer:
+SMARTS (SMiles ARbitrary Target Specification) is a powerful and flexible language designed to describe molecular patterns and chemical transformations. It plays a critical role in cheminformatics by enabling precise substructure searches and reaction modeling. 
 
+### SMARTS Matching
+SMARTS matching is the process of identifying substructures in a molecule that fit a specific pattern. These patterns can represent atoms, bonds, or entire molecular frameworks, making SMARTS ideal for:
+- Identifying functional groups.
+- Highlighting specific bonding arrangements.
+- Locating potential reaction sites.
+
+### SMARTS Reactions
+SMARTS reactions build on the concept of matching by defining transformations:
+- **Reactant Definition**: Specifies the pattern to locate the target structure.
+- **Product Definition**: Details how the target structure changes after the reaction.
+- **Atom Mapping**: Ensures that atoms in the reactant and product are consistently related.
+
+SMARTS reactions allow for automated modifications of molecular structures, including protonation, tautomer enumeration, and functional group replacements.
+
+---
+
+SMARTS Matching and Reactions in MolSanitizer
+=============================================
+
+MolSanitizer leverages the power of SMARTS matching and reactions to automate the preparation and filtering of molecular datasets for drug discovery. Below are the key applications:
+
+### 1. Tautomer Standardization
+- MolSanitizer combines SMARTS-based matching with RDKit's canonical tautomer enumeration to generate and refine tautomers. This ensures consistency and correctness in molecular forms.
+
+### 2. PAINS and Unwanted Substructure Filtering
+- SMARTS enables the identification of undesirable substructures like PAINS (Pan Assay Interference Compounds) and reactive functional groups. Custom SMARTS patterns allow users to extend or modify filtering rules to suit specific project requirements.
+
+### 3. Protonation
+- Protonation states are assigned iteratively using SMARTS-based rules for ionizable groups. This ensures molecules are prepared for pH-specific environments, with expanded outputs for cases of multiple possible states.
+
+### 4. Customization
+- Users can generate and apply customized SMARTS lists to target specific unwanted substructures or transformations. This flexibility makes MolSanitizer adaptable to diverse drug discovery pipelines.
+
+### 5. Matching rigid scaffolds and invertable chiral centers in conformational level
+- MolSanitizer uses SMARTS to detect substructures such as rings and aromatic nitrogen to correct the geometry due to the systematic error of MMFF94s. SMARTS is also the foundation for dihedral matching of the molecules to the Torsional Library, which drives the conformational sampling for docking.
+
+For more detailed usage and examples, refer to the :doc:`usage` section.
+
+---
 
 Conformational sampling
 -----------------------
