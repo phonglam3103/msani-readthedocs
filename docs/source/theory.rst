@@ -6,7 +6,7 @@ Theory
 SMARTS Matching and Reactions
 ******************************
 
-SMARTS (SMiles ARbitrary Target Specification) is a powerful and flexible language designed to describe molecular patterns and chemical transformations. It plays a critical role in cheminformatics by enabling precise substructure searches and reaction modeling.[#label]_
+SMARTS (SMiles ARbitrary Target Specification) is a powerful and flexible language designed to describe molecular patterns and chemical transformations. It plays a critical role in cheminformatics by enabling precise substructure searches and reaction modeling. [1]_
 
 SMARTS Matching
 ===============
@@ -41,7 +41,7 @@ MolSanitizer leverages the power of SMARTS matching and reactions to automate th
 
 2. **PAINS and Unwanted Substructure Filtering**:
 
-   - SMARTS enables the identification of undesirable substructures like PAINS (Pan Assay Interference Compounds) [#label]_ and reactive functional groups. Custom SMARTS patterns allow users to extend or modify filtering rules to suit specific project requirements.
+   - SMARTS enables the identification of undesirable substructures like PAINS (Pan Assay Interference Compounds) [2]_ and reactive functional groups. Custom SMARTS patterns allow users to extend or modify filtering rules to suit specific project requirements.
 
 
 3. **Protonation**:
@@ -51,7 +51,7 @@ MolSanitizer leverages the power of SMARTS matching and reactions to automate th
 
 4. **Matching Rigid Scaffolds and Invertable Chiral Centers**:
 
-   - MolSanitizer uses SMARTS to detect substructures such as rings and aromatic nitrogen to correct geometry due to systematic errors of MMFF94s. SMARTS matching is also the foundation for dihedral matching of the molecules to the Torsional Library [#label]_,[#label]_, [#label]_ , which drives conformational sampling for docking.
+   - MolSanitizer uses SMARTS to detect substructures such as rings and aromatic nitrogen to correct geometry due to systematic errors of MMFF94s. SMARTS matching is also the foundation for dihedral matching of the molecules to the Torsional Library [3]_, [4]_, [5]_ , which drives conformational sampling for docking.
 
 For more detailed usage and examples, refer to the :doc:`usage` section.
 
