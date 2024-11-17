@@ -18,13 +18,18 @@ Contents
 ************************
 
 .. toctree::
-   :hidden:
+   :maxdepth: 2
+   :caption: General Documentation
+
    theory
    validation
    installation
-   changes
    usage
    feedback
-   evaluation
 
-  
+.. toctree::
+   :maxdepth: 1
+   :caption: Advanced Topics
+
+   changes
+   evaluation
