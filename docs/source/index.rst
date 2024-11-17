@@ -24,3 +24,4 @@ Contents
    changes
    usage
    feedback
+   evaluation
