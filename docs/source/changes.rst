@@ -9,6 +9,11 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~
 
+-  Lower down the exhaustiveness as it takes unecessarily long. -
+   (`dbb8aae <https://github.com/Isra3l/MolSanitizer/commit/dbb8aaeb1d9ba8450f7221ecc9f69817d163990a>`__)
+-  Now support enrichment mode, not putting the db2 files into db2.tgz.
+   Maily for adapting with the internal enrichment pipeline. -
+   (`004af69 <https://github.com/Isra3l/MolSanitizer/commit/004af6938faef4507ee9c32f7229e78471e73b88>`__)
 -  Trial of new stochastic sampling method that involved in increased
    sampling but keeping the failure count continously increase without
    being resetted after every good conformer. This shown a 2X
