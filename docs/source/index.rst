@@ -18,17 +18,12 @@ Contents
 ************************
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
+   :hidden:
    theory
    validation
    installation
-
-.. toctree::
-   :maxdepth: 1
    changes
-
-.. toctree::
-   :maxdepth: 3
    usage
    feedback
    evaluation
