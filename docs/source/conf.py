@@ -12,22 +12,12 @@ version = '0.2.0'
 # -- General configuration
 
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.todo',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.imgmath',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.githubpages',
-    'sphinx.ext.mathjax',
+    'sphinx.ext.duration',
     'sphinx.ext.doctest',
-    'sphinxcontrib.bibtex',
-    'sphinx_inline_tabs',
-    'docs_versions_menu',
-    'sphinx_sitemap',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.intersphinx',
 ]
-
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),

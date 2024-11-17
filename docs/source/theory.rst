@@ -38,9 +38,11 @@ MolSanitizer leverages the power of SMARTS matching and reactions to automate th
 
    - MolSanitizer employs a two-step approach to tautomer standardization, combining RDKit's tautomer canonicalization functionality with SMARTS reactions for enhanced refinement. Initially, RDKit's canonicalization function generates the base set of tautomers. These are then further refined using SMARTS reactions to ensure the selection of the most chemically stable and biologically relevant tautomer.
 
+
 2. **PAINS and Unwanted Substructure Filtering**:
 
    - SMARTS enables the identification of undesirable substructures like PAINS (Pan Assay Interference Compounds) [#label]_ and reactive functional groups. Custom SMARTS patterns allow users to extend or modify filtering rules to suit specific project requirements.
+
 
 3. **Protonation**:
 
@@ -53,7 +55,6 @@ MolSanitizer leverages the power of SMARTS matching and reactions to automate th
 
 For more detailed usage and examples, refer to the :doc:`usage` section.
 
----
 
 Conformational Sampling
 ***********************
