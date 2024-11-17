@@ -18,8 +18,6 @@ Contents
 ************************
 
 .. toctree::
-   :maxdepth: 2
-   :hidden:
    theory
    validation
    installation
