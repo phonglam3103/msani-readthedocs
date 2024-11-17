@@ -49,7 +49,7 @@ MolSanitizer leverages the power of SMARTS matching and reactions to automate th
 
 4. **Matching Rigid Scaffolds and Invertable Chiral Centers**:
 
-   - MolSanitizer uses SMARTS to detect substructures such as rings and aromatic nitrogen to correct geometry due to systematic errors of MMFF94s. SMARTS matching is also the foundation for dihedral matching of the molecules to the Torsional Library[3]_,[4]_,[5]_, which drives conformational sampling for docking.
+   - MolSanitizer uses SMARTS to detect substructures such as rings and aromatic nitrogen to correct geometry due to systematic errors of MMFF94s. SMARTS matching is also the foundation for dihedral matching of the molecules to the Torsional Library[3]_, [4]_, [5]_ , which drives conformational sampling for docking.
 
 For more detailed usage and examples, refer to the :doc:`usage` section.
 
