@@ -18,14 +18,13 @@ Contents
 ************************
 
 .. toctree::
+   :hidden:
    theory
    validation
    installation
+   changes
    usage
    feedback
    evaluation
-   
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   changes
+
+  
