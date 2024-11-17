@@ -22,6 +22,10 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.mathjax',
     'sphinx.ext.doctest',
+    'sphinxcontrib.bibtex',
+    'sphinx_inline_tabs',
+    'docs_versions_menu',
+    'sphinx_sitemap',
 ]
 
 
