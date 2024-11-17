@@ -7,6 +7,6 @@ We are excited to invite interested users to participate in an early evaluation 
 
 To gain early access to the repository, please reach out to us with your GitHub account details via email at:
 
-**carlssonlab@gmail.com**
+**jens.carlsson.lab@gmail.com**
 
 We look forward to collaborating with you!
