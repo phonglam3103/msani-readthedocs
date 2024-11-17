@@ -7,7 +7,7 @@ copyright = "2024, Carlsson's Lab, Uppsala University"
 author = 'Phong Lam, Israel Cabeza de Vaca, Szymon Pach'
 
 release = '0.2.0'
-version = '0.2.1'
+version = '0.2.0'
 
 # -- General configuration
 
