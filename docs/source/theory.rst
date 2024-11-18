@@ -1,8 +1,6 @@
 Theory
 ######
 
-(Updating)
-
 SMARTS Matching and Reactions
 ******************************
 
