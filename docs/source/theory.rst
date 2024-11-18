@@ -71,7 +71,8 @@ Torsional Library (or TorLib) [4]_, [5]_, [6]_ is a collection of expert-derived
 .. |br| raw:: html
 
    <br />
-
+   <br />
+   
 The first step involves generating an initial conformer using the srETKDGv3 (small-ring ETKDGv3) algorithm of RDKit [7]_. However, this algorithm can sometimes produce unfavorable ring conformations such as "boat" or "twist" forms. To address this, MolSanitizer generates up to 100 conformers and filters out the undesirable ones using a curated library of preferred ring conformations. Currently, MolSanitizer supports rings up to eight members in size. At the end of the initial embedding process, only the lowest-energy conformer with favorable ring conformations is used for subsequent conformational sampling. In cases where RDKit fails or exceeds a time limit (default: 2 minutes), the embedding method of OpenBabel is used as a backup [8]_.
 
 As recommended by the RDKit developers, the initial conformer is minimized using a force field—in this case, the MMFF94s force field [9]_. However, the minimized conformer may still exhibit systematic errors inherent to such force fields, such as non-planarity of aromatic nitrogens or nitrogens in amide linkages. MolSanitizer addresses these issues by using SMARTS patterns to detect and correct these substructures, ensuring accurate molecular geometries. This initial conformer also serves as the input for desolvation penalty calculations using AMSOL.
@@ -84,7 +85,7 @@ The second step is the conformational sampling based on TorLib. TorLib provides 
         num_confs = 0
         attempts = 0
         product = []
-        min_energy = None  # Initialize min_energy if needed
+        min_energy = 1e6  # Initialize min_energy if needed
 
         while num_confs < max_confs and attempts < max_attempts:
             # Select a random torsion t from rot_bonds
@@ -104,7 +105,7 @@ The second step is the conformational sampling based on TorLib. TorLib provides 
             energy = calculate_energy(conf)
 
             # Update min_energy if this is the first conformer or a lower energy is found
-            if min_energy is None or energy < min_energy:
+            if energy < min_energy:
                 min_energy = energy
 
             if energy <= min_energy + e_window:
