@@ -39,7 +39,12 @@ html_theme_options = {    # Toc options
     'navigation_depth': 3,
     'includehidden': True,
     'titles_only': False}
+
 html_static_path = ['_static']
+html_css_files = [
+    'custom.css',
+]
+
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
