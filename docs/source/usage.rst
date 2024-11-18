@@ -36,8 +36,8 @@ By default, the program produces a new file with a **_clean** suffix. If the PAI
 
 The program by default will conduct the preparation and filtering in the order below:
 
-.. image:: _static/Workflow.png?raw=true
-   :width: 1000px
+.. image:: _static/Workflow.png
+   :width: 800px
 
 Available filters and preparation steps
 ***************************************
