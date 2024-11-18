@@ -65,6 +65,12 @@ All notable changes to this project will be documented in this file.
 -  Remove deprecated script that is not used anymore. -
    (`3cfa3b8 <https://github.com/Isra3l/MolSanitizer/commit/3cfa3b87c545e416eee007c0ca643b3a27e21246>`__)
 
+📚 Documentation
+~~~~~~~~~~~~~~~
+
+-  Redirect MolSanitizer README to the read-the-docs page. -
+   (`6e6bc43 <https://github.com/Isra3l/MolSanitizer/commit/6e6bc434bc69180c67b24950fb476b21898907ea>`__)
+
 ⚡ Performance
 ~~~~~~~~~~~~~
 
@@ -313,6 +319,8 @@ All notable changes to this project will be documented in this file.
 -  Remove unused files in the repository -
    (`744f694 <https://github.com/Isra3l/MolSanitizer/commit/744f694c98720177145d3d3edeeefa29d729a7ae>`__)
 
+.. _documentation-1:
+
 📚 Documentation
 ~~~~~~~~~~~~~~~
 
@@ -552,7 +560,7 @@ All notable changes to this project will be documented in this file.
    with AMSOL.)* :sparkles: -
    (`e190e96 <https://github.com/Isra3l/MolSanitizer/commit/e190e9675a87f9a13161586510ea5d43c0286529>`__)
 
-.. _documentation-1:
+.. _documentation-2:
 
 📚 Documentation
 ~~~~~~~~~~~~~~~
