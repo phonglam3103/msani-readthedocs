@@ -36,7 +36,7 @@ By default, the program produces a new file with a **_clean** suffix. If the PAI
 
 The program by default will conduct the preparation and filtering in the order below:
 
-.. image:: plots/Workflow.png?raw=true
+.. image:: _static/Workflow.png?raw=true
    :width: 1000px
 
 Available filters and preparation steps
