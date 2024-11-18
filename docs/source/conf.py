@@ -6,8 +6,8 @@ project = 'MolSanitizer'
 copyright = "2024, Carlsson's Lab, Uppsala University"
 author = 'Phong Lam, Israel Cabeza de Vaca, Szymon Pach'
 
-release = '0.2.0'
-version = '0.2.0'
+release = '0.2.1'
+version = '0.2.1'
 
 # -- General configuration
 
@@ -17,6 +17,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.imgmath'
 ]
 
 intersphinx_mapping = {
@@ -38,7 +39,7 @@ html_theme_options = {    # Toc options
     'navigation_depth': 3,
     'includehidden': True,
     'titles_only': False}
-
+html_static_path = ['_static']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
