@@ -10,11 +10,14 @@ Platinum Diverse Dataset contains 2859 high-quality ligand bioactive conformatio
 
 The number of conformers were set to 2000 for RDkit, MolSanitizer and the DB2 pipeline. The RMSD values were calculated based on the heavy atoms of the generated and the reference conformer using the RDKit's GetBestRMS function. 
 
-.. image:: https://github.com/phonglam3103/msani-readthedocs/blob/main/plots/RMSD_Platinum.png?raw=true
-   :width: 400px
+.. list-table::
+   :widths: 50 50
+   :header-rows: 0
 
-.. image:: https://github.com/phonglam3103/msani-readthedocs/blob/main/plots/numconfs.png?raw=true
-   :width: 400px
+   * - .. image:: https://github.com/phonglam3103/msani-readthedocs/blob/main/plots/RMSD_Platinum.png?raw=true
+         :width: 400px
+     - .. image:: https://github.com/phonglam3103/msani-readthedocs/blob/main/plots/numconfs.png?raw=true
+         :width: 400px
 
  All the three methods reproduce comparable results with the RMSD values less than 0.5 Å. However, when it comes to higher regions of RMSD values such as 1.0 Å, MolSanitizer starts to outperform the current DB2 pipeline. Although RDKit seems to be very efficient in reproducing the bioactive conformation, the number of conformations generally more than the other methods, and the time of processing were mainly the constraints of RDKit being used as a conformation generator for DOCK3.8. Addtionally, it should be noted that the distance-geometry based method of RDKit could also sample different ring conformations, which could on the one hand helps to cover a more diverse conformational space, but on the other hand, could not be easily be converted to DB2 format for DOCK3.8 as the mol2db2.py software requires the aliphatic ring conformations to be fixed.
 
