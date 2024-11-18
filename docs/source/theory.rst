@@ -38,20 +38,21 @@ MolSanitizer leverages the power of SMARTS matching and reactions to automate th
 
    - MolSanitizer employs a two-step approach to tautomer standardization, combining RDKit's tautomer canonicalization functionality with SMARTS reactions for enhanced refinement. Initially, RDKit's canonicalization function generates the base set of tautomers. These are then further refined using SMARTS reactions to ensure the selection of the most chemically stable and biologically relevant tautomer.
 
+   - Since 2020, RDKit has implemnted the MolVS project to its codebase, which includes a tautomer enumeration, and tautomer canonicalizer [2]_ . It is important to note that the scoring function used in RDKit doesn't try to predict the most stable tautomer, but rather tries to predict the same output given different tautomers (canonicalize). Therefore, MolSanitizer applies another layer of correction to get the most stable tautomer, according to the literature. The SMARTS reaction library for tautomer is available in `MolSanitizer/Data/tautomers.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/tautomers.txt>`_.
 
 2. **PAINS and Unwanted Substructure Filtering**:
 
-   - SMARTS enables the identification of undesirable substructures like PAINS (Pan Assay Interference Compounds) [2]_ and reactive functional groups. Custom SMARTS patterns allow users to extend or modify filtering rules to suit specific project requirements.
+   - SMARTS enables the identification of undesirable substructures like PAINS (Pan Assay Interference Compounds) [3]_ and reactive functional groups. Custom SMARTS patterns allow users to extend or modify filtering rules to suit specific project requirements.
 
 
 3. **Protonation**:
 
-   - Protonation states are assigned iteratively using SMARTS-based rules for ionizable groups. This ensures molecules are prepared for pH-specific environments, with expanded outputs for cases of multiple possible states.
+   - Protonation states are assigned iteratively using SMARTS-based rules for ionizable groups. This ensures molecules are prepared for pH-specific environments, with expanded outputs for cases of multiple possible states. The program uses SMARTS reactions to iteratively assign the protonation stages to the atoms. The SMARTS reactions can be obtained from `MolSanitizer/Data/ionizations.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/ionizations.txt>`_. If there are multiple possibilities of protonation, the output will be expanded.
 
 
 4. **Matching Rigid Scaffolds and Invertable Chiral Centers**:
 
-   - MolSanitizer uses SMARTS to detect substructures such as rings and aromatic nitrogen to correct geometry due to systematic errors of MMFF94s. SMARTS matching is also the foundation for dihedral matching of the molecules to the Torsional Library [3]_, [4]_, [5]_ , which drives conformational sampling for docking.
+   - MolSanitizer uses SMARTS to detect substructures such as rings and aromatic nitrogen to correct geometry due to systematic errors of MMFF94s. SMARTS matching is also the foundation for dihedral matching of the molecules to the Torsional Library [4]_, [5]_, [6]_ , which drives conformational sampling for docking.
 
 For more detailed usage and examples, refer to the :doc:`usage` section.
 
@@ -67,7 +68,8 @@ References
 ==========
 
 .. [1] Daylight Chemical Information Systems, Inc., "SMARTS - A Language for Describing Molecular Patterns", available at: https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html
-.. [2] Baell, J. B., & Holloway, G. A. (2010). New substructure filters for removal of pan assay interference compounds (PAINS) from screening libraries and for their exclusion in bioassays. Journal of medicinal chemistry, 53(7), 2719-2740. Available at: https://pubs.acs.org/doi/10.1021/jm901137j
-.. [3] Scharfer, C., Schulz-Gasch, T., Ehrlich, H. C., Guba, W., Rarey, M., & Stahl, M. (2013). Torsion angle preferences in druglike chemical space: a comprehensive guide. Journal of Medicinal Chemistry, 56(5), 2016-2028. Available at: https://pubs.acs.org/doi/10.1021/jm3016816
-.. [4] Guba, W., Meyder, A., Rarey, M., & Hert, J. (2016). Torsion library reloaded: a new version of expert-derived SMARTS rules for assessing conformations of small molecules. Journal of chemical information and modeling, 56(1), 1-5. Available at: https://pubs.acs.org/doi/10.1021/acs.jcim.5b00522
-.. [5] Penner, P., Guba, W., Schmidt, R., Meyder, A., Stahl, M., & Rarey, M. (2022). The torsion library: Semiautomated improvement of torsion rules with SMARTScompare. Journal of Chemical Information and Modeling, 62(7), 1644-1653. Available at: https://pubs.acs.org/doi/10.1021/acs.jcim.2c00043
+.. [2] Greg Landrum, Trying out the new tautomer canonicalization code. https://greglandrum.github.io/rdkit-blog/posts/2020-01-25-trying-the-tautomer-canonicalization-code.html
+.. [3] Baell, J. B., & Holloway, G. A. (2010). New substructure filters for removal of pan assay interference compounds (PAINS) from screening libraries and for their exclusion in bioassays. Journal of medicinal chemistry, 53(7), 2719-2740. Available at: https://pubs.acs.org/doi/10.1021/jm901137j
+.. [4] Scharfer, C., Schulz-Gasch, T., Ehrlich, H. C., Guba, W., Rarey, M., & Stahl, M. (2013). Torsion angle preferences in druglike chemical space: a comprehensive guide. Journal of Medicinal Chemistry, 56(5), 2016-2028. Available at: https://pubs.acs.org/doi/10.1021/jm3016816
+.. [5] Guba, W., Meyder, A., Rarey, M., & Hert, J. (2016). Torsion library reloaded: a new version of expert-derived SMARTS rules for assessing conformations of small molecules. Journal of chemical information and modeling, 56(1), 1-5. Available at: https://pubs.acs.org/doi/10.1021/acs.jcim.5b00522
+.. [6] Penner, P., Guba, W., Schmidt, R., Meyder, A., Stahl, M., & Rarey, M. (2022). The torsion library: Semiautomated improvement of torsion rules with SMARTScompare. Journal of Chemical Information and Modeling, 62(7), 1644-1653. Available at: https://pubs.acs.org/doi/10.1021/acs.jcim.2c00043
