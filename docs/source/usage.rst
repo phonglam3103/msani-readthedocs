@@ -36,7 +36,7 @@ By default, the program produces a new file with a **_clean** suffix. If the PAI
 
 The program by default will conduct the preparation and filtering in the order below:
 
-.. image:: https://github.com/phonglam3103/msani-readthedocs/blob/main/plots/Workflow.png?raw=true
+.. image:: plots/Workflow.png?raw=true
    :width: 1000px
 
 Available filters and preparation steps
