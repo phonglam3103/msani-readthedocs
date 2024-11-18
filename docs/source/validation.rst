@@ -2,4 +2,24 @@ Validation
 ========
 .. _validation:
 
-This page contains the validation results of MolSanitizer. Updating soon...
+Validation of the conformational generation part of MolSanitizer has been conducted based on the two datasets. For bioactive pose reproduction, the Platinum Diverse Dataset [1]_, and for enrichment capability of the active compounds, the DUD-E dataset [2]_ were used. 
+
+Bioactive pose reproduction
+------------
+Platinum Diverse Dataset contains 2859 high-quality ligand bioactive conformations from the Protein Data Bank (PDB). For the current stage of validation, the best aligned conformation from both MolSanitizer and the current DB2 pipeline employed in the ZINC-22 database was used. As another reference, we used the RDKit's srETKDGv3 conformer generator, coupled with the MMFF94s minimization.
+
+The number of conformers were set to 2000 for RDkit, MolSanitizer and the DB2 pipeline. The RMSD values were calculated based on the heavy atoms of the generated and the reference conformer using the RDKit's GetBestRMS function. 
+
+.. image:: https://github.com/phonglam3103/msani-readthedocs/blob/main/plots/RMSD_Platinum.png?raw=true
+   :width: 500px
+.. image:: https://github.com/phonglam3103/msani-readthedocs/blob/main/plots/numconfs.png?raw=true
+   :width: 500px
+
+ All the three methods reproduce comparable results with the RMSD values less than 0.5 Å. However, when it comes to higher regions of RMSD values such as 1.0 Å, MolSanitizer starts to outperform the current DB2 pipeline. Although RDKit seems to be very efficient in reproducing the bioactive conformation, the number of conformations generally more than the other methods, and the time of processing were mainly the constraints of RDKit being used as a conformation generator for DOCK3.8.
+ .. image:: https://github.com/phonglam3103/msani-readthedocs/blob/main/plots/time.png?raw=true
+   :width: 500px
+
+Upon inspecting the time contribution to the two conformer generators, it is clear that initial embedding is the bottleneck for MolSanitizer. On the other hand, the strain energy calcuation is the most time-consuming step for current DB2 pipeline. Improvement in the initial embedding step, such as adding the CORINA as an optional conformational embedding, of MolSanitizer is expected to reduce the time of processing.
+
+Enrichment capability
+------------
