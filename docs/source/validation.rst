@@ -11,20 +11,20 @@ Platinum Diverse Dataset contains 2859 high-quality ligand bioactive conformatio
 The number of conformers were set to 2000 for RDkit, MolSanitizer and the DB2 pipeline. The RMSD values were calculated based on the heavy atoms of the generated and the reference conformer using the RDKit's GetBestRMS function. 
 
 
-.. image:: _static/RMSD_Platinum.png
+.. list-table::
+   :widths: 50 50
+   :header-rows: 0
+
+   * - .. image:: _static/RMSD_Platinum.png
+         :width: 400px
+     - .. image:: _static/numconfs.png
+         :width: 400px
+
+
+All the three methods reproduce comparable results with the RMSD values less than 0.5 Å. However, when it comes to higher regions of RMSD values such as 1.0 Å, MolSanitizer starts to outperform the current DB2 pipeline. Although RDKit seems to be very efficient in reproducing the bioactive conformation, the number of conformations generally more than the other methods, and the time of processing were mainly the constraints of RDKit being used as a conformation generator for DOCK3.8. Addtionally, it should be noted that the distance-geometry based method of RDKit could also sample different ring conformations, which could on the one hand helps to cover a more diverse conformational space, but on the other hand, could not be easily be converted to DB2 format for DOCK3.8 as the mol2db2.py software requires the aliphatic ring conformations to be fixed.
+
+.. image:: _static/time.png
   :width: 400px
-
-
-.. image:: _static/numconfs.png
-  :width: 400px
-
-
- All the three methods reproduce comparable results with the RMSD values less than 0.5 Å. However, when it comes to higher regions of RMSD values such as 1.0 Å, MolSanitizer starts to outperform the current DB2 pipeline. Although RDKit seems to be very efficient in reproducing the bioactive conformation, the number of conformations generally more than the other methods, and the time of processing were mainly the constraints of RDKit being used as a conformation generator for DOCK3.8. Addtionally, it should be noted that the distance-geometry based method of RDKit could also sample different ring conformations, which could on the one hand helps to cover a more diverse conformational space, but on the other hand, could not be easily be converted to DB2 format for DOCK3.8 as the mol2db2.py software requires the aliphatic ring conformations to be fixed.
-
-
-.. image:: _static/RMSD_Platinum.png
-  :width: 500px
-
 
 Upon inspecting the time contribution to the two conformer generators, it is clear that initial embedding is the bottleneck for MolSanitizer. On the other hand, the strain energy calcuation is the most time-consuming step for current DB2 pipeline. Improvement in the initial embedding step, such as adding the CORINA as an optional conformational embedding, of MolSanitizer is expected to reduce the time of processing.
 
