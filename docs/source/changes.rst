@@ -3,8 +3,8 @@ Changelog
 
 All notable changes to this project will be documented in this file.
 
-[unreleased - most recent changes come first]
----------------------------------------------
+[0.2.1] - 2024-11-18
+--------------------
 
 🚀 Features
 ~~~~~~~~~~
@@ -87,6 +87,8 @@ All notable changes to this project will be documented in this file.
    partial charges and desolvation penalties. -
    (`b99efdf <https://github.com/Isra3l/MolSanitizer/commit/b99efdf80ef94561b591f4b8bbd4bb107c33e8e8>`__)
 
+.. _section-1:
+
 [0.2.0] - 2024-11-06
 --------------------
 
@@ -151,7 +153,7 @@ All notable changes to this project will be documented in this file.
 -  Remove deprecated functions -
    (`9bc63b6 <https://github.com/Isra3l/MolSanitizer/commit/9bc63b6fde4568f4e83a67823fe0177110cf4773>`__)
 
-.. _section-1:
+.. _section-2:
 
 [0.1.3] - 2024-10-05
 --------------------
@@ -221,7 +223,7 @@ All notable changes to this project will be documented in this file.
 -  Remove unused codes -
    (`8437f18 <https://github.com/Isra3l/MolSanitizer/commit/8437f18d4afe59d018dc6b7d7a04f7e659898a1b>`__)
 
-.. _section-2:
+.. _section-3:
 
 [0.1.2] - 2024-09-26
 --------------------
@@ -278,7 +280,7 @@ All notable changes to this project will be documented in this file.
    three atoms are matched. -
    (`e060c5a <https://github.com/Isra3l/MolSanitizer/commit/e060c5aef3bae4e3bb2e259eba901d4232a25ebb>`__)
 
-.. _section-3:
+.. _section-4:
 
 [0.1.1] - 2024-09-22
 --------------------
@@ -333,7 +335,7 @@ All notable changes to this project will be documented in this file.
 -  Revert back to 300 initial conformations for better performance -
    (`31fabcb <https://github.com/Isra3l/MolSanitizer/commit/31fabcb4e8f238f691c27a2cd518e653e37fb85f>`__)
 
-.. _section-4:
+.. _section-5:
 
 [0.1.0] - 2024-09-17
 --------------------
@@ -380,7 +382,7 @@ All notable changes to this project will be documented in this file.
    where no good conformations could be found (fused-ring systems) -
    (`d73bc8e <https://github.com/Isra3l/MolSanitizer/commit/d73bc8e3559175e3daa7130e53e54c6b80f7678e>`__)
 
-.. _section-5:
+.. _section-6:
 
 [0.0.7] - 2024-09-01
 --------------------
@@ -420,7 +422,7 @@ All notable changes to this project will be documented in this file.
    pruning dependent. -
    (`302e715 <https://github.com/Isra3l/MolSanitizer/commit/302e7158a72527bd08ebb2f5c9b8240579c38bd6>`__)
 
-.. _section-6:
+.. _section-7:
 
 [0.0.6] - 2024-08-22
 --------------------
@@ -457,7 +459,7 @@ All notable changes to this project will be documented in this file.
    MolSanitizer (should now output hours:mins:secs) -
    (`a3ff715 <https://github.com/Isra3l/MolSanitizer/commit/a3ff715dc9ed4b16f84a690d0751e954c74e24a3>`__)
 
-.. _section-7:
+.. _section-8:
 
 [0.0.5] - 2024-08-21
 --------------------
@@ -481,7 +483,7 @@ All notable changes to this project will be documented in this file.
    -
    (`1c9db8d <https://github.com/Isra3l/MolSanitizer/commit/1c9db8d5fd254125b218aa0e97e783476c0c014f>`__)
 
-.. _section-8:
+.. _section-9:
 
 [0.0.4] - 2024-08-21
 --------------------
@@ -505,7 +507,7 @@ All notable changes to this project will be documented in this file.
 -  :fire: Better logger for errorneous compounds -
    (`4627645 <https://github.com/Isra3l/MolSanitizer/commit/4627645bd555a5b9ae51476762cde4c070003c61>`__)
 
-.. _section-9:
+.. _section-10:
 
 [0.0.3] - 2024-08-20
 --------------------
@@ -528,7 +530,7 @@ All notable changes to this project will be documented in this file.
    heavy_atoms –> boost the performance significantly -
    (`2ab67b2 <https://github.com/Isra3l/MolSanitizer/commit/2ab67b2d4bc3269186fa2d70e55d860822439ff1>`__)
 
-.. _section-10:
+.. _section-11:
 
 [0.0.2] - 2024-08-19
 --------------------
@@ -581,7 +583,7 @@ All notable changes to this project will be documented in this file.
 -  :construction: Fix Typos -
    (`e400636 <https://github.com/Isra3l/MolSanitizer/commit/e400636ea89e660f98c2af31c17c779f0176ce75>`__)
 
-.. _section-11:
+.. _section-12:
 
 [0.0.1] - 2024-08-16
 --------------------
