@@ -4,7 +4,7 @@ Theory
 SMARTS Matching and Reactions
 ******************************
 
-MolSanitizer uses SMARTS matching and reactions for matching the substructures in its pipeline. The user is encouraged to refer to the Daylight's Documentation on SMARTS for detailed in formation [1]_.
+MolSanitizer uses SMARTS matching and reactions for matching the substructures in its pipeline. The user is encouraged to refer to the Daylight's Documentation on SMARTS for detailed information [1]_.
 
 
 SMARTS Matching and Reactions in MolSanitizer
@@ -80,7 +80,7 @@ The second step is the conformational sampling based on TorLib. TorLib provides 
                 min_energy = energy
 
             if energy <= min_energy + e_window:
-                product.append(conf.copy())
+                add conf to product
                 num_confs += 1
 
         return product
