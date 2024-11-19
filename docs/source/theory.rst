@@ -4,27 +4,7 @@ Theory
 SMARTS Matching and Reactions
 ******************************
 
-SMARTS (SMiles ARbitrary Target Specification) is a powerful and flexible language designed to describe molecular patterns and chemical transformations. It plays a critical role in cheminformatics by enabling precise substructure searches and reaction modeling. [1]_
-
-SMARTS Matching
-===============
-
-SMARTS matching is the process of identifying substructures in a molecule that fit a specific pattern. These patterns can represent atoms, bonds, or entire molecular frameworks, making SMARTS ideal for:
-
-- Identifying functional groups.
-- Highlighting specific bonding arrangements.
-- Locating potential reaction sites.
-
-SMARTS Reactions
-================
-
-SMARTS reactions build on the concept of matching by defining transformations:
-
-- **Reactant Definition**: Specifies the pattern to locate the target structure.
-- **Product Definition**: Details how the target structure changes after the reaction.
-- **Atom Mapping**: Ensures that atoms in the reactant and product are consistently related.
-
-SMARTS reactions allow for automated modifications of molecular structures, including protonation, tautomer enumeration, and functional group replacements.
+MolSanitizer uses SMARTS matching and reactions for matching the substructures in its pipeline. The user is encouraged to refer to the Daylight's Documentation on SMARTS for detailed in formation [1]_.
 
 
 SMARTS Matching and Reactions in MolSanitizer
@@ -70,9 +50,9 @@ Torsional Library (or TorLib) [4]_, [5]_, [6]_ is a collection of expert-derived
 
 The first step involves generating an initial conformer using the srETKDGv3 (small-ring ETKDGv3) algorithm of RDKit [7]_. However, this algorithm can sometimes produce unfavorable ring conformations such as "boat" or "twist" forms. To address this, MolSanitizer generates up to 100 conformers and filters out the undesirable ones using a curated library of preferred ring conformations. Currently, MolSanitizer supports rings up to eight members in size. At the end of the initial embedding process, only the lowest-energy conformer with favorable ring conformations is used for subsequent conformational sampling. In cases where RDKit fails or exceeds a time limit (default: 2 minutes), the embedding method of OpenBabel is used as a backup [8]_.
 
-As recommended by the RDKit developers, the initial conformer is minimized using a force field—in this case, the MMFF94s force field [9]_. However, the minimized conformer may still exhibit systematic errors inherent to such force fields, such as non-planarity of aromatic nitrogens or nitrogens in amide linkages. MolSanitizer addresses these issues by using SMARTS patterns to detect and correct these substructures, ensuring accurate molecular geometries. This initial conformer also serves as the input for desolvation penalty calculations using AMSOL.
+As recommended by the RDKit developers, the initial conformer is minimized using a force field—in this case, the MMFF94s force field [9]_. However, the minimized conformer may still exhibit systematic errors inherent to such force fields, such as non-planarity of aromatic nitrogens. MolSanitizer addresses these issues by using SMARTS patterns to detect and correct these substructures, ensuring accurate molecular geometries. This initial conformer also serves as the input for desolvation penalty calculations using AMSOL.
 
-The second step is the conformational sampling based on TorLib. TorLib provides 513 rules, ranging from the most specific to the most general, allowing it to match any rotatable bond. During conformational sampling, hydroxyl groups (-OH) are allowed to rotate, eliminating the need for reseth or rotateh steps in the Mol2DB2 process. The pseudocode explaining the conformational sampling algorithm is shown below:
+The second step is the conformational sampling based on TorLib. TorLib provides 513 rules, ranging from the most specific to the most general, allowing it to match any rotatable bond. During conformational sampling, hydroxyl groups (-OH) are allowed to rotate, eliminating the need for -reseth or -rotateh steps in the Mol2DB2 process. The pseudocode explaining the conformational sampling algorithm is shown below:
 
 .. code-block:: python
 
@@ -83,14 +63,10 @@ The second step is the conformational sampling based on TorLib. TorLib provides 
         min_energy = 1e6  # Initialize min_energy if needed
 
         while num_confs < max_confs and attempts < max_attempts:
-            # Select a random torsion t from rot_bonds
-            t = random.choice(rot_bonds)
-            # Select a random peak p in the torsion t
-            p = select_random_peak(t)
-            # Select a random angle θ within peak p considering tolerance
-            theta = select_random_angle_within_peak(p, tolerance)
-            # Rotate dihedral t to angle θ
-            rotate_dihedral(conf, t, theta)
+            Select a random torsion t from rot_bonds
+            Select a random peak p in the torsion t
+            Select a random angle θ within peak p considering tolerance
+            Rotate dihedral t to angle θ
 
             if has_clashes(conf):
                 attempts += 1
