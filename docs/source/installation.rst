@@ -16,8 +16,9 @@ MolSanitizer is built upon the following packages:
 
 - AMSOL 7.1 (`Reference <https://comp.chem.umn.edu/sds/>`_)
 
-By default, conda will install all the dependencies, except for AMSOL, which is required for the generation of DB2 files. The user is asked to download and compille the source code from the `official website <https://comp.chem.umn.edu/sds/>`_.
+By default, conda will install all the dependencies, except for AMSOL, which is required for the generation of DB2 files. The user is asked to download and compille the source code from the `official website <https://comp.chem.umn.edu/sds/>`_. Instruction on how to compile on modern systems is provided in the MolSanitizer/amsol directory.
 
+For the early evaluation, the compiled version of AMSOL is provided in the MolSanitizer directory.
 
 Installation
 ------------
