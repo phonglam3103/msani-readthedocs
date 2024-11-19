@@ -39,6 +39,19 @@ Upon inspecting the time contribution to the two conformer generators, it is cle
 Enrichment capability
 ------------
 
+DUDE-Z is a comprehensive and challenging test set designed for evaluating molecular docking methods. It includes 2,312 ligands and 69,994 property-matched decoys, covering 43 diverse targets. For this benchmark, all methods were tested with a fixed number of 2,000 conformers. The evaluation metric used is the adjusted Log-AUC, which assesses early enrichment performance as recommended by Stein et al [2]_. 
+
+.. figure:: _static/logauc-alltargets.png
+   :width: 800px
+   :align: center
+
+MolSanitizer demonstrates superior performance compared to the current DB2 pipeline in 27 out of the 43 targets. The average adjusted Log-AUC achieved by MolSanitizer is 18.66, significantly higher than the DB2 pipeline's average of 15.06. In cases where MolSanitizer underperforms, the enrichment scores are already either very high (>30) or very low (<10), and the differences are insignificant.
+
+The left panel below illustrates the distribution of adjusted Log-AUC values observed for both MolSanitizer and the DB2 pipeline. The right panel displays bootstrapped results from 500 runs for each target, offering further insight into the robustness of these methods.
+
+.. figure:: _static/logauc-mean_bootstrap.png
+   :width: 800px
+   :align: center
 
 References
 ------------
