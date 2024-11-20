@@ -63,8 +63,8 @@ The second step is the conformational sampling based on TorLib. TorLib provides 
         min_energy = 1e6  # Initialize min_energy if needed
 
         while num_confs < max_confs and attempts < max_attempts:
-            Select a random torsion t from rot_bonds
-            Select a random peak p in the torsion t
+            Select a random torsion t
+            Select a random peak p from Torlib
             Select a random angle θ within peak p considering tolerance
             Rotate dihedral t to angle θ
 
