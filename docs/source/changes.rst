@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 [unreleased - most recent changes come first]
 ---------------------------------------------
 
+🚀 Features
+~~~~~~~~~~
+
+-  Incorporated CORINA as an optional 3D initial embedding machine.
+   Enable by -c or –corina, but the user is asked to set a path to
+   CORINA in msani_configurations.yaml. -
+   (`de95bf7 <https://github.com/Isra3l/MolSanitizer/commit/de95bf7bfafde8c2306236c4a6990dd01cec0d97>`__)
+
 🐛 Bug Fixes
 ~~~~~~~~~~~
 
@@ -13,8 +21,19 @@ All notable changes to this project will be documented in this file.
    stereocenters. -
    (`907e799 <https://github.com/Isra3l/MolSanitizer/commit/907e7994bb15de84401d6b06fae3f1b970d11d47>`__)
 
+🎨 Styling
+~~~~~~~~~
+
+-  Configurations of both single and batch jobs are now in
+   msani_configurations.yaml. The user can now change default values of
+   Msani with this configuration file, and set the PATH to CORINA if the
+   user want to use. -
+   (`358e4dd <https://github.com/Isra3l/MolSanitizer/commit/358e4dd0ce07ca6e3792eb8f4ea11945083555d5>`__)
+
 [0.2.1] - 2024-11-18
 --------------------
+
+.. _features-1:
 
 🚀 Features
 ~~~~~~~~~~
@@ -91,6 +110,8 @@ All notable changes to this project will be documented in this file.
    only being used for the initial conversion for AMSOL. -
    (`65eed12 <https://github.com/Isra3l/MolSanitizer/commit/65eed12479d9d31fc11eeb31d0b40061f59fab5a>`__)
 
+.. _styling-1:
+
 🎨 Styling
 ~~~~~~~~~
 
@@ -104,7 +125,7 @@ All notable changes to this project will be documented in this file.
 [0.2.0] - 2024-11-06
 --------------------
 
-.. _features-1:
+.. _features-2:
 
 🚀 Features
 ~~~~~~~~~~
@@ -170,7 +191,7 @@ All notable changes to this project will be documented in this file.
 [0.1.3] - 2024-10-05
 --------------------
 
-.. _features-2:
+.. _features-3:
 
 🚀 Features
 ~~~~~~~~~~
@@ -240,7 +261,7 @@ All notable changes to this project will be documented in this file.
 [0.1.2] - 2024-09-26
 --------------------
 
-.. _features-3:
+.. _features-4:
 
 🚀 Features
 ~~~~~~~~~~
@@ -297,7 +318,7 @@ All notable changes to this project will be documented in this file.
 [0.1.1] - 2024-09-22
 --------------------
 
-.. _features-4:
+.. _features-5:
 
 🚀 Features
 ~~~~~~~~~~
@@ -352,7 +373,7 @@ All notable changes to this project will be documented in this file.
 [0.1.0] - 2024-09-17
 --------------------
 
-.. _features-5:
+.. _features-6:
 
 🚀 Features
 ~~~~~~~~~~
@@ -399,7 +420,7 @@ All notable changes to this project will be documented in this file.
 [0.0.7] - 2024-09-01
 --------------------
 
-.. _features-6:
+.. _features-7:
 
 🚀 Features
 ~~~~~~~~~~
@@ -439,7 +460,7 @@ All notable changes to this project will be documented in this file.
 [0.0.6] - 2024-08-22
 --------------------
 
-.. _features-7:
+.. _features-8:
 
 🚀 Features
 ~~~~~~~~~~
@@ -460,7 +481,7 @@ All notable changes to this project will be documented in this file.
    and symmetrical compounds -
    (`b6a04ad <https://github.com/Isra3l/MolSanitizer/commit/b6a04ad9adf4f988092b6c5af0eed96aede2deff>`__)
 
-.. _styling-1:
+.. _styling-2:
 
 🎨 Styling
 ~~~~~~~~~
@@ -476,7 +497,7 @@ All notable changes to this project will be documented in this file.
 [0.0.5] - 2024-08-21
 --------------------
 
-.. _features-8:
+.. _features-9:
 
 🚀 Features
 ~~~~~~~~~~
@@ -500,7 +521,7 @@ All notable changes to this project will be documented in this file.
 [0.0.4] - 2024-08-21
 --------------------
 
-.. _features-9:
+.. _features-10:
 
 🚀 Features
 ~~~~~~~~~~
@@ -511,7 +532,7 @@ All notable changes to this project will be documented in this file.
    steroids, morphine…🔥 -
    (`0ff023e <https://github.com/Isra3l/MolSanitizer/commit/0ff023ed4ee262100fc8baa67865dd9346b457a4>`__)
 
-.. _styling-2:
+.. _styling-3:
 
 🎨 Styling
 ~~~~~~~~~
@@ -524,7 +545,7 @@ All notable changes to this project will be documented in this file.
 [0.0.3] - 2024-08-20
 --------------------
 
-.. _features-10:
+.. _features-11:
 
 🚀 Features
 ~~~~~~~~~~
@@ -547,7 +568,7 @@ All notable changes to this project will be documented in this file.
 [0.0.2] - 2024-08-19
 --------------------
 
-.. _features-11:
+.. _features-12:
 
 🚀 Features
 ~~~~~~~~~~
@@ -587,7 +608,7 @@ All notable changes to this project will be documented in this file.
 -  *(Documentations for the new batch mode of MolSanitizer)* :fire: -
    (`abe3cfc <https://github.com/Isra3l/MolSanitizer/commit/abe3cfc707dfb5d7e4e48f299080cf37f6d8c347>`__)
 
-.. _styling-3:
+.. _styling-4:
 
 🎨 Styling
 ~~~~~~~~~
