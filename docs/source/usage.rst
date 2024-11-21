@@ -44,7 +44,24 @@ Setting configurations
 
 Many of the default values of MolSanitizer described below, both in the SINGLE MODE and BATCH MODE can be modified in `MolSanitizer/msani_configurations.yaml <https://github.com/Isra3l/MolSanitizer/blob/main/msani_configurations.yaml>`_ file. It is for the convenience of the  user so that he/she does not have to specify the values (such as numConfs, --max_stereoisomers, etc) every time the program is run. If the user specify the values in the command line, the values in the configuration file will be overwritten.
 
-The users are asked to provide CORINA path if the he/she wants to use it for the generation of 3D coordinates. The path should be provided in the `CORINA_PATH` field.
+The users are asked to provide CORINA path if the he/she wants to use it for the generation of 3D coordinates. The path should be provided in the `CORINA` field.
+
+Below is the default configuration file:
+
+.. code-block:: yaml
+    #===============SINGLE MODE================
+    USE_CORINA: False
+    CORINA: 'Path_to_CORINA/corina'
+    ENERGY_WINDOW: 25
+    NUMCONFS: 2000
+    MAX_STEREOISOMERS: 8
+    TIMEOUT: 2
+
+    #================BATCH MODE=================
+    SLURM_ACCOUNT: 'naiss2023-3-39'
+    LINES_PER_JOB: 200
+    TIME_LIMIT: 96
+    MAX_JOBS: 500
 
 
 Available filters and preparation steps
