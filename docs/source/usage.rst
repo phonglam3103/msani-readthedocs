@@ -39,6 +39,14 @@ The program by default will conduct the preparation and filtering in the order b
 .. image:: _static/Workflow.png
    :width: 800px
 
+Setting configurations
+======================
+
+Many of the default values of MolSanitizer described below, both in the SINGLE MODE and BATCH MODE can be modified in `MolSanitizer/msani_configurations.yaml <https://github.com/Isra3l/MolSanitizer/blob/main/msani_configurations.yaml>`_ file. It is for the convenience of the  user so that he/she does not have to specify the values (such as numConfs, --max_stereoisomers, etc) every time the program is run. If the user specify the values in the command line, the values in the configuration file will be overwritten.
+
+The users are asked to provide CORINA path if the he/she wants to use it for the generation of 3D coordinates. The path should be provided in the `CORINA_PATH` field.
+
+
 Available filters and preparation steps
 ***************************************
 
@@ -150,17 +158,19 @@ Stereoisomers enumeration will be considered for unspecified chiral centers usin
    N[C@@]12C[C@@H]3C[C@@H](C[C@@H](C3)[C@H]1O)C2     mol8_1
    N[C@@]12C[C@@H]3C[C@@H](C[C@@H](C3)[C@@H]1O)C2    mol8_2
 
-It is possible to define the maximum number of stereoisomers generated for each molecule by adding the ``--max_isomers`` flag.
+It is possible to define the maximum number of stereoisomers generated for each molecule by adding the ``--max_stereoisomers`` flag.
 
 .. code-block:: console
 
-    $ msani -i example.smi --stereoisomers --max_isomers 30
+    $ msani -i example.smi --stereoisomers --max_stereoisomers 32
 
 DB2 generation for DOCK 3.8
 ============================
 
 
 The DB2 format ready for docking using DOCK 3.8 can be obtained using the ``--db2`` flag. MolSanitizer employs the `srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (small-ring ETKDGv3) method of Rdkit to generate 10 or 100 initial conformations, which will be energy minimized using the `MMFF94s <https://doi.org/10.1186/s13321-014-0037-3>`_ forcefield. Some systematic error from the MMFF94s such as the non-planarity of th aromatic nitrogen atoms are fixed using a set of constraints. In cases when RDKit takes too long to embed the molecule (2 minutes), the new embedding method of `Open Babel <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0372-5>`_ will be used to generate the initial conformer. 
+
+It is now also possible to generate the initial conformation using CORINA by adding the ``--corina`` flag. The user is asked to add the path to CORINA program as well as can set the default behavior of the program to use CORINA every time in the configuration file.
 
 
 The energy-minimum conformer will then be used as the initial conformer for torsional sampling using the Monte Carlo (stochastic) method.
@@ -192,22 +202,6 @@ The additional flags supported by ``msani_batch`` so far:
     -l, --lines_per_job         Number of lines to process per job (default: 200)
     -t, --time                  Time limit in hours for each SLURM job (default: 96)
     --max_jobs                  Maximum number of jobs to run simultaneously (default: 500)
-
-Setting configurations
-======================
-
-The default values of these additional flags can be modified in the `MolSanitizer/batch_configurations.yaml <https://github.com/Isra3l/MolSanitizer/blob/main/batch_configurations.yaml>`_ file.
-
-The default configuration file is as follows:
-
-.. code-block:: yaml
-
-    SLURM_ACCOUNT: 'naiss2023-3-39'
-    LINES_PER_JOB: 200
-    TIME_LIMIT: 96
-    MAX_JOBS: 500
-    TIMEOUT: 2
-
 
 Usage
 =====
