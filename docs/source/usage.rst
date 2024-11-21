@@ -49,6 +49,7 @@ The users are asked to provide CORINA path if the he/she wants to use it for the
 Below is the default configuration file:
 
 .. code-block:: yaml
+    
     #===============SINGLE MODE================
     USE_CORINA: False
     CORINA: 'Path_to_CORINA/corina'
