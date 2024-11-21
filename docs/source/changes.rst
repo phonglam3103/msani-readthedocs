@@ -3,6 +3,16 @@ Changelog
 
 All notable changes to this project will be documented in this file.
 
+[unreleased - most recent changes come first]
+---------------------------------------------
+
+🐛 Bug Fixes
+~~~~~~~~~~~
+
+-  Fix a bug that rdkit tautomer canonicalize lose the specified
+   stereocenters. -
+   (`907e799 <https://github.com/Isra3l/MolSanitizer/commit/907e7994bb15de84401d6b06fae3f1b970d11d47>`__)
+
 [0.2.1] - 2024-11-18
 --------------------
 
@@ -37,6 +47,8 @@ All notable changes to this project will be documented in this file.
 -  DB2 files now are put in tar.gz by default. The number of files in
    each tar.gz depends on the number of lines per job. -
    (`dbd74a4 <https://github.com/Isra3l/MolSanitizer/commit/dbd74a42537fed8c4e123f1f255b3debbd57d958>`__)
+
+.. _bug-fixes-1:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -133,7 +145,7 @@ All notable changes to this project will be documented in this file.
    errors with stereoisomers and tautomers. -
    (`63750b3 <https://github.com/Isra3l/MolSanitizer/commit/63750b3d52f3b12ac3a85f44ec7c1bfae015f2ae>`__)
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -199,7 +211,7 @@ All notable changes to this project will be documented in this file.
    conformations -
    (`658d08c <https://github.com/Isra3l/MolSanitizer/commit/658d08ce81b9f8d25c530b6063bffb3d0f8388ad>`__)
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -236,7 +248,7 @@ All notable changes to this project will be documented in this file.
 -  Msani not use the reset terminal hydrogen of mol2db2 anymore. -
    (`f4d2d6e <https://github.com/Isra3l/MolSanitizer/commit/f4d2d6ec6b870f6a24fe4960c3622d983151de04>`__)
 
-.. _bug-fixes-3:
+.. _bug-fixes-4:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -303,7 +315,7 @@ All notable changes to this project will be documented in this file.
 -  Trial of using smaller num_confs_ring (1 instead of 10) -
    (`725f2ff <https://github.com/Isra3l/MolSanitizer/commit/725f2ffe659213e45c1488fa95b0f24a4db20f08>`__)
 
-.. _bug-fixes-4:
+.. _bug-fixes-5:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -373,7 +385,7 @@ All notable changes to this project will be documented in this file.
    regioisomers of sulfonamide-like structures -
    (`afd59b1 <https://github.com/Isra3l/MolSanitizer/commit/afd59b1294846c3346f77c0684d6a769a36075e1>`__)
 
-.. _bug-fixes-5:
+.. _bug-fixes-6:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -402,7 +414,7 @@ All notable changes to this project will be documented in this file.
    before removing it + skip the jobs with more than 1000 subjobs -
    (`9a6b76c <https://github.com/Isra3l/MolSanitizer/commit/9a6b76c9c52b4534a1dbfc8a168929b6915cbf86>`__)
 
-.. _bug-fixes-6:
+.. _bug-fixes-7:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -473,7 +485,7 @@ All notable changes to this project will be documented in this file.
    generated -
    (`01281aa <https://github.com/Isra3l/MolSanitizer/commit/01281aa690dcca0b0e56ac19e83fbd8c3557ed09>`__)
 
-.. _bug-fixes-7:
+.. _bug-fixes-8:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -521,7 +533,7 @@ All notable changes to this project will be documented in this file.
    should be stored in another file.)* :zap: -
    (`921c6b9 <https://github.com/Isra3l/MolSanitizer/commit/921c6b98ff2cbd4bbc3e93e008f8fa60c47f11fe>`__)
 
-.. _bug-fixes-8:
+.. _bug-fixes-9:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -549,7 +561,7 @@ All notable changes to this project will be documented in this file.
    -
    (`60a7958 <https://github.com/Isra3l/MolSanitizer/commit/60a795852eb6cea3283528b22d75dfb85f0e8b28>`__)
 
-.. _bug-fixes-9:
+.. _bug-fixes-10:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
