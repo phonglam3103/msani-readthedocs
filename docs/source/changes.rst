@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~
 
+-  Added -igtor or –långben flags, that will apply stochastic but
+   without adhere to any rules in TorLib. This will help to explore the
+   conformational space without any constraints to the Torlib. -
+   (`fbb57a9 <https://github.com/Isra3l/MolSanitizer/commit/fbb57a9586866d4de486a9684c6427c49e4db576>`__)
 -  Incorporated CORINA as an optional 3D initial embedding machine.
    Enable by -c or –corina, but the user is asked to set a path to
    CORINA in msani_configurations.yaml. -
@@ -20,6 +24,14 @@ All notable changes to this project will be documented in this file.
 -  Fix a bug that rdkit tautomer canonicalize lose the specified
    stereocenters. -
    (`907e799 <https://github.com/Isra3l/MolSanitizer/commit/907e7994bb15de84401d6b06fae3f1b970d11d47>`__)
+
+⚡ Performance
+~~~~~~~~~~~~~
+
+-  Removed some redundant rotations such as para-substituted phenyl or
+   para-pyridine. This have shown an X2 faster and fewer conformers in
+   some cases with symmetric ring-substituents. -
+   (`435a0df <https://github.com/Isra3l/MolSanitizer/commit/435a0df74dd47bec831bbd27aa74f92a59554652>`__)
 
 🎨 Styling
 ~~~~~~~~~
@@ -101,6 +113,8 @@ All notable changes to this project will be documented in this file.
 
 -  Redirect MolSanitizer README to the read-the-docs page. -
    (`6e6bc43 <https://github.com/Isra3l/MolSanitizer/commit/6e6bc434bc69180c67b24950fb476b21898907ea>`__)
+
+.. _performance-1:
 
 ⚡ Performance
 ~~~~~~~~~~~~~
@@ -446,7 +460,7 @@ All notable changes to this project will be documented in this file.
 -  :bug: Fix a typo in torsion scan that crash msani -
    (`4275824 <https://github.com/Isra3l/MolSanitizer/commit/4275824384d8567703a5234da77e015561a69e17>`__)
 
-.. _performance-1:
+.. _performance-2:
 
 ⚡ Performance
 ~~~~~~~~~~~~~
@@ -472,7 +486,7 @@ All notable changes to this project will be documented in this file.
    screen to notify the user -
    (`36846e1 <https://github.com/Isra3l/MolSanitizer/commit/36846e13334c7c290a6620aa16a0ec75f27602c0>`__)
 
-.. _performance-2:
+.. _performance-3:
 
 ⚡ Performance
 ~~~~~~~~~~~~~
