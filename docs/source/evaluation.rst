@@ -7,7 +7,7 @@ We are excited to invite interested users to participate in an early evaluation 
 
 To gain early access to the repository, please reach out to us with your GitHub account details via email at:
 
-**`israel.cabezadevaca@icm.uu.se <mailto:israel.cabezadevaca@icm.uu.se>`_**
+`israel.cabezadevaca@icm.uu.se <mailto:israel.cabezadevaca@icm.uu.se>`_
 
 
 We look forward to collaborating with you!
