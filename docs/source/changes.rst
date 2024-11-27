@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~
 
+-  Neutralization filter applied before the tautomerization perception.
+   This help to remove any possible charge-related error from the input.
+   The user can turn off suchbehavior by -noneu or –noneutralize -
+   (`4f7c53f <https://github.com/Isra3l/MolSanitizer/commit/4f7c53fe299cba0d3fb522a8cb7597c5e41f8e1d>`__)
 -  Added -igtor or –långben flags, that will apply stochastic but
    without adhere to any rules in TorLib. This will help to explore the
    conformational space without any constraints to the Torlib. -
