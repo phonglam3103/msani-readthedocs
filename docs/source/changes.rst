@@ -40,6 +40,9 @@ All notable changes to this project will be documented in this file.
 🎨 Styling
 ~~~~~~~~~
 
+-  Reorganize the argument parser of msani. The help text is now easier
+   to navigate. -
+   (`df23453 <https://github.com/Isra3l/MolSanitizer/commit/df23453e9a118c47612e2e53240766fb6557823e>`__)
 -  Configurations of both single and batch jobs are now in
    msani_configurations.yaml. The user can now change default values of
    Msani with this configuration file, and set the PATH to CORINA if the
