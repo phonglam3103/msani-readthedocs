@@ -42,7 +42,8 @@ The program by default will conduct the preparation and filtering in the order b
 
 Help message
 ============
-```
+
+.. code-block:: console
     usage: msani [-i INPUT_FILES [INPUT_FILES ...]] [-s SMILES [SMILES ...]] [-e]
                 [-pre PREFIX] [-enrich] [--removesalts] [--create_custom]
                 [--custom CUSTOM] [--unwanted [{all,regular,special,optional} ...]]
@@ -55,18 +56,6 @@ Help message
                 [--test]
 
     MolSanitizer - A package to prepare SMILES databases
-
-        Ex. input file (space or tab-separated file):
-            COCCC(=O)Nc1ncc(s1)Br  CP000000418470
-            C1CC(C(=O)NC1)SCCC=CBr  CP000000432409
-            CC(C)(C)CNC(=O)c1ccsc1Br  CP000001634597
-
-        Ex. run
-        msani -i example.smi --removesalts --pains --unwanted all --stereoisomers --protonation
-        msani -i example.smi --removesalts
-        msani -i example.smi --pains --unwanted all --stereoisomers --protonation
-        msani -i example.smi --pains --unwanted all --stereoisomers --protonation --db2
-        
 
     Input and output options:
     -i, --input_files     Input files containing chemical structures
@@ -124,7 +113,8 @@ Help message
     --help, -h            Show this help message and exit
     --timing              Time the process
     --test                Test mode (silent mode)
-```
+
+
 
 Setting configurations
 ======================
