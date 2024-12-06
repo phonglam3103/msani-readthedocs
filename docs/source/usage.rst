@@ -38,12 +38,16 @@ The program by default will conduct the preparation and filtering in the order b
 .. image:: _static/Workflow.png
    :width: 800px
 
-**Use the** ``--help (-h)`` **flag for more information.**
 
 Help message
 ============
 
+**Use the** ``--help (-h)`` **flag for more information.**
+
+
 .. code-block:: console
+    $ msani -h
+
     usage: msani [-i INPUT_FILES [INPUT_FILES ...]] [-s SMILES [SMILES ...]] [-e]
                 [-pre PREFIX] [-enrich] [--removesalts] [--create_custom]
                 [--custom CUSTOM] [--unwanted [{all,regular,special,optional} ...]]
