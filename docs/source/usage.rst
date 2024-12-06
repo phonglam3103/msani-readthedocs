@@ -48,12 +48,11 @@ Help message
 
     $ msani -h
 
-    usage: msani [-i INPUT_FILES [INPUT_FILES ...]] [-s SMILES [SMILES ...]] [-e] [-pre PREFIX] [-enrich]
-                 [--removesalts] [--create_custom] [--custom CUSTOM] [--unwanted [{all,regular,special,optional} ...]]
-                 [--pains] [--tautomers] [--noneutralize] [--notaurdkit] [--stereoisomers] [--max_stereoisomers]
-                 [--protonation] [--pH PH] [--pH_range PH_RANGE] [--db2] [--corina] [--långben] [--numconfs] 
-                 [--randomSeed RANDOMSEED] [--numcores NUMCORES] [--timeout TIMEOUT] [--nocleanup] [--energywindow]
-                 [--debug] [--lazy] [--help] [--timing]
+    usage: msani [-i [INPUT_FILES]] [-s SMILES] [-e] [-pre PREFIX] [-enrich] [--removesalts] [--create_custom] 
+                 [--custom CUSTOM] [--pains] [--tautomers] [--noneutralize] [--notaurdkit] [--stereoisomers]
+                 [--unwanted [{all,regular,special,optional}]] [--max_stereoisomers] [--protonation] [--pH PH]
+                 [--pH_range PH_RANGE] [--db2] [--corina] [--långben] [--numconfs] [--randomSeed] [--numcores]
+                 [--timeout TIMEOUT] [--nocleanup] [--energywindow] [--debug] [--lazy] [--help] [--timing]
                 
 
     MolSanitizer - A package to prepare SMILES databases
@@ -66,37 +65,38 @@ Help message
     -enrich, --enrichment Enrichment mode (do not put in db2.tgz files)
 
     Filtering options:
-    --removesalts         Remove salts from the structures (default: False)
+    --removesalts         Remove salts from the structures 
     --create_custom       Generate a template for customized substructure filtering
-    --custom              Filter out unwanted substructures using the customized list. To generate an example list,
-                          use --create_custom
+    --custom              Filter out unwanted substructures using the customized list. 
+                          To generate an example list, use --create_custom
     --unwanted            Filter out unwanted substructures using the default list
-    --pains               Remove PAINS violations from the structures (default: False)
+    --pains               Remove PAINS violations from the structures 
 
     SMILES processing options:
-    --tautomers           Tautomers enumeration (default: False)
-    --noneutralize        Do not neutralize the molecule before tautomerization (default: False)
+    --tautomers           Tautomers enumeration
+    --noneutralize        Do not neutralize the molecule before tautomerization
     --notaurdkit          Do not use RDkit to canonicalize the input SMILES
-    --stereoisomers       Stereoisomers enumeration (only consider unspecified chiral centers) (default: False)
+    --stereoisomers       Stereoisomers enumeration (only consider unspecified chiral centers)
     --max_stereoisomers   Maximum number of stereoisomers to consider (default: 8 = 3 stereocenters)
-    --protonation         Apply protonation to the structures (default: False)
+    --protonation         Apply protonation to the structures
     --pH, -p              pH for the protonation (default: 7)
     --pH_range, -r        pH range for the protonation (default: 0)
 
     DB2 related options:
-    --db2, -db2           Generate conformers and stored in the DB2 format for DOCK 3.8 (default: False)
-    --corina, -c          Use Corina for 3D structure generation (default: False)
+    --db2, -db2           Generate conformers and stored in the DB2 format for DOCK3.8
+    --corina, -c          Use Corina for 3D structure generation
     --långben, -igtor     Ignore the Torsion Library - generate every possible conformer
     --numconfs, -nconfs   Maximum number of conformers to generate (default: 2000)
     --randomSeed, -rs     Random seed for reproducibility (default: 42)
     --numcores, -j        Number of cores to use for parallel processing (default: 4)
-    --timeout, -t         Timeout for the initial embedding for each SMILES entry before using OpenBabel in minutes (default: 2)
-    --nocleanup           Do not clean up the temporary files (default: False)
+    --timeout, -t         Timeout for the initial embedding for each SMILES entry before using 
+                          OpenBabel in minutes (default: 2)
+    --nocleanup           Do not clean up the temporary files
     --energywindow, -w    Energy window for sampling the conformations (default: 25 (kcal/mol))
 
     Miscellaneous:
     --debug, -d           Enable debugging mode
-    --lazy                Implement all the processing and preparation steps (default: False)
+    --lazy                Implement all the processing and preparation steps
     --help, -h            Show this help message and exit
     --timing              Time the process
 
