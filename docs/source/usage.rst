@@ -139,12 +139,14 @@ The first two columns (SMARTS and LABEL) are required for the program to parse, 
 Protonation
 ============================
 
+MolSanitizer supports the assignment of protonation states at various pH values using the ``--protonation`` flag. By default, the pH is set to 7 (configurable via ``-p`` or ``--pH``), and the pH range is set to 0 (specified using ``-r`` or ``--range``). This configuration protonates molecules at a specific pH of 7. However, it is also possible to enumerate potential protonation states across a pH range. For instance, setting ``--range 2`` explores pH values within 7 ± 2. The program evaluates each pH value in the specified range and assigns the possible protonation states of the molecule at those pH levels. Only unique products are output to a file. Functional groups with multiple protonation possibilities (e.g., piperazine, amidine) are expanded, with an underscore (`_`) appended to their names to indicate variations.
 
-The protonation stage can be assigned to the molecules using the ``--protonation`` flag. The program uses SMARTS reactions to iteratively assign the protonation stages to the atoms. The SMARTS reactions can be obtained from `MolSanitizer/Data/ionizations.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/ionizations.txt>`_. If there are multiple possibilities of protonation, the output will be expanded.
+The program employs SMARTS-based reactions to iteratively assign protonation states to atoms, considering the pKa of functional groups and the queried pH. Detailed SMARTS reaction definitions are available in the following resource: `MolSanitizer/Data/ionizations.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/ionizations_v2.txt>`_.
 
 .. code-block:: console
-
-    $ msani -i example.smi --protonation
+    $ msani -i example.smi --protonation # Default pH 7 +- 0
+    $ msani -i example.smi --protonation --pH 7 --range 2 # Enumerate protonation states at pH 7 +- 2
+    $ msani -i example.smi --protonation -p 7 -r 2 # Short version
 
 
 .. code-block:: text
@@ -153,8 +155,8 @@ The protonation stage can be assigned to the molecules using the ``--protonation
    O=C(N1C(C2C(C1)C2O)C(O)=O)CN3CCNCC3 mol4_editted
 
    Output:
-   O=C([O-])C1C2C(O)C2CN1C(=O)CN1CC[NH2+]CC1 mol4_editted.1
-   O=C([O-])C1C2C(O)C2CN1C(=O)C[NH+]1CCNCC1 mol4_editted.2
+   O=C([O-])C1C2C(O)C2CN1C(=O)C[NH+]1CCNCC1 mol4_1
+    O=C([O-])C1C2C(O)C2CN1C(=O)CN1CC[NH2+]CC1 mol4_2
 
 
 Stereoisomers enumeration
