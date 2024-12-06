@@ -44,8 +44,8 @@ Help message
 
 **Use the** ``--help (-h)`` **flag for more information.**
 
-
 .. code-block:: console
+
     $ msani -h
 
     usage: msani [-i INPUT_FILES [INPUT_FILES ...]] [-s SMILES [SMILES ...]] [-e]
@@ -57,7 +57,7 @@ Help message
                 [--långben] [--numconfs NUMCONFS] [--randomSeed RANDOMSEED]
                 [--numcores NUMCORES] [--timeout TIMEOUT] [--nocleanup]
                 [--energywindow ENERGYWINDOW] [--debug] [--lazy] [--help] [--timing]
-                [--test]
+                
 
     MolSanitizer - A package to prepare SMILES databases
 
@@ -116,8 +116,6 @@ Help message
                             (default: False)
     --help, -h            Show this help message and exit
     --timing              Time the process
-    --test                Test mode (silent mode)
-
 
 
 Setting configurations
