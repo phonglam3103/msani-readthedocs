@@ -48,11 +48,12 @@ Help message
 
     $ msani -h
 
-    usage: msani [-i [INPUT_FILES]] [-s SMILES] [-e] [-pre PREFIX] [-enrich] [--removesalts] [--create_custom] 
-                 [--custom CUSTOM] [--pains] [--tautomers] [--noneutralize] [--notaurdkit] [--stereoisomers]
-                 [--unwanted [{all,regular,special,optional}]] [--max_stereoisomers] [--protonation] [--pH PH]
-                 [--pH_range PH_RANGE] [--db2] [--corina] [--långben] [--numconfs] [--randomSeed] [--numcores]
-                 [--timeout TIMEOUT] [--nocleanup] [--energywindow] [--debug] [--lazy] [--help] [--timing]
+    usage: msani [-i [INPUT_FILES]] [-s SMILES] [-e] [-pre PREFIX] [-enrich] [--removesalts] 
+                 [--create_custom] [--custom CUSTOM] [--pains] [--tautomers] [--noneutralize] 
+                 [--notaurdkit] [--stereoisomers] [--unwanted [{all,regular,special,optional}]] 
+                 [--max_stereoisomers] [--protonation] [--pH PH] [--pH_range PH_RANGE] [--db2] 
+                 [--corina] [--långben] [--numconfs] [--randomSeed] [--numcores] [--timeout]
+                 [--nocleanup] [--energywindow] [--debug] [--lazy] [--help] [--timing]
                 
 
     MolSanitizer - A package to prepare SMILES databases
@@ -92,7 +93,7 @@ Help message
     --timeout, -t         Timeout for the initial embedding for each SMILES entry before using 
                           OpenBabel in minutes (default: 2)
     --nocleanup           Do not clean up the temporary files
-    --energywindow, -w    Energy window for sampling the conformations (default: 25 (kcal/mol))
+    --energywindow, -w    Energy window for sampling the conformations (default: 25 kcal/mol)
 
     Miscellaneous:
     --debug, -d           Enable debugging mode
