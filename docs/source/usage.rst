@@ -52,14 +52,18 @@ Below is the default configuration file:
 .. code-block:: yaml
     
     #===============SINGLE MODE================
+    
     USE_CORINA: False
-    CORINA: 'Path_to_CORINA/corina'
+    CORINA: '/proj/carlssonlab/corina/corina-4.2/corina'
     ENERGY_WINDOW: 25
     NUMCONFS: 2000
     MAX_STEREOISOMERS: 8
     TIMEOUT: 2
+    PH: 7
+    PH_RANGE: 0 # 0 means choose specific pH=7 (default), 2 means will sample pH 5 and 9
 
     #================BATCH MODE=================
+
     SLURM_ACCOUNT: 'naiss2023-3-39'
     LINES_PER_JOB: 200
     TIME_LIMIT: 96
@@ -130,7 +134,7 @@ Help message
 Available filters and preparation steps
 ***************************************
 
-Remove salts
+1. Remove salts
 ============
 
 To use the remove salts function, simply use the ``--removesalts`` flag. The program uses a predefined salt list in `MolSanitizer/Data/salt_stripping.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/salt_stripping.txt>`_ to remove the salts, which contain both organic and inorganic salts commonly used in medicinal chemistry.
@@ -141,7 +145,7 @@ To use the remove salts function, simply use the ``--removesalts`` flag. The pro
 
     $ msani -i example.smi --removesalts
 
-Tautomers standardization
+2. Tautomers standardization
 ============================
 
 
@@ -151,7 +155,7 @@ The tautomers could be generated using the ``--tautomers`` flag. MolSanitizer us
 
     $ msani -i example.smi --tautomers
 
-PAINS filtering
+3. PAINS filtering
 ===============
 
 Molecules that contain PAINS substructures can be efficiently eliminated using the ``--pains`` flag. The violated structures will be stored in the **_rejected** file.
@@ -170,7 +174,7 @@ Example of the **_rejected** output is as below:
     COCC1(CC(=O)NCc2cc(O)ccc2O)CC1                    Z2832180283   "PAINS violation: Mannich_a(296)"
     CCCCN(Cc1ccc(OS(=O)(=O)F)cc1)Cc1ccccc1O           Z4607533150   "PAINS violation: Mannich_a(296)"
 
-Unwanted substructures filtering
+4. Unwanted substructures filtering
 ============================
 
 
@@ -198,7 +202,7 @@ The first two columns (SMARTS and LABEL) are required for the program to parse, 
     $ msani -i example.smi --custom templates.tsv
     $ msani -i example.smi --unwanted all --custom templates.tsv
 
-Protonation
+5. Protonation
 ============================
 
 MolSanitizer supports the assignment of protonation states at various pH values using the ``--protonation`` flag. By default, the pH is set to 7 (configurable via ``-p`` or ``--pH``), and the pH range is set to 0 (specified using ``-r`` or ``--range``). This configuration protonates molecules at a specific pH of 7. However, it is also possible to enumerate potential protonation states across a pH range. For instance, setting ``--range 2`` explores pH values within 7 ± 2. The program evaluates each pH value in the specified range and assigns the possible protonation states of the molecule at those pH levels. Only unique products are output to a file. Functional groups with multiple protonation possibilities (e.g., piperazine, amidine) are expanded, with an underscore (`_`) appended to their names to indicate variations.
@@ -214,14 +218,14 @@ The program employs SMARTS-based reactions to iteratively assign protonation sta
 .. code-block:: text
 
    Input:
-   O=C(N1C(C2C(C1)C2O)C(O)=O)CN3CCNCC3 mol4_editted
+   O=C(N1C(C2C(C1)C2O)C(O)=O)CN3CCNCC3 mol4
 
    Output:
    O=C([O-])C1C2C(O)C2CN1C(=O)C[NH+]1CCNCC1 mol4_1
-    O=C([O-])C1C2C(O)C2CN1C(=O)CN1CC[NH2+]CC1 mol4_2
+   O=C([O-])C1C2C(O)C2CN1C(=O)CN1CC[NH2+]CC1 mol4_2
 
 
-Stereoisomers enumeration
+6. Stereoisomers enumeration
 ============================
 
 
@@ -246,7 +250,7 @@ It is possible to define the maximum number of stereoisomers generated for each 
 
     $ msani -i example.smi --stereoisomers --max_stereoisomers 32
 
-DB2 generation for DOCK 3.8
+7. DB2 generation for DOCK3.8
 ============================
 
 
@@ -274,7 +278,7 @@ Running in batch mode
 *********************
 
 
-MolSanitizer now supports the batch mode ``msani_batch``, which allows handling bigger SMILES databases on the SLURM-based cluster. Nearly all the flags supported by the standalone MolSanitizer are supported by the batch mode. In principle, ``msani_batch`` will split the input file into chunks of smaller input files, which is defined by the ``-l`` or ``--lines_per_job`` flag (default: 200). The split files will then be submitted to the SLURM cluster using an array of jobs. By default, a maximum of 100 jobs will be submitted simultaneously to avoid interfering with other users within the same project, but you can change this limit with the ``--max_jobs`` flag.
+MolSanitizer now supports the batch mode ``msani_batch``, which allows handling bigger SMILES databases on the SLURM-based cluster. Nearly all the flags supported by the standalone MolSanitizer are supported by the batch mode. In principle, ``msani_batch`` will split the input file into chunks of smaller input files, which is defined by the ``-l`` or ``--lines_per_job`` flag (default: 200). The split files will then be submitted to the SLURM cluster using an array of jobs. By default, a maximum of 500 jobs will be submitted simultaneously to avoid interfering with other users within the same project, but you can change this limit with the ``--max_jobs`` flag.
 
 The additional flags supported by ``msani_batch`` so far:
 
