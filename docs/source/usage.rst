@@ -137,7 +137,7 @@ Available filters and preparation steps
 1. Remove salts
 ============
 
-To use the remove salts function, simply use the ``--removesalts`` flag. The program uses a predefined salt list in `MolSanitizer/Data/salt_stripping.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/salt_stripping.txt>`_ to remove the salts, which contain both organic and inorganic salts commonly used in medicinal chemistry.
+To use the remove salts function, simply use the ``--removesalts`` flag. The program uses a predefined salt list in `MolSanitizer/Data/salt_stripping.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/salt_stripping.txt>`_ to remove the salts, which contain both organic and inorganic salts commonly used in medicinal chemistry. Since the 0.2.3 version, Salt Remover will also remove the smaller fragments in the same molecule entry and only retain the largest one.
 
 *Caution:* If the entry is an organic salt (e.g., sodium acetate CH\ :sub:`3` COO\ :sup:`-` Na\ :sup:`+`), the whole entry will be removed.
 
