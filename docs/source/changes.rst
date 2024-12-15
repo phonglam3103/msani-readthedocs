@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~
 
+-  Initial commit of the new self-written Mol2Writer. The Mol2 file now
+   should be intepretable by RDKit and should not confront problem with
+   kekulization caused by the old OpenBabel-based approach. -
+   (`c6cc898 <https://github.com/Isra3l/MolSanitizer/commit/c6cc8988b5e8094d67905fd5e1836ee21790f8bd>`__)
 -  New protonation rules and protonation method. Msani now could
    enumerate the protonation states at different pH values and within a
    range of pH. -
