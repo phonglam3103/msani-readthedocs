@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~
 
+-  Msani in batch mode will now check if the number of jobs to be
+   submitted will exceed the quota and warn the user. This is to avoid
+   potential loss of the DB2 generation. -
+   (`4e9bf80 <https://github.com/Isra3l/MolSanitizer/commit/4e9bf80aed657afaa11f7a3c09b68ce91f73d106>`__)
 -  Remove salts option now also only remove small fragments in one entry
    of molecule and only retains the largest one. -
    (`857d30e <https://github.com/Isra3l/MolSanitizer/commit/857d30e05e0ef60a973e66212682b69ef0c16e70>`__)
