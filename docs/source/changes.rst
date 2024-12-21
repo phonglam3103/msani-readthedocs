@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~
 
+-  Now the final job in the batch array will also check whether all the
+   jobs are finished. A file called RESUBMIT_FAILED_JOBS.txt will be
+   generated to guide the user resubmitting unfinished jobs. -
+   (`e51f7ce <https://github.com/Isra3l/MolSanitizer/commit/e51f7cefb88d6d6160bf6c9a62ff8fd0869eab00>`__)
 -  Msani in batch mode will now check if the number of jobs to be
    submitted will exceed the quota and warn the user. This is to avoid
    potential loss of the DB2 generation. -
@@ -25,9 +29,26 @@ All notable changes to this project will be documented in this file.
    range of pH. -
    (`9a779a2 <https://github.com/Isra3l/MolSanitizer/commit/9a779a2214159a9d177491ca6b436356cfdb96cc>`__)
 
+🚜 Refactor
+~~~~~~~~~~
+
+-  Refactored huge chunks of scripts. Now MolSanitizer can continue to
+   handle unexpectedly failed jobs without restarting from the
+   beginning. -
+   (`0017709 <https://github.com/Isra3l/MolSanitizer/commit/0017709b92af88a57aed7a13177bb9e6e5c118d0>`__)
+
+📚 Documentation
+~~~~~~~~~~~~~~~
+
+-  Improved logger. Removed information regarding the old ionization
+   method. -
+   (`9497d19 <https://github.com/Isra3l/MolSanitizer/commit/9497d19224f416690974b99022d05d7caa31fbe7>`__)
+
 🧪 Testing
 ~~~~~~~~~
 
+-  Fix a bug in unittest that triggered the wrong argument. -
+   (`e67411e <https://github.com/Isra3l/MolSanitizer/commit/e67411ee1775e72254b613f225d0b1773aeff642>`__)
 -  Unittest for DB2 part added. -
    (`6648c36 <https://github.com/Isra3l/MolSanitizer/commit/6648c3660bbb8ed536e2d2d2a94346f3e418565e>`__)
 -  Update the new goldenData for the unittest.py -
@@ -137,6 +158,8 @@ All notable changes to this project will be documented in this file.
    -
    (`f1f82b7 <https://github.com/Isra3l/MolSanitizer/commit/f1f82b7b7705b1bb5e32a3624fa7890e49b5a773>`__)
 
+.. _refactor-1:
+
 🚜 Refactor
 ~~~~~~~~~~
 
@@ -148,6 +171,8 @@ All notable changes to this project will be documented in this file.
    (`80f915c <https://github.com/Isra3l/MolSanitizer/commit/80f915c7187d7d2b7b089f2885765b0f4d85c893>`__)
 -  Remove deprecated script that is not used anymore. -
    (`3cfa3b8 <https://github.com/Isra3l/MolSanitizer/commit/3cfa3b87c545e416eee007c0ca643b3a27e21246>`__)
+
+.. _documentation-1:
 
 📚 Documentation
 ~~~~~~~~~~~~~~~
@@ -233,7 +258,7 @@ All notable changes to this project will be documented in this file.
    names -> make all the DB2 files have the same name as \****\* -
    (`755d696 <https://github.com/Isra3l/MolSanitizer/commit/755d69641b1eb5df29a70b9d569e3b3a9c3f94d1>`__)
 
-.. _refactor-1:
+.. _refactor-2:
 
 🚜 Refactor
 ~~~~~~~~~~
@@ -303,7 +328,7 @@ All notable changes to this project will be documented in this file.
    the earlier version. -
    (`e17a0a1 <https://github.com/Isra3l/MolSanitizer/commit/e17a0a13189a3c17fcf0faf3000fd932e46dfc75>`__)
 
-.. _refactor-2:
+.. _refactor-3:
 
 🚜 Refactor
 ~~~~~~~~~~
@@ -353,7 +378,7 @@ All notable changes to this project will be documented in this file.
    to generate DB2 files. -
    (`4b0d04b <https://github.com/Isra3l/MolSanitizer/commit/4b0d04b56ef7b87a7c799688dcc0201655c15d2f>`__)
 
-.. _refactor-3:
+.. _refactor-4:
 
 🚜 Refactor
 ~~~~~~~~~~
@@ -399,7 +424,7 @@ All notable changes to this project will be documented in this file.
 -  Fix an error that find_sulfonamide not function as expected -
    (`1818ea7 <https://github.com/Isra3l/MolSanitizer/commit/1818ea71c6b8856d0603f125c5860639d09886ab>`__)
 
-.. _refactor-4:
+.. _refactor-5:
 
 🚜 Refactor
 ~~~~~~~~~~
@@ -409,7 +434,7 @@ All notable changes to this project will be documented in this file.
 -  Remove unused files in the repository -
    (`744f694 <https://github.com/Isra3l/MolSanitizer/commit/744f694c98720177145d3d3edeeefa29d729a7ae>`__)
 
-.. _documentation-1:
+.. _documentation-2:
 
 📚 Documentation
 ~~~~~~~~~~~~~~~
@@ -650,7 +675,7 @@ All notable changes to this project will be documented in this file.
    with AMSOL.)* :sparkles: -
    (`e190e96 <https://github.com/Isra3l/MolSanitizer/commit/e190e9675a87f9a13161586510ea5d43c0286529>`__)
 
-.. _documentation-2:
+.. _documentation-3:
 
 📚 Documentation
 ~~~~~~~~~~~~~~~
