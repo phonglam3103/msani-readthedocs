@@ -6,13 +6,23 @@ All notable changes to this project will be documented in this file.
 
 ### 🚀 Features
 
+- Now the final job in the batch array will also check whether all the jobs are finished. A file called RESUBMIT_FAILED_JOBS.txt will be generated to guide the user resubmitting unfinished jobs. - ([e51f7ce](https://github.com/Isra3l/MolSanitizer/commit/e51f7cefb88d6d6160bf6c9a62ff8fd0869eab00))
 - Msani in batch mode will now check if the number of jobs to be submitted will exceed the quota and warn the user. This is to avoid potential loss of the DB2 generation. - ([4e9bf80](https://github.com/Isra3l/MolSanitizer/commit/4e9bf80aed657afaa11f7a3c09b68ce91f73d106))
 - Remove salts option now also only remove small fragments in one entry of molecule and only retains the largest one. - ([857d30e](https://github.com/Isra3l/MolSanitizer/commit/857d30e05e0ef60a973e66212682b69ef0c16e70))
 - Initial commit of the new self-written Mol2Writer. The Mol2 file now should be intepretable by RDKit and should not confront problem with kekulization caused by the old OpenBabel-based approach. - ([c6cc898](https://github.com/Isra3l/MolSanitizer/commit/c6cc8988b5e8094d67905fd5e1836ee21790f8bd))
 - New protonation rules and protonation method. Msani now could enumerate the protonation states at different pH values and within a range of pH. - ([9a779a2](https://github.com/Isra3l/MolSanitizer/commit/9a779a2214159a9d177491ca6b436356cfdb96cc))
 
+### 🚜 Refactor
+
+- Refactored huge chunks of scripts. Now MolSanitizer can continue to handle unexpectedly failed jobs without restarting from the beginning. - ([0017709](https://github.com/Isra3l/MolSanitizer/commit/0017709b92af88a57aed7a13177bb9e6e5c118d0))
+
+### 📚 Documentation
+
+- Improved logger. Removed information regarding the old ionization method. - ([9497d19](https://github.com/Isra3l/MolSanitizer/commit/9497d19224f416690974b99022d05d7caa31fbe7))
+
 ### 🧪 Testing
 
+- Fix a bug in unittest that triggered the wrong argument. - ([e67411e](https://github.com/Isra3l/MolSanitizer/commit/e67411ee1775e72254b613f225d0b1773aeff642))
 - Unittest for DB2 part added. - ([6648c36](https://github.com/Isra3l/MolSanitizer/commit/6648c3660bbb8ed536e2d2d2a94346f3e418565e))
 - Update the new goldenData for the unittest.py - ([dfe57b8](https://github.com/Isra3l/MolSanitizer/commit/dfe57b879df9d245741f480df91298e4bc479e09))
 
