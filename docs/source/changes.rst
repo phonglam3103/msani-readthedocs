@@ -44,6 +44,13 @@ All notable changes to this project will be documented in this file.
    method. -
    (`9497d19 <https://github.com/Isra3l/MolSanitizer/commit/9497d19224f416690974b99022d05d7caa31fbe7>`__)
 
+⚡ Performance
+~~~~~~~~~~~~~
+
+-  Improved the rules for possible dihedrals of symmetric 6-membered
+   aromatic rings. -
+   (`c745454 <https://github.com/Isra3l/MolSanitizer/commit/c745454c8c7093f5389ecde4b883f15bc2e22c3e>`__)
+
 🧪 Testing
 ~~~~~~~~~
 
@@ -81,6 +88,8 @@ All notable changes to this project will be documented in this file.
 -  Fix a bug that rdkit tautomer canonicalize lose the specified
    stereocenters. -
    (`907e799 <https://github.com/Isra3l/MolSanitizer/commit/907e7994bb15de84401d6b06fae3f1b970d11d47>`__)
+
+.. _performance-1:
 
 ⚡ Performance
 ~~~~~~~~~~~~~
@@ -180,7 +189,7 @@ All notable changes to this project will be documented in this file.
 -  Redirect MolSanitizer README to the read-the-docs page. -
    (`6e6bc43 <https://github.com/Isra3l/MolSanitizer/commit/6e6bc434bc69180c67b24950fb476b21898907ea>`__)
 
-.. _performance-1:
+.. _performance-2:
 
 ⚡ Performance
 ~~~~~~~~~~~~~
@@ -526,7 +535,7 @@ All notable changes to this project will be documented in this file.
 -  :bug: Fix a typo in torsion scan that crash msani -
    (`4275824 <https://github.com/Isra3l/MolSanitizer/commit/4275824384d8567703a5234da77e015561a69e17>`__)
 
-.. _performance-2:
+.. _performance-3:
 
 ⚡ Performance
 ~~~~~~~~~~~~~
@@ -552,7 +561,7 @@ All notable changes to this project will be documented in this file.
    screen to notify the user -
    (`36846e1 <https://github.com/Isra3l/MolSanitizer/commit/36846e13334c7c290a6620aa16a0ec75f27602c0>`__)
 
-.. _performance-3:
+.. _performance-4:
 
 ⚡ Performance
 ~~~~~~~~~~~~~
