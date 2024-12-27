@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~
 
+-  Added the –version flag, as well as better versioning control
+   strategy. -
+   (`eae5fa0 <https://github.com/Isra3l/MolSanitizer/commit/eae5fa0128a4fbcc64bdf66208e47d4f8d775a0a>`__)
 -  Now the final job in the batch array will also check whether all the
    jobs are finished. A file called RESUBMIT_FAILED_JOBS.txt will be
    generated to guide the user resubmitting unfinished jobs. -
