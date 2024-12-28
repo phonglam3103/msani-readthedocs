@@ -32,6 +32,14 @@ All notable changes to this project will be documented in this file.
    range of pH. -
    (`9a779a2 <https://github.com/Isra3l/MolSanitizer/commit/9a779a2214159a9d177491ca6b436356cfdb96cc>`__)
 
+🐛 Bug Fixes
+~~~~~~~~~~~
+
+-  Fix a bug that CORINA generated conformer could not be processed
+   properly by RDKit. Also make the amine in sulfonamide now pyramidal
+   (more realistic) instead of planar. -
+   (`640cc55 <https://github.com/Isra3l/MolSanitizer/commit/640cc5561f3597ef0cb6dbb99b7448bc25a07076>`__)
+
 🚜 Refactor
 ~~~~~~~~~~
 
@@ -84,6 +92,8 @@ All notable changes to this project will be documented in this file.
    Enable by -c or –corina, but the user is asked to set a path to
    CORINA in msani_configurations.yaml. -
    (`de95bf7 <https://github.com/Isra3l/MolSanitizer/commit/de95bf7bfafde8c2306236c4a6990dd01cec0d97>`__)
+
+.. _bug-fixes-1:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -153,7 +163,7 @@ All notable changes to this project will be documented in this file.
    each tar.gz depends on the number of lines per job. -
    (`dbd74a4 <https://github.com/Isra3l/MolSanitizer/commit/dbd74a42537fed8c4e123f1f255b3debbd57d958>`__)
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -258,7 +268,7 @@ All notable changes to this project will be documented in this file.
    errors with stereoisomers and tautomers. -
    (`63750b3 <https://github.com/Isra3l/MolSanitizer/commit/63750b3d52f3b12ac3a85f44ec7c1bfae015f2ae>`__)
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -324,7 +334,7 @@ All notable changes to this project will be documented in this file.
    conformations -
    (`658d08c <https://github.com/Isra3l/MolSanitizer/commit/658d08ce81b9f8d25c530b6063bffb3d0f8388ad>`__)
 
-.. _bug-fixes-3:
+.. _bug-fixes-4:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -361,7 +371,7 @@ All notable changes to this project will be documented in this file.
 -  Msani not use the reset terminal hydrogen of mol2db2 anymore. -
    (`f4d2d6e <https://github.com/Isra3l/MolSanitizer/commit/f4d2d6ec6b870f6a24fe4960c3622d983151de04>`__)
 
-.. _bug-fixes-4:
+.. _bug-fixes-5:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -428,7 +438,7 @@ All notable changes to this project will be documented in this file.
 -  Trial of using smaller num_confs_ring (1 instead of 10) -
    (`725f2ff <https://github.com/Isra3l/MolSanitizer/commit/725f2ffe659213e45c1488fa95b0f24a4db20f08>`__)
 
-.. _bug-fixes-5:
+.. _bug-fixes-6:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -498,7 +508,7 @@ All notable changes to this project will be documented in this file.
    regioisomers of sulfonamide-like structures -
    (`afd59b1 <https://github.com/Isra3l/MolSanitizer/commit/afd59b1294846c3346f77c0684d6a769a36075e1>`__)
 
-.. _bug-fixes-6:
+.. _bug-fixes-7:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -527,7 +537,7 @@ All notable changes to this project will be documented in this file.
    before removing it + skip the jobs with more than 1000 subjobs -
    (`9a6b76c <https://github.com/Isra3l/MolSanitizer/commit/9a6b76c9c52b4534a1dbfc8a168929b6915cbf86>`__)
 
-.. _bug-fixes-7:
+.. _bug-fixes-8:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -598,7 +608,7 @@ All notable changes to this project will be documented in this file.
    generated -
    (`01281aa <https://github.com/Isra3l/MolSanitizer/commit/01281aa690dcca0b0e56ac19e83fbd8c3557ed09>`__)
 
-.. _bug-fixes-8:
+.. _bug-fixes-9:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -646,7 +656,7 @@ All notable changes to this project will be documented in this file.
    should be stored in another file.)* :zap: -
    (`921c6b9 <https://github.com/Isra3l/MolSanitizer/commit/921c6b98ff2cbd4bbc3e93e008f8fa60c47f11fe>`__)
 
-.. _bug-fixes-9:
+.. _bug-fixes-10:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
@@ -674,7 +684,7 @@ All notable changes to this project will be documented in this file.
    -
    (`60a7958 <https://github.com/Isra3l/MolSanitizer/commit/60a795852eb6cea3283528b22d75dfb85f0e8b28>`__)
 
-.. _bug-fixes-10:
+.. _bug-fixes-11:
 
 🐛 Bug Fixes
 ~~~~~~~~~~~
