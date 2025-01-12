@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ---------------------------------------------
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Added the –version flag, as well as better versioning control
    strategy. -
@@ -33,15 +33,19 @@ All notable changes to this project will be documented in this file.
    (`9a779a2 <https://github.com/Isra3l/MolSanitizer/commit/9a779a2214159a9d177491ca6b436356cfdb96cc>`__)
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
+-  Only apply GetLargestFragment when there are more than 1 fragment in
+   the RDKit Mol object. This could avoid the problem of detaching
+   covalently bound metal atoms. -
+   (`95862a6 <https://github.com/Isra3l/MolSanitizer/commit/95862a6ce2c3d09bd9c1b3b58c424c1e0680a426>`__)
 -  Fix a bug that CORINA generated conformer could not be processed
    properly by RDKit. Also make the amine in sulfonamide now pyramidal
    (more realistic) instead of planar. -
    (`640cc55 <https://github.com/Isra3l/MolSanitizer/commit/640cc5561f3597ef0cb6dbb99b7448bc25a07076>`__)
 
 🚜 Refactor
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Refactored huge chunks of scripts. Now MolSanitizer can continue to
    handle unexpectedly failed jobs without restarting from the
@@ -49,27 +53,27 @@ All notable changes to this project will be documented in this file.
    (`0017709 <https://github.com/Isra3l/MolSanitizer/commit/0017709b92af88a57aed7a13177bb9e6e5c118d0>`__)
 
 📚 Documentation
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 -  Improved logger. Removed information regarding the old ionization
    method. -
    (`9497d19 <https://github.com/Isra3l/MolSanitizer/commit/9497d19224f416690974b99022d05d7caa31fbe7>`__)
 
 ⚡ Performance
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 -  Improved the rules for possible dihedrals of symmetric 6-membered
    aromatic rings. -
    (`c745454 <https://github.com/Isra3l/MolSanitizer/commit/c745454c8c7093f5389ecde4b883f15bc2e22c3e>`__)
 
 🎨 Styling
-~~~~~~~~~
+~~~~~~~~~~
 
 -  Improved the format of the logger. -
    (`6ab03f7 <https://github.com/Isra3l/MolSanitizer/commit/6ab03f7bc9dc2cf5b5e6f7cdcf99c7ce2b4d139a>`__)
 
 🧪 Testing
-~~~~~~~~~
+~~~~~~~~~~
 
 -  Fix a bug in unittest that triggered the wrong argument. -
    (`e67411e <https://github.com/Isra3l/MolSanitizer/commit/e67411ee1775e72254b613f225d0b1773aeff642>`__)
@@ -84,7 +88,7 @@ All notable changes to this project will be documented in this file.
 .. _features-1:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Neutralization filter applied before the tautomerization perception.
    This help to remove any possible charge-related error from the input.
@@ -102,7 +106,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-1:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  Fix a bug that rdkit tautomer canonicalize lose the specified
    stereocenters. -
@@ -111,7 +115,7 @@ All notable changes to this project will be documented in this file.
 .. _performance-1:
 
 ⚡ Performance
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 -  Removed some redundant rotations such as para-substituted phenyl or
    para-pyridine. This have shown an X2 faster and fewer conformers in
@@ -121,7 +125,7 @@ All notable changes to this project will be documented in this file.
 .. _styling-1:
 
 🎨 Styling
-~~~~~~~~~
+~~~~~~~~~~
 
 -  Reorganize the argument parser of msani. The help text is now easier
    to navigate. -
@@ -140,7 +144,7 @@ All notable changes to this project will be documented in this file.
 .. _features-2:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Lower down the exhaustiveness as it takes unecessarily long. -
    (`dbb8aae <https://github.com/Isra3l/MolSanitizer/commit/dbb8aaeb1d9ba8450f7221ecc9f69817d163990a>`__)
@@ -174,7 +178,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-2:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  The recent increased sampling seems to run too long on some case
    examples. This was the case of very flexbile but contain multiple
@@ -191,7 +195,7 @@ All notable changes to this project will be documented in this file.
 .. _refactor-1:
 
 🚜 Refactor
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Refactor the organization of the Mol2 object. -
    (`77b6fed <https://github.com/Isra3l/MolSanitizer/commit/77b6fed73721a91ff569e1808fba73e7ac03b6fe>`__)
@@ -205,7 +209,7 @@ All notable changes to this project will be documented in this file.
 .. _documentation-1:
 
 📚 Documentation
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 -  Redirect MolSanitizer README to the read-the-docs page. -
    (`6e6bc43 <https://github.com/Isra3l/MolSanitizer/commit/6e6bc434bc69180c67b24950fb476b21898907ea>`__)
@@ -213,7 +217,7 @@ All notable changes to this project will be documented in this file.
 .. _performance-2:
 
 ⚡ Performance
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 -  Modifications to mol2db2 allows the mol2 object being recorded
    on-the-fly rather than reading from the mol2 blocks. OpenBabel is now
@@ -223,7 +227,7 @@ All notable changes to this project will be documented in this file.
 .. _styling-2:
 
 🎨 Styling
-~~~~~~~~~
+~~~~~~~~~~
 
 -  Solv files are now deleted even the nocleanup is used. The .solv file
    is still exist in the db2 folder if the user want to check for the
@@ -238,7 +242,7 @@ All notable changes to this project will be documented in this file.
 .. _features-3:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Updated new rules for aromatic hydroxyls to make them coplanar with
    the aromatic rings. -
@@ -279,7 +283,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-3:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  Fix a bug in run_amsol that makes msani proceed although AMSOL
    failed. -
@@ -291,7 +295,7 @@ All notable changes to this project will be documented in this file.
 .. _refactor-2:
 
 🚜 Refactor
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Remove deprecated functions -
    (`9bc63b6 <https://github.com/Isra3l/MolSanitizer/commit/9bc63b6fde4568f4e83a67823fe0177110cf4773>`__)
@@ -304,7 +308,7 @@ All notable changes to this project will be documented in this file.
 .. _features-4:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  MolSanitizer now will skip generating DB2 file if the file already
    exist. -
@@ -345,7 +349,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-4:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  New cleanup mechanism, which should now cleanup even with parallel
    jobs of different array_id being running simultaneously. -
@@ -361,7 +365,7 @@ All notable changes to this project will be documented in this file.
 .. _refactor-3:
 
 🚜 Refactor
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Remove unused codes -
    (`8437f18 <https://github.com/Isra3l/MolSanitizer/commit/8437f18d4afe59d018dc6b7d7a04f7e659898a1b>`__)
@@ -374,7 +378,7 @@ All notable changes to this project will be documented in this file.
 .. _features-5:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Msani not use the reset terminal hydrogen of mol2db2 anymore. -
    (`f4d2d6e <https://github.com/Isra3l/MolSanitizer/commit/f4d2d6ec6b870f6a24fe4960c3622d983151de04>`__)
@@ -382,7 +386,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-5:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  The enumerated stereoisomers in the db2 part should also be output to
    the \_clean.smi file. -
@@ -411,7 +415,7 @@ All notable changes to this project will be documented in this file.
 .. _refactor-4:
 
 🚜 Refactor
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Make the script more pythonic, to avoid the speed inconsistent
    between subprocess and os/shutil of python. -
@@ -431,7 +435,7 @@ All notable changes to this project will be documented in this file.
 .. _features-6:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  The msani_batch now allows setting up default settings using a yaml
    file (batch_configurations.yaml). -
@@ -449,7 +453,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-6:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  Fix an error that find_sulfonamide not function as expected -
    (`1818ea7 <https://github.com/Isra3l/MolSanitizer/commit/1818ea71c6b8856d0603f125c5860639d09886ab>`__)
@@ -457,7 +461,7 @@ All notable changes to this project will be documented in this file.
 .. _refactor-5:
 
 🚜 Refactor
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Remove unused parameters (rmsd) -
    (`19bbd40 <https://github.com/Isra3l/MolSanitizer/commit/19bbd4067fdd2ba918d7534c9eabacef23e9d00d>`__)
@@ -467,7 +471,7 @@ All notable changes to this project will be documented in this file.
 .. _documentation-2:
 
 📚 Documentation
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 -  Update README to match the method implemented in smi2db2 -
    (`36270e6 <https://github.com/Isra3l/MolSanitizer/commit/36270e61267e56bebb452c2231817d676cfead1a>`__)
@@ -486,7 +490,7 @@ All notable changes to this project will be documented in this file.
 .. _features-7:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Updated new rules and merged the SMARTS -
    (`217b61c <https://github.com/Isra3l/MolSanitizer/commit/217b61cd2d65fbe1f3e8589c1d5f7c52208b7dc2>`__)
@@ -519,7 +523,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-7:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  Removed meaningless rules, updated timing and catch an exception
    where no good conformations could be found (fused-ring systems) -
@@ -533,7 +537,7 @@ All notable changes to this project will be documented in this file.
 .. _features-8:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  *(install)* Added toml file and fixed null arguments -
    (`61c1380 <https://github.com/Isra3l/MolSanitizer/commit/61c138077348b74af345a29aa34ef87613ce357f>`__)
@@ -548,7 +552,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-8:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  Fix a bug so that MolSanitizer batch mode still runs although the
    user asked for not to. -
@@ -559,7 +563,7 @@ All notable changes to this project will be documented in this file.
 .. _performance-3:
 
 ⚡ Performance
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 -  :zap: Improved performance for the stochastic sampling, removed RMSD
    pruning dependent. -
@@ -573,7 +577,7 @@ All notable changes to this project will be documented in this file.
 .. _features-9:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Changing the default maxAttempts in stochastic sampling for more
    exhaustive sampling -
@@ -585,7 +589,7 @@ All notable changes to this project will be documented in this file.
 .. _performance-4:
 
 ⚡ Performance
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 -  :zap: Efforts to speed up the conformers generator of super-flexible
    and symmetrical compounds -
@@ -594,7 +598,7 @@ All notable changes to this project will be documented in this file.
 .. _styling-3:
 
 🎨 Styling
-~~~~~~~~~
+~~~~~~~~~~
 
 -  Fix typos -
    (`e51eefc <https://github.com/Isra3l/MolSanitizer/commit/e51eefc47099fe49ccabe0598e260e4cc387de5d>`__)
@@ -610,7 +614,7 @@ All notable changes to this project will be documented in this file.
 .. _features-10:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  Adopts the same technique of UCSF for rescaling the number of confs
    generated -
@@ -619,7 +623,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-9:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  :bug: Remove 5-membered ring as they are not working as expected.
    Added in CC bond as the last resort in case nothing else to align to.
@@ -634,7 +638,7 @@ All notable changes to this project will be documented in this file.
 .. _features-11:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  *(smi2db2)* :sparkles: Rigid compounds without any rotatable bonds
    (or with only 1 conf during rotating rot bonds) will output all the
@@ -645,7 +649,7 @@ All notable changes to this project will be documented in this file.
 .. _styling-4:
 
 🎨 Styling
-~~~~~~~~~
+~~~~~~~~~~
 
 -  :fire: Better logger for errorneous compounds -
    (`4627645 <https://github.com/Isra3l/MolSanitizer/commit/4627645bd555a5b9ae51476762cde4c070003c61>`__)
@@ -658,7 +662,7 @@ All notable changes to this project will be documented in this file.
 .. _features-12:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  *(Added the debug mode for strain_filter; The strained molecules now
    should be stored in another file.)* :zap: -
@@ -667,7 +671,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-10:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  *(smi2db2)* :bug: Fix a bug so that rmsd only comparing between
    heavy_atoms –> boost the performance significantly -
@@ -681,7 +685,7 @@ All notable changes to this project will be documented in this file.
 .. _features-13:
 
 🚀 Features
-~~~~~~~~~~
+~~~~~~~~~~~
 
 -  *(Strain_filter now has its own standalone script!)* :zap: The
    strain_filters now can be called by command ‘strain -i examples.mol2’
@@ -695,7 +699,7 @@ All notable changes to this project will be documented in this file.
 .. _bug-fixes-11:
 
 🐛 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 -  *(Fix an error in strain_filter doesnt have main attribute ‘main’)*
    :bug: Reorganizing the main script to the main() function and
@@ -708,7 +712,7 @@ All notable changes to this project will be documented in this file.
 .. _documentation-3:
 
 📚 Documentation
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 -  *(Better documentation for argparsers)* :memo: -
    (`844e4e3 <https://github.com/Isra3l/MolSanitizer/commit/844e4e3b43a65af150b92fa95f4b8116a1e3f0b6>`__)
@@ -721,7 +725,7 @@ All notable changes to this project will be documented in this file.
 .. _styling-5:
 
 🎨 Styling
-~~~~~~~~~
+~~~~~~~~~~
 
 -  :construction: Fix Typos -
    (`e400636 <https://github.com/Isra3l/MolSanitizer/commit/e400636ea89e660f98c2af31c17c779f0176ce75>`__)
