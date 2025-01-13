@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Added the flag ‘–conformal’ (or ‘-cp’) for preparing the format for
+   Conformal Predictor script. Only standardize molecules using RDKit
+   original function and skip all other flags. -
+   (`0eb2678 <https://github.com/Isra3l/MolSanitizer/commit/0eb2678b8b6cc8cf1a23485a6707cde9d20c688b>`__)
 -  Added the –version flag, as well as better versioning control
    strategy. -
    (`eae5fa0 <https://github.com/Isra3l/MolSanitizer/commit/eae5fa0128a4fbcc64bdf66208e47d4f8d775a0a>`__)
