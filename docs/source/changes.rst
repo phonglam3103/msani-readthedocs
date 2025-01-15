@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Added the filters by 2D descriptors: number of heavy atoms (HA; –ha)
+   and cLogP (–logp) for MolSanitizer. -
+   (`fd61e7e <https://github.com/Isra3l/MolSanitizer/commit/fd61e7e9d52a779da54395143b0a19086540b753>`__)
 -  Added the flag ‘–conformal’ (or ‘-cp’) for preparing the format for
    Conformal Predictor script. Only standardize molecules using RDKit
    original function and skip all other flags. -
