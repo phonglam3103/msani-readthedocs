@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🚀 Features
 
+- Bring PDBQT to MolSanitizer, thanks to the Meeko Library from the Forli's Lab. The user now can trigger it by --pdbqt flag. - ([05904d2](https://github.com/Isra3l/MolSanitizer/commit/05904d2850df9ec04543af8b08671aa93cfff537))
 - Added the filters by 2D descriptors: number of heavy atoms (HA; --ha) and cLogP (--logp) for MolSanitizer. - ([fd61e7e](https://github.com/Isra3l/MolSanitizer/commit/fd61e7e9d52a779da54395143b0a19086540b753))
 - Added the flag '--conformal' (or '-cp') for preparing the format for Conformal Predictor script. Only standardize molecules using RDKit original function and skip all other flags. - ([0eb2678](https://github.com/Isra3l/MolSanitizer/commit/0eb2678b8b6cc8cf1a23485a6707cde9d20c688b))
 - Added the --version flag, as well as better versioning control strategy. - ([eae5fa0](https://github.com/Isra3l/MolSanitizer/commit/eae5fa0128a4fbcc64bdf66208e47d4f8d775a0a))
@@ -17,11 +18,13 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes
 
+- Fix a bug in applying reactions to modify molecules that once the sanitization fail, the molecule is omitted. Now the latest valid version of the molecule will be kept. - ([f32403b](https://github.com/Isra3l/MolSanitizer/commit/f32403b918a93ee85dbb7c09348fe1804105ed8d))
 - Only apply GetLargestFragment when there are more than 1 fragment in the RDKit Mol object. This could avoid the problem of detaching covalently bound metal atoms. - ([95862a6](https://github.com/Isra3l/MolSanitizer/commit/95862a6ce2c3d09bd9c1b3b58c424c1e0680a426))
 - Fix a bug that CORINA generated conformer could not be processed properly by RDKit. Also make the amine in sulfonamide now pyramidal (more realistic) instead of planar. - ([640cc55](https://github.com/Isra3l/MolSanitizer/commit/640cc5561f3597ef0cb6dbb99b7448bc25a07076))
 
 ### 🚜 Refactor
 
+- Refactored the whole filters.py into the SmilesStandardizer class. Now MolSanitizer Smiles section could be used as a Python library. - ([17ee8dc](https://github.com/Isra3l/MolSanitizer/commit/17ee8dcc3e223d98e2a8dff95c8b1008a58dee97))
 - Refactored huge chunks of scripts. Now MolSanitizer can continue to handle unexpectedly failed jobs without restarting from the beginning. - ([0017709](https://github.com/Isra3l/MolSanitizer/commit/0017709b92af88a57aed7a13177bb9e6e5c118d0))
 
 ### 📚 Documentation
