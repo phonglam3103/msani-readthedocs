@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Bring PDBQT to MolSanitizer, thanks to the Meeko Library from the
+   Forli’s Lab. The user now can trigger it by –pdbqt flag. -
+   (`05904d2 <https://github.com/Isra3l/MolSanitizer/commit/05904d2850df9ec04543af8b08671aa93cfff537>`__)
 -  Added the filters by 2D descriptors: number of heavy atoms (HA; –ha)
    and cLogP (–logp) for MolSanitizer. -
    (`fd61e7e <https://github.com/Isra3l/MolSanitizer/commit/fd61e7e9d52a779da54395143b0a19086540b753>`__)
@@ -42,6 +45,10 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fix a bug in applying reactions to modify molecules that once the
+   sanitization fail, the molecule is omitted. Now the latest valid
+   version of the molecule will be kept. -
+   (`f32403b <https://github.com/Isra3l/MolSanitizer/commit/f32403b918a93ee85dbb7c09348fe1804105ed8d>`__)
 -  Only apply GetLargestFragment when there are more than 1 fragment in
    the RDKit Mol object. This could avoid the problem of detaching
    covalently bound metal atoms. -
@@ -54,6 +61,9 @@ All notable changes to this project will be documented in this file.
 🚜 Refactor
 ~~~~~~~~~~~
 
+-  Refactored the whole filters.py into the SmilesStandardizer class.
+   Now MolSanitizer Smiles section could be used as a Python library. -
+   (`17ee8dc <https://github.com/Isra3l/MolSanitizer/commit/17ee8dcc3e223d98e2a8dff95c8b1008a58dee97>`__)
 -  Refactored huge chunks of scripts. Now MolSanitizer can continue to
    handle unexpectedly failed jobs without restarting from the
    beginning. -
