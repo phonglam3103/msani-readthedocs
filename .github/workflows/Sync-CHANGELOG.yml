@@ -19,7 +19,7 @@ jobs:
       env:
         TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       run: |
-        git clone https://x-access-token:${TOKEN}@github.com/Isra3l/MolSanitizer.git
+        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/MolSanitizer.git
         cd MolSanitizer
         git fetch --all
 

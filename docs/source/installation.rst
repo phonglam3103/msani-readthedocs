@@ -28,7 +28,7 @@ We will set up the environment using `Anaconda <https://docs.anaconda.com/anacon
 
 .. code-block:: console
 
-   $ git clone https://github.com/Isra3l/MolSanitizer.git
+   $ git clone https://github.com/phonglam3103/MolSanitizer.git
     
 
 Example of how to set up a working conda environment to run the code:

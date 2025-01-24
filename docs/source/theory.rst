@@ -16,7 +16,7 @@ MolSanitizer leverages the power of SMARTS matching and reactions to automate th
 
    - MolSanitizer employs a two-step approach to tautomer standardization, combining RDKit's tautomer canonicalization functionality with SMARTS reactions for enhanced refinement. Initially, RDKit's canonicalization function generates the base set of tautomers. These are then further refined using SMARTS reactions to ensure the selection of the most chemically stable and biologically relevant tautomer.
 
-   - Since 2020, RDKit has implemnted the MolVS project to its codebase, which includes a tautomer enumeration, and tautomer canonicalizer [2]_ . It is important to note that the scoring function used in RDKit doesn't try to predict the most stable tautomer, but rather tries to predict the same output given different tautomers (canonicalize). Therefore, MolSanitizer applies another layer of correction to get the most stable tautomer, according to the literature. The SMARTS reaction library for tautomer is available in `MolSanitizer/Data/tautomers.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/tautomers.txt>`_.
+   - Since 2020, RDKit has implemnted the MolVS project to its codebase, which includes a tautomer enumeration, and tautomer canonicalizer [2]_ . It is important to note that the scoring function used in RDKit doesn't try to predict the most stable tautomer, but rather tries to predict the same output given different tautomers (canonicalize). Therefore, MolSanitizer applies another layer of correction to get the most stable tautomer, according to the literature. The SMARTS reaction library for tautomer is available in `MolSanitizer/Data/tautomers.txt <https://github.com/phonglam3103/MolSanitizer/blob/main/MolSanitizer/Data/tautomers.txt>`_.
 
 2. **PAINS and Unwanted Substructure Filtering**:
 
@@ -25,7 +25,7 @@ MolSanitizer leverages the power of SMARTS matching and reactions to automate th
 
 3. **Protonation**:
 
-   - Protonation states are assigned iteratively using SMARTS-based rules for ionizable groups. This ensures molecules are prepared for pH-specific environments, with expanded outputs for cases of multiple possible states. The program uses SMARTS reactions to iteratively assign the protonation stages to the atoms. The SMARTS reactions can be obtained from `MolSanitizer/Data/ionizations.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/ionizations.txt>`_. If there are multiple possibilities of protonation, the output will be expanded.
+   - Protonation states are assigned iteratively using SMARTS-based rules for ionizable groups. This ensures molecules are prepared for pH-specific environments, with expanded outputs for cases of multiple possible states. The program uses SMARTS reactions to iteratively assign the protonation stages to the atoms. The SMARTS reactions can be obtained from `MolSanitizer/Data/ionizations.txt <https://github.com/phonglam3103/MolSanitizer/blob/main/MolSanitizer/Data/ionizations.txt>`_. If there are multiple possibilities of protonation, the output will be expanded.
 
 
 4. **Matching Rigid Scaffolds and Invertable Chiral Centers**:

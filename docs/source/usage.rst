@@ -43,7 +43,7 @@ The program by default will conduct the preparation and filtering in the order b
 Setting configurations
 **********************
 
-Many of the default values of MolSanitizer described below, both in the SINGLE MODE and BATCH MODE can be modified in `MolSanitizer/msani_configurations.yaml <https://github.com/Isra3l/MolSanitizer/blob/main/msani_configurations.yaml>`_ file. It is for the convenience of the  user so that he/she does not have to specify the values (such as numConfs, --max_stereoisomers, etc) every time the program is run. If the user specify the values in the command line, the values in the configuration file will be overwritten.
+Many of the default values of MolSanitizer described below, both in the SINGLE MODE and BATCH MODE can be modified in `MolSanitizer/msani_configurations.yaml <https://github.com/phonglam3103/MolSanitizer/blob/main/msani_configurations.yaml>`_ file. It is for the convenience of the  user so that he/she does not have to specify the values (such as numConfs, --max_stereoisomers, etc) every time the program is run. If the user specify the values in the command line, the values in the configuration file will be overwritten.
 
 The users are asked to provide CORINA path if the he/she wants to use it for the generation of 3D coordinates. The path should be provided in the `CORINA` field.
 
@@ -137,7 +137,7 @@ Available filters and preparation steps
 1. Remove salts
 ============
 
-To use the remove salts function, simply use the ``--removesalts`` flag. The program uses a predefined salt list in `MolSanitizer/Data/salt_stripping.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/salt_stripping.txt>`_ to remove the salts, which contain both organic and inorganic salts commonly used in medicinal chemistry. Since the 0.2.3 version, Salt Remover will also remove the smaller fragments in the same molecule entry and only retain the largest one.
+To use the remove salts function, simply use the ``--removesalts`` flag. The program uses a predefined salt list in `MolSanitizer/Data/salt_stripping.txt <https://github.com/phonglam3103/MolSanitizer/blob/main/MolSanitizer/Data/salt_stripping.txt>`_ to remove the salts, which contain both organic and inorganic salts commonly used in medicinal chemistry. Since the 0.2.3 version, Salt Remover will also remove the smaller fragments in the same molecule entry and only retain the largest one.
 
 *Caution:* If the entry is an organic salt (e.g., sodium acetate CH\ :sub:`3` COO\ :sup:`-` Na\ :sup:`+`), the whole entry will be removed.
 
@@ -149,7 +149,7 @@ To use the remove salts function, simply use the ``--removesalts`` flag. The pro
 ============================
 
 
-The tautomers could be generated using the ``--tautomers`` flag. MolSanitizer uses a two-step approach for the enumeration of tautomers. First, the canonical tautomer from the scoring function of ``rdMolStandardize.TautomerEnumerator`` is used. Then, the exceptions are corrected using the expert-curated SMARTS rules. The SMARTS rules are readily accessible at `MolSanitizer/Data/tautomers.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/tautomers.txt>`_.
+The tautomers could be generated using the ``--tautomers`` flag. MolSanitizer uses a two-step approach for the enumeration of tautomers. First, the canonical tautomer from the scoring function of ``rdMolStandardize.TautomerEnumerator`` is used. Then, the exceptions are corrected using the expert-curated SMARTS rules. The SMARTS rules are readily accessible at `MolSanitizer/Data/tautomers.txt <https://github.com/phonglam3103/MolSanitizer/blob/main/MolSanitizer/Data/tautomers.txt>`_.
 
 .. code-block:: console
 
@@ -178,7 +178,7 @@ Example of the **_rejected** output is as below:
 ============================
 
 
-Molecules that contain unwanted substructures can be efficiently eliminated using the ``--unwanted`` flag. MolSanitizer uses an expert-curated list that contains undesirable substructures, accompanied by the reasons and references for filtering. The list can be obtained from `MolSanitizer/Data/filter_out.csv <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/filter_out.csv>`_.
+Molecules that contain unwanted substructures can be efficiently eliminated using the ``--unwanted`` flag. MolSanitizer uses an expert-curated list that contains undesirable substructures, accompanied by the reasons and references for filtering. The list can be obtained from `MolSanitizer/Data/filter_out.csv <https://github.com/phonglam3103/MolSanitizer/blob/main/MolSanitizer/Data/filter_out.csv>`_.
 
 There are four options accompanied by the ``--unwanted`` flag, which are *['all', 'regular', 'special', 'optional']*. If no option is specified, the *regular* filters will be applied. The choice of the options depends on the user and can vary between targets.
 
@@ -207,7 +207,7 @@ The first two columns (SMARTS and LABEL) are required for the program to parse, 
 
 MolSanitizer supports the assignment of protonation states at various pH values using the ``--protonation`` flag. By default, the pH is set to 7 (configurable via ``-p`` or ``--pH``), and the pH range is set to 0 (specified using ``-r`` or ``--range``). This configuration protonates molecules at a specific pH of 7. However, it is also possible to enumerate potential protonation states across a pH range. For instance, setting ``--range 2`` explores pH values within 7 ± 2. The program evaluates each pH value in the specified range and assigns the possible protonation states of the molecule at those pH levels. Only unique products are output to a file. Functional groups with multiple protonation possibilities (e.g., piperazine, amidine) are expanded, with an underscore (`_`) appended to their names to indicate variations.
 
-The program employs SMARTS-based reactions to iteratively assign protonation states to atoms, considering the pKa of functional groups and the queried pH. Detailed SMARTS reaction definitions are available in the following resource: `MolSanitizer/Data/ionizations.txt <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/ionizations_v2.txt>`_.
+The program employs SMARTS-based reactions to iteratively assign protonation states to atoms, considering the pKa of functional groups and the queried pH. Detailed SMARTS reaction definitions are available in the following resource: `MolSanitizer/Data/ionizations.txt <https://github.com/phonglam3103/MolSanitizer/blob/main/MolSanitizer/Data/ionizations_v2.txt>`_.
 
 .. code-block:: console
     $ msani -i example.smi --protonation # Default pH 7 +- 0
@@ -265,7 +265,7 @@ The program employs AMSOL 7.1 for assigning the desolvation penalties and partia
 
 Finally, the information from the solvation file and the MOL2 file is aggregated using the `mol2db2.py <https://github.com/ryancoleman/mol2db2>`_ program.
 
-A modified version of `TorsionLibrary v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.2c00043>`_ is used to drive the generation of conformations. The modifications made and the full library can be obtained `here <https://github.com/Isra3l/MolSanitizer/blob/main/MolSanitizer/Data/modified_tor_lib_2020.xml>`_.
+A modified version of `TorsionLibrary v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.2c00043>`_ is used to drive the generation of conformations. The modifications made and the full library can be obtained `here <https://github.com/phonglam3103/MolSanitizer/blob/main/MolSanitizer/Data/modified_tor_lib_2020.xml>`_.
 
 .. code-block:: console
 
