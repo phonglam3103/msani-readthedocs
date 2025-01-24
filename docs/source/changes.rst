@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Updated three new descriptor-based filters, hba, hbd, and mw for
+   better drug-like and lead-like characterization. -
+   (`5015d6e <https://github.com/Isra3l/MolSanitizer/commit/5015d6ebc35105a07eda3897db2bef7c9a1de63c>`__)
 -  Bring PDBQT to MolSanitizer, thanks to the Meeko Library from the
    Forli’s Lab. The user now can trigger it by –pdbqt flag. -
    (`05904d2 <https://github.com/Isra3l/MolSanitizer/commit/05904d2850df9ec04543af8b08671aa93cfff537>`__)
@@ -45,6 +48,11 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fixed a bug that the customized filters and neutralize flags are not
+   processed. This is an error from the newly refactored script
+   SmilesSanitizer on Jan 21 and should not be a problem for the msani
+   version before that commit. -
+   (`d643b73 <https://github.com/Isra3l/MolSanitizer/commit/d643b73fa7b648a597737aa950fb72cea0244b33>`__)
 -  Fix a bug in applying reactions to modify molecules that once the
    sanitization fail, the molecule is omitted. Now the latest valid
    version of the molecule will be kept. -
@@ -61,6 +69,9 @@ All notable changes to this project will be documented in this file.
 🚜 Refactor
 ~~~~~~~~~~~
 
+-  Improved argparser. Added help text for the new descriptor-based
+   filters. Added more shortened keywords for the arguments. -
+   (`aadcff5 <https://github.com/Isra3l/MolSanitizer/commit/aadcff52a45184682176717d70ddf32bf8f8048a>`__)
 -  Refactored the whole filters.py into the SmilesStandardizer class.
    Now MolSanitizer Smiles section could be used as a Python library. -
    (`17ee8dc <https://github.com/Isra3l/MolSanitizer/commit/17ee8dcc3e223d98e2a8dff95c8b1008a58dee97>`__)
