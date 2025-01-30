@@ -52,7 +52,6 @@ Below is the default configuration file:
 .. code-block:: yaml
     
     #===============SINGLE MODE================
-    
     USE_CORINA: False
     CORINA: '/proj/carlssonlab/corina/corina-4.2/corina'
     ENERGY_WINDOW: 25
@@ -63,11 +62,12 @@ Below is the default configuration file:
     PH_RANGE: 0 # 0 means choose specific pH=7 (default), 2 means will sample pH 5 and 9
 
     #================BATCH MODE=================
-
-    SLURM_ACCOUNT: 'naiss2023-3-39'
+    SLURM_ACCOUNT: 'naiss2024-3-45'
     LINES_PER_JOB: 200
     TIME_LIMIT: 96
-    MAX_JOBS: 500
+    MAX_ARRAY_SIZE: 2000
+    MAX_JOBS: 1000
+    MAX_LIMIT_PROJECT: 5000
 
 Help message
 ************
@@ -76,60 +76,105 @@ Help message
 
 .. code-block:: console
 
-    $ msani -h
-
-    usage: msani [-i [INPUT_FILES]] [-s SMILES] [-e] [-pre PREFIX] [-enrich] [--removesalts] 
-                 [--create_custom] [--custom CUSTOM] [--pains] [--tautomers] [--noneutralize] 
-                 [--notaurdkit] [--stereoisomers] [--unwanted [{all,regular,special,optional}]] 
-                 [--max_stereoisomers] [--protonation] [--pH PH] [--pH_range PH_RANGE] [--db2] 
-                 [--corina] [--långben] [--numconfs] [--randomSeed] [--numcores] [--timeout]
-                 [--nocleanup] [--energywindow] [--debug] [--lazy] [--help] [--timing]
-                
+    $ usage: msani [--input_files INPUT_FILES [INPUT_FILES ...]]
+             [--smiles SMILES [SMILES ...]] [--enamine] [--prefix PREFIX]
+             [--enrichment] [--synthon] [--removesalts] [--create_custom]
+             [--custom CUSTOM] [--unwanted [{all,regular,special,optional} ...]]
+             [--pains] [--ha HA] [--logp LOGP] [--hba HBA] [--hbd HBD] [--mw MW]
+             [--tautomers] [--stereoisomers] [--max_stereoisomers MAX_STEREOISOMERS]
+             [--protonation] [--pH PH] [--pH_range PH_RANGE] [--noneutralize]
+             [--notaurdkit] [--conformal] [--db2] [--corina] [--långben]
+             [--numconfs NUMCONFS] [--randomSeed RANDOMSEED] [--numcores NUMCORES]
+             [--timeout TIMEOUT] [--nocleanup] [--energywindow ENERGYWINDOW] [--pdbqt]
+             [--nringconfs NRINGCONFS] [--debug] [--lazy] [--help] [--timing]
+             [--version]
 
     MolSanitizer - A package to prepare SMILES databases
 
+        Ex. input file (space or tab-separated file):
+            COCCC(=O)Nc1ncc(s1)Br  CP000000418470
+            C1CC(C(=O)NC1)SCCC=CBr  CP000000432409
+            CC(C)(C)CNC(=O)c1ccsc1Br  CP000001634597
+
+        Ex. run
+        msani -i example.smi --removesalts --pains --unwanted all --stereoisomers --protonation
+        msani -i example.smi --pdbqt --logp "<=500" --hba "<=10" --hbd "<=5" --mw "<=500"
+        msani -i example.smi --pains --unwanted regular optional --stereoisomers --protonation
+        msani -i example.smi --pains --unwanted all --stereoisomers --protonation --db2
+            
+
     Input and output options:
-    -i, --input_files     Input files containing chemical structures
-    -s, --smiles          Input SMILES strings
-    -e, --enamine         Enamine input format (default: False)
-    -pre, --prefix        Prefix for the output files. If not provided, the input file name will be used.
-    -enrich, --enrichment Enrichment mode (do not put in db2.tgz files)
+    --input_files, -i     Input files containing chemical structures
+    --smiles, -s          Input SMILES strings
+    --enamine, -e         Enamine input format (default: False)
+    --prefix, -pre        Prefix for the output files. (defalt: input file name).
+    --enrichment, -n      Enrichment mode (do not put in db2.tgz files)
+    --synthon, -stn       Synthon mode (Additional metadata about the capping groups
+                            required)
 
     Filtering options:
-    --removesalts         Remove salts from the structures 
-    --create_custom       Generate a template for customized substructure filtering
-    --custom              Filter out unwanted substructures using the customized list. 
-                          To generate an example list, use --create_custom
+    Supported formats for descriptor-based filters (ha, logp, hba, hbd, mw):
+        Range: Specify a range using two values (e.g., "17-25").
+        Greater / Less than or equal to: Use >= or <= (e.g., ">=17", "<=25").
+        Greater than / Less than: Use > or < (e.g., ">17", "<25").
+        Exact match: Match a specific value (e.g., 17).
+        For logP, the exact match format applies as 'less than or equal to'.
+
+    --removesalts         Remove salts from the structures. Small fragments within the
+                            same molecule are also removed.
+    --create_custom       Generate a template for customized substructure filtering.
+    --custom              Filter out unwanted substructures using a customized list. To
+                            generate an example list, use --create_custom.
     --unwanted            Filter out unwanted substructures using the default list
-    --pains               Remove PAINS violations from the structures 
+                            (options: all, regular, special, optional).
+    --pains               Remove PAINS violations from the structures.
+    --ha                  Retain only compounds with a specified number of heavy atoms.
+    --logp                Retain only compounds with a specified value of cLogP (UCSF
+                            format: cLogP 3.5->350).
+    --hba                 Retain only compounds with a specified number of hydrogen bond
+                            acceptors.
+    --hbd                 Retain only compounds with a specified number of hydrogen bond
+                            donors.
+    --mw                  Retain only compounds with a specified molecular weight.
 
     SMILES processing options:
-    --tautomers           Tautomers enumeration
-    --noneutralize        Do not neutralize the molecule before tautomerization
-    --notaurdkit          Do not use RDkit to canonicalize the input SMILES
-    --stereoisomers       Stereoisomers enumeration (only consider unspecified chiral centers)
-    --max_stereoisomers   Maximum number of stereoisomers to consider (default: 8 = 3 stereocenters)
-    --protonation         Apply protonation to the structures
+    --tautomers, -tau     Tautomers enumeration
+    --stereoisomers, -ste Stereoisomers enumeration (only consider unspecified chiral
+                            centers)
+    --max_stereoisomers, -max_stereo
+                            Maximum number of stereoisomers to consider (default: 8 = 3
+                            stereocenters)
+    --protonation, -prot  Apply protonation to the structures
     --pH, -p              pH for the protonation (default: 7)
     --pH_range, -r        pH range for the protonation (default: 0)
+    --noneutralize        Do not neutralize the molecule before tautomerization
+    --notaurdkit          Do not use RDKit to canonicalize the tautomeric form of the
+                            input SMILES
+    --conformal, -cp      Standardize structures for conformal predictors using RDKit
 
-    DB2 related options:
-    --db2, -db2           Generate conformers and stored in the DB2 format for DOCK3.8
-    --corina, -c          Use Corina for 3D structure generation
+    UCSF DOCK3.8 DB2 related options:
+    --db2, -db2           Generate conformers and stored in the DB2 format for DOCK 3.8
+    --corina, -c          Use Corina for 3D structure generation (default: False)
     --långben, -igtor     Ignore the Torsion Library - generate every possible conformer
     --numconfs, -nconfs   Maximum number of conformers to generate (default: 2000)
-    --randomSeed, -rs     Random seed for reproducibility (default: 42)
+    --randomSeed, -rs     Seed for reproducibility (default: 42)
     --numcores, -j        Number of cores to use for parallel processing (default: 4)
-    --timeout, -t         Timeout for the initial embedding for each SMILES entry before using 
-                          OpenBabel in minutes (default: 2)
+    --timeout, -to        Timeout for the initial embedding for each SMILES entry before
+                            using OpenBabel in minutes (default: 2)
     --nocleanup           Do not clean up the temporary files
-    --energywindow, -w    Energy window for sampling the conformations (default: 25 kcal/mol)
+    --energywindow, -w    Energy window for sampling the conformations (default: 25
+                            kcal/mol)
+
+    AutoDock PDBQT related options:
+    --pdbqt, -pdbqt       Generate PDBQT files for AutoDock Vina and AutoDock4
+    --nringconfs, -nr     Maximum number of ring conformers to generate (default: 1)
 
     Miscellaneous:
     --debug, -d           Enable debugging mode
     --lazy                Implement all the processing and preparation steps
     --help, -h            Show this help message and exit
     --timing              Time the process
+    --version, -v         Show the current version of MolSanitizer
 
 Available filters and preparation steps
 ***************************************
@@ -189,7 +234,7 @@ There are four options accompanied by the ``--unwanted`` flag, which are *['all'
     $ msani -i example.smi --unwanted regular special
     $ msani -i example.smi --unwanted all
 
-It is also possible to filter out customized unwanted substructures, depending on the user's preference, using a customized SMARTS list. To generate a template for this list, use the ``--create_custom`` flag. This will result in the **templates.tsv** file.
+It is also possible to filter out customized unwanted substructures, depending on the user's preference, using a customized SMARTS list. To generate a template for this list, use the ``--create_custom`` flag. This will result in the **templates.txt** file.
 
 .. code-block:: console
 
@@ -199,7 +244,7 @@ The first two columns (SMARTS and LABEL) are required for the program to parse, 
 
 .. code-block:: console
 
-    $ msani -i example.smi --custom templates.tsv
+    $ msani -i example.smi --custom templates.txt
     $ msani -i example.smi --unwanted all --custom templates.tsv
 
 5. Protonation
@@ -284,10 +329,10 @@ The additional flags supported by ``msani_batch`` so far:
 
 .. code-block:: console
 
-    -n, --projectName           The account that will be charged by the SLURM cluster for running tasks (default: naiss2023-3-39)
+    -A, --projectName           The account that will be charged by the SLURM cluster for running tasks (default: naiss2023-3-39)
     -l, --lines_per_job         Number of lines to process per job (default: 200)
     -t, --time                  Time limit in hours for each SLURM job (default: 96)
-    --max_jobs                  Maximum number of jobs to run simultaneously (default: 500)
+    -mj, --max_jobs             Maximum number of jobs to run simultaneously (default: 500)
 
 Usage
 =====
