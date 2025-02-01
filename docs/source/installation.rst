@@ -43,12 +43,12 @@ Example of how to set up a working conda environment to run the code:
 Testing
 -------
 
-MolSanitizer uses `pytest <https://docs.pytest.org/en/stable/>`_ for testing. To run the tests, use the following command:
+MolSanitizer uses `unittest <https://docs.python.org/3/library/unittest.html>`_ for testing. To run the tests, use the following command:
 
 In the MolSanitizer directory, use:
 
 .. code-block:: console
 
-   $ python -m pytest test/
+   $ python -m unittest test/test_msani.py
 
 The test takes around 1-2 minutes to complete.
