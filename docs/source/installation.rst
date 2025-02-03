@@ -45,10 +45,10 @@ Testing
 
 MolSanitizer uses `unittest <https://docs.python.org/3/library/unittest.html>`_ for testing. To run the tests, use the following command:
 
-In the MolSanitizer directory, use:
+In the same folder as previous steps, use:
 
 .. code-block:: console
 
-   $ python -m unittest test/test_msani.py
+   $ python -m unittest MolSanitizer/test/test_msani.py
 
 The test takes around 1-2 minutes to complete.
