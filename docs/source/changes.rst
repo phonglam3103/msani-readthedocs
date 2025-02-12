@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fix a unexplainable bug in neutralizing molecules make the atoms
+   cannot receive or delete substituents ([N+],…) -
+   (`089ec52 <https://github.com/phonglam3103/MolSanitizer/commit/089ec52db8ff7540b5ade1f946dbdcf78708e229>`__)
 -  Fix a bug in msani_batch that string arguments are not passed to the
    single script properly. -
    (`16df3eb <https://github.com/phonglam3103/MolSanitizer/commit/16df3eb8041000348e4a0de40da9471c4fcc26fb>`__)
