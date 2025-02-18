@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Updated the new Ionizer class. This allows the Ionizer module to be
+   used as a Python API from other programs. -
+   (`25e698a <https://github.com/phonglam3103/MolSanitizer/commit/25e698a89cb383309038e4cf6fa05011cac5dea1>`__)
 -  Updated new Tautomerizer class and new tautomers_v2 library, allowing
    for the enumeration of tautomers. -
    (`60a4c1a <https://github.com/phonglam3103/MolSanitizer/commit/60a4c1abdbe035addbaa336c57726131fe2d182b>`__)
@@ -16,6 +19,9 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fix typos in constrained minimization so that the hydrogen attached
+   to the aromatic nitrogen not being planarized correctly. -
+   (`6f3c43f <https://github.com/phonglam3103/MolSanitizer/commit/6f3c43fb83a75d5dbb8399a8015cca0121414abc>`__)
 -  Fix a bug in smi2db2 that in rare cases with AMSOL, the script runs
    into a ValueError and stop the whole script. This fix puts that part
    into a Try-except so that it would not crash the whole program. -
