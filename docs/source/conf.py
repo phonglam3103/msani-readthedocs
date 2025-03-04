@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'MolSanitizer'
+project = 'Apollo'
 copyright = "2024, Carlsson's Lab, Uppsala University"
-author = 'Phong Lam, Israel Cabeza de Vaca, Szymon Pach'
+author = 'Phong Lam, Szymon Pach, Ruth Brenk, Israel Cabeza de Vaca, Jens Carlsson'
 
 release = '0.2.3'
 version = '0.2.3'
