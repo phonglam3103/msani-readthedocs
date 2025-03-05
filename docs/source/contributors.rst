@@ -1,5 +1,5 @@
-.. _CONTRIBUTORS:
-CONTRIBUTORS
+.. _Contributors:
+Contributors
 ============
 
 Development
