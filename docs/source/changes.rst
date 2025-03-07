@@ -19,6 +19,8 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fix a bug so that in smi2pdbqt, it produces boat conformations. -
+   (`30d30b9 <https://github.com/phonglam3103/MolSanitizer/commit/30d30b98429d735e99e70664db8de2d8831b9cec>`__)
 -  Fix typos in constrained minimization so that the hydrogen attached
    to the aromatic nitrogen not being planarized correctly. -
    (`6f3c43f <https://github.com/phonglam3103/MolSanitizer/commit/6f3c43fb83a75d5dbb8399a8015cca0121414abc>`__)
