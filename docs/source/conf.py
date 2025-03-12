@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Apollo'
+project = 'EirVS'
 copyright = "2024, Carlsson's Lab, Uppsala University"
-author = 'Phong Lam, Szymon Pach, Ruth Brenk, Israel Cabeza de Vaca, Jens Carlsson'
+author = 'Phong Lam, Szymon Pach, Israel Cabeza de Vaca, Ruth Brenk, Jens Carlsson'
 
 release = '0.2.3'
 version = '0.2.3'
