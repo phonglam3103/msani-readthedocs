@@ -19,15 +19,15 @@ jobs:
       env:
         TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       run: |
-        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/MolSanitizer.git
-        cd MolSanitizer
+        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/EirVS.git
+        cd EirVS
         git fetch --all
 
     - name: Clone the documentation repository
       env:
         TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       run: |
-        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/msani-readthedocs.git
+        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/eirvs-readthedocs.git
 
     - name: Install Pandoc for Conversion
       run: |
@@ -40,10 +40,10 @@ jobs:
         proceed_with_conversion=false
 
         # Check if CHANGELOG.md exists in the documentation repo
-        if [ ! -f msani-readthedocs/docs/CHANGELOG.md ]; then
+        if [ ! -f eirvs-readthedocs/docs/CHANGELOG.md ]; then
           echo "CHANGELOG.md not found in documentation repository. Adding it."
-          cp MolSanitizer/CHANGELOG.md msani-readthedocs/docs/CHANGELOG.md
-          cd msani-readthedocs
+          cp EirVS/CHANGELOG.md eirvs-readthedocs/docs/CHANGELOG.md
+          cd eirvs-readthedocs
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add docs/CHANGELOG.md
@@ -53,11 +53,11 @@ jobs:
           proceed_with_conversion=true
         else
           # Compare CHANGELOG.md files
-          diff_output=$(diff MolSanitizer/CHANGELOG.md msani-readthedocs/docs/CHANGELOG.md || true)
+          diff_output=$(diff EirVS/CHANGELOG.md eirvs-readthedocs/docs/CHANGELOG.md || true)
           if [ -n "$diff_output" ]; then
             echo "Detected changes in CHANGELOG.md. Proceeding with RST conversion."
-            cp MolSanitizer/CHANGELOG.md msani-readthedocs/docs/CHANGELOG.md
-            cd msani-readthedocs
+            cp EirVS/CHANGELOG.md eirvs-readthedocs/docs/CHANGELOG.md
+            cd eirvs-readthedocs
             git config --global user.name "GitHub Actions"
             git config --global user.email "actions@github.com"
             git add docs/CHANGELOG.md
@@ -73,10 +73,10 @@ jobs:
         # Convert to RST and commit if changes are detected or file is missing
         if [ "$proceed_with_conversion" = true ]; then
           # Convert to RST
-          pandoc MolSanitizer/CHANGELOG.md -o changes.rst
+          pandoc EirVS/CHANGELOG.md -o changes.rst
           # Copy the converted RST file
-          cp changes.rst msani-readthedocs/docs/source/
-          cd msani-readthedocs
+          cp changes.rst eirvs-readthedocs/docs/source/
+          cd eirvs-readthedocs
           if ! git diff --quiet docs/source/changes.rst; then
             git add docs/source/changes.rst
             git commit -m "Update changes.rst from the software repository"

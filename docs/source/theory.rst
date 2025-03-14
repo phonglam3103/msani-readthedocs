@@ -4,19 +4,19 @@ Theory
 SMARTS Matching and Reactions
 ******************************
 
-MolSanitizer uses SMARTS matching and reactions for matching the substructures in its pipeline. The user is encouraged to refer to the Daylight's Documentation on SMARTS for detailed information [1]_.
+EirVS uses SMARTS matching and reactions for matching the substructures in its pipeline. The user is encouraged to refer to the Daylight's Documentation on SMARTS for detailed information [1]_.
 
 
-SMARTS Matching and Reactions in MolSanitizer
+SMARTS Matching and Reactions in EirVS
 ================
 
-MolSanitizer leverages the power of SMARTS matching and reactions to automate the preparation and filtering of molecular datasets for drug discovery. Below are the key applications:
+EirVS leverages the power of SMARTS matching and reactions to automate the preparation and filtering of molecular datasets for drug discovery. Below are the key applications:
 
 1. **Tautomer Standardization**:
 
-   - MolSanitizer employs a two-step approach to tautomer standardization, combining RDKit's tautomer canonicalization functionality with SMARTS reactions for enhanced refinement. Initially, RDKit's canonicalization function generates the base set of tautomers. These are then further refined using SMARTS reactions to ensure the selection of the most chemically stable and biologically relevant tautomer.
+   - EirVS employs a two-step approach to tautomer standardization, combining RDKit's tautomer canonicalization functionality with SMARTS reactions for enhanced refinement. Initially, RDKit's canonicalization function generates the base set of tautomers. These are then further refined using SMARTS reactions to ensure the selection of the most chemically stable and biologically relevant tautomer.
 
-   - Since 2020, RDKit has implemnted the MolVS project to its codebase, which includes a tautomer enumeration, and tautomer canonicalizer [2]_ . It is important to note that the scoring function used in RDKit doesn't try to predict the most stable tautomer, but rather tries to predict the same output given different tautomers (canonicalize). Therefore, MolSanitizer applies another layer of correction to get the most stable tautomer, according to the literature. The SMARTS reaction library for tautomer is available in `MolSanitizer/Data/tautomers.txt <https://github.com/phonglam3103/MolSanitizer/blob/main/MolSanitizer/Data/tautomers.txt>`_.
+   - Since 2020, RDKit has implemnted the MolVS project to its codebase, which includes a tautomer enumeration, and tautomer canonicalizer [2]_ . It is important to note that the scoring function used in RDKit doesn't try to predict the most stable tautomer, but rather tries to predict the same output given different tautomers (canonicalize). Therefore, EirVS applies another layer of correction to get the most stable tautomer, according to the literature. The SMARTS reaction library for tautomer is available in `EirVS/Data/tautomers.txt <https://github.com/phonglam3103/EirVS/blob/main/EirVS/Data/tautomers.txt>`_.
 
 2. **PAINS and Unwanted Substructure Filtering**:
 
@@ -25,12 +25,12 @@ MolSanitizer leverages the power of SMARTS matching and reactions to automate th
 
 3. **Protonation**:
 
-   - Protonation states are assigned iteratively using SMARTS-based rules for ionizable groups. This ensures molecules are prepared for pH-specific environments, with expanded outputs for cases of multiple possible states. The program uses SMARTS reactions to iteratively assign the protonation stages to the atoms. The SMARTS reactions can be obtained from `MolSanitizer/Data/ionizations.txt <https://github.com/phonglam3103/MolSanitizer/blob/main/MolSanitizer/Data/ionizations.txt>`_. If there are multiple possibilities of protonation, the output will be expanded.
+   - Protonation states are assigned iteratively using SMARTS-based rules for ionizable groups. This ensures molecules are prepared for pH-specific environments, with expanded outputs for cases of multiple possible states. The program uses SMARTS reactions to iteratively assign the protonation stages to the atoms. The SMARTS reactions can be obtained from `EirVS/Data/ionizations.txt <https://github.com/phonglam3103/EirVS/blob/main/EirVS/Data/ionizations.txt>`_. If there are multiple possibilities of protonation, the output will be expanded.
 
 
 4. **Matching Rigid Scaffolds and Invertable Chiral Centers**:
 
-   - MolSanitizer uses SMARTS to detect substructures such as rings and aromatic nitrogen to correct geometry due to systematic errors of MMFF94s. SMARTS matching is also the foundation for dihedral matching of the molecules to the Torsional Library [4]_, [5]_, [6]_ , which drives conformational sampling for docking.
+   - EirVS uses SMARTS to detect substructures such as rings and aromatic nitrogen to correct geometry due to systematic errors of MMFF94s. SMARTS matching is also the foundation for dihedral matching of the molecules to the Torsional Library [4]_, [5]_, [6]_ , which drives conformational sampling for docking.
 
 For more detailed usage and examples, refer to the :doc:`usage` section.
 
@@ -38,9 +38,9 @@ For more detailed usage and examples, refer to the :doc:`usage` section.
 Conformational Sampling
 ***********************
 
-MolSanitizer utilizes a stochastic conformational sampling approach to generate diverse and representative conformers for molecular structures. Unlike the current DB2 pipeline, which samples all possible conformations with discrete increments, MolSanitizer focuses on sampling only the favorable regions defined by the Torsional Library.
+EirVS utilizes a stochastic conformational sampling approach to generate diverse and representative conformers for molecular structures. Unlike the current DB2 pipeline, which samples all possible conformations with discrete increments, EirVS focuses on sampling only the favorable regions defined by the Torsional Library.
 
-Torsional Library (or TorLib) [4]_, [5]_, [6]_ is a collection of expert-derived SMARTS rules that define preferred torsion angles for small molecules. By matching molecular structures to TorLib, MolSanitizer concentrates on sampling conformations that are more likely to be biologically relevant. This targeted approach reduces computational overhead while ensuring the generation of meaningful conformers. The workflow of the conformational sampling process is illustrated in the figure below.
+Torsional Library (or TorLib) [4]_, [5]_, [6]_ is a collection of expert-derived SMARTS rules that define preferred torsion angles for small molecules. By matching molecular structures to TorLib, EirVS concentrates on sampling conformations that are more likely to be biologically relevant. This targeted approach reduces computational overhead while ensuring the generation of meaningful conformers. The workflow of the conformational sampling process is illustrated in the figure below.
 
 .. image:: _static/conformational_sampling.png
    :width: 600px
@@ -48,9 +48,9 @@ Torsional Library (or TorLib) [4]_, [5]_, [6]_ is a collection of expert-derived
 
 ----
 
-The first step involves generating an initial conformer using the srETKDGv3 (small-ring ETKDGv3) algorithm of RDKit [7]_. However, this algorithm can sometimes produce unfavorable ring conformations such as "boat" or "twist" forms. To address this, MolSanitizer generates up to 100 conformers and filters out the undesirable ones using a curated library of preferred ring conformations. Currently, MolSanitizer supports rings up to eight members in size. At the end of the initial embedding process, only the lowest-energy conformer with favorable ring conformations is used for subsequent conformational sampling. In cases where RDKit fails or exceeds a time limit (default: 2 minutes), the embedding method of OpenBabel is used as a backup [8]_.
+The first step involves generating an initial conformer using the srETKDGv3 (small-ring ETKDGv3) algorithm of RDKit [7]_. However, this algorithm can sometimes produce unfavorable ring conformations such as "boat" or "twist" forms. To address this, EirVS generates up to 100 conformers and filters out the undesirable ones using a curated library of preferred ring conformations. Currently, EirVS supports rings up to eight members in size. At the end of the initial embedding process, only the lowest-energy conformer with favorable ring conformations is used for subsequent conformational sampling. In cases where RDKit fails or exceeds a time limit (default: 2 minutes), the embedding method of OpenBabel is used as a backup [8]_.
 
-As recommended by the RDKit developers, the initial conformer is minimized using a force field—in this case, the MMFF94s force field [9]_. However, the minimized conformer may still exhibit systematic errors inherent to such force fields, such as non-planarity of aromatic nitrogens. MolSanitizer addresses these issues by using SMARTS patterns to detect and correct these substructures, ensuring accurate molecular geometries. This initial conformer also serves as the input for desolvation penalty calculations using AMSOL.
+As recommended by the RDKit developers, the initial conformer is minimized using a force field—in this case, the MMFF94s force field [9]_. However, the minimized conformer may still exhibit systematic errors inherent to such force fields, such as non-planarity of aromatic nitrogens. EirVS addresses these issues by using SMARTS patterns to detect and correct these substructures, ensuring accurate molecular geometries. This initial conformer also serves as the input for desolvation penalty calculations using AMSOL.
 
 The second step is the conformational sampling based on TorLib. TorLib provides 513 rules, ranging from the most specific to the most general, allowing it to match any rotatable bond. During conformational sampling, hydroxyl groups (-OH) are allowed to rotate, eliminating the need for -reseth or -rotateh steps in the Mol2DB2 process. Dihedrals that involved in symmetric substituents such as (-CH3, -CF3, -C6H5,...) are rescaled to avoid the oversampling of similar conformations. The pseudocode explaining the conformational sampling algorithm is shown below:
 

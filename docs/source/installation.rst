@@ -6,7 +6,7 @@ Installation
 Dependencies
 ------------
 
-MolSanitizer is built upon the following packages:
+EirVS is built upon the following packages:
 
 - RDKit 2024.09.1 (`Reference <https://www.rdkit.org/docs/Install.html>`_)
 
@@ -16,9 +16,9 @@ MolSanitizer is built upon the following packages:
 
 - AMSOL 7.1 (`Reference <https://comp.chem.umn.edu/sds/>`_)
 
-By default, conda will install all the dependencies, except for AMSOL, which is required for the generation of DB2 files. The user is asked to download and compille the source code from the `official website <https://comp.chem.umn.edu/sds/>`_. Instruction on how to compile on modern systems is provided in the MolSanitizer/amsol directory.
+By default, conda will install all the dependencies, except for AMSOL, which is required for the generation of DB2 files. The user is asked to download and compille the source code from the `official website <https://comp.chem.umn.edu/sds/>`_. Instruction on how to compile on modern systems is provided in the EirVS/amsol directory.
 
-For the early evaluation, the compiled version of AMSOL is provided in the MolSanitizer directory.
+For the early evaluation, the compiled version of AMSOL is provided in the EirVS directory.
 
 Installation
 ------------
@@ -28,27 +28,27 @@ We will set up the environment using `Anaconda <https://docs.anaconda.com/anacon
 
 .. code-block:: console
 
-   $ git clone https://github.com/phonglam3103/MolSanitizer.git
+   $ git clone https://github.com/phonglam3103/EirVS.git
     
 
 Example of how to set up a working conda environment to run the code:
 
 .. code-block:: console
    
-   $ conda env create -f MolSanitizer/environment.yml
-   $ conda activate msani
-   $ pip install -e MolSanitizer
+   $ conda env create -f EirVS/environment.yml
+   $ conda activate eirvs
+   $ pip install -e EirVS
 
 
 Testing
 -------
 
-MolSanitizer uses `unittest <https://docs.python.org/3/library/unittest.html>`_ for testing. To run the tests, use the following command:
+EirVS uses `unittest <https://docs.python.org/3/library/unittest.html>`_ for testing. To run the tests, use the following command:
 
 In the same folder as previous steps, use:
 
 .. code-block:: console
 
-   $ python -m unittest MolSanitizer/test/test_msani.py
+   $ python -m unittest EirVS/test/test_eirvs.py
 
 The test takes around 1-2 minutes to complete.
