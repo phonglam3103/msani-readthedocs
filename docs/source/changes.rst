@@ -41,6 +41,21 @@ All notable changes to this project will be documented in this file.
    single script properly. -
    (`16df3eb <https://github.com/phonglam3103/EirVS/commit/16df3eb8041000348e4a0de40da9471c4fcc26fb>`__)
 
+🚜 Refactor
+~~~~~~~~~~~
+
+-  Reorganized the whole package. The organization now should be more
+   intuitive. -
+   (`6de0647 <https://github.com/phonglam3103/EirVS/commit/6de0647233345c60791cda6ea07349a44d32921a>`__)
+
+⚡ Performance
+~~~~~~~~~~~~~~
+
+-  Change the name of the package to EirVS. Once the branch is merged,
+   the user is expected to use ``pip uninstall molsanitizer`` and
+   ``pip install -e .`` again. -
+   (`567a780 <https://github.com/phonglam3103/EirVS/commit/567a78076dbb9858cc361c6aba7906e80ad03b6b>`__)
+
 [0.2.3] - 2025-02-04
 --------------------
 
@@ -115,6 +130,8 @@ All notable changes to this project will be documented in this file.
    (more realistic) instead of planar. -
    (`640cc55 <https://github.com/phonglam3103/EirVS/commit/640cc5561f3597ef0cb6dbb99b7448bc25a07076>`__)
 
+.. _refactor-1:
+
 🚜 Refactor
 ~~~~~~~~~~~
 
@@ -135,6 +152,8 @@ All notable changes to this project will be documented in this file.
 -  Improved logger. Removed information regarding the old ionization
    method. -
    (`9497d19 <https://github.com/phonglam3103/EirVS/commit/9497d19224f416690974b99022d05d7caa31fbe7>`__)
+
+.. _performance-1:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -191,7 +210,7 @@ All notable changes to this project will be documented in this file.
    stereocenters. -
    (`907e799 <https://github.com/phonglam3103/EirVS/commit/907e7994bb15de84401d6b06fae3f1b970d11d47>`__)
 
-.. _performance-1:
+.. _performance-2:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -271,7 +290,7 @@ All notable changes to this project will be documented in this file.
    -
    (`f1f82b7 <https://github.com/phonglam3103/EirVS/commit/f1f82b7b7705b1bb5e32a3624fa7890e49b5a773>`__)
 
-.. _refactor-1:
+.. _refactor-2:
 
 🚜 Refactor
 ~~~~~~~~~~~
@@ -293,7 +312,7 @@ All notable changes to this project will be documented in this file.
 -  Redirect MolSanitizer README to the read-the-docs page. -
    (`6e6bc43 <https://github.com/phonglam3103/EirVS/commit/6e6bc434bc69180c67b24950fb476b21898907ea>`__)
 
-.. _performance-2:
+.. _performance-3:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -371,7 +390,7 @@ All notable changes to this project will be documented in this file.
    names -> make all the DB2 files have the same name as \****\* -
    (`755d696 <https://github.com/phonglam3103/EirVS/commit/755d69641b1eb5df29a70b9d569e3b3a9c3f94d1>`__)
 
-.. _refactor-2:
+.. _refactor-3:
 
 🚜 Refactor
 ~~~~~~~~~~~
@@ -441,7 +460,7 @@ All notable changes to this project will be documented in this file.
    the earlier version. -
    (`e17a0a1 <https://github.com/phonglam3103/EirVS/commit/e17a0a13189a3c17fcf0faf3000fd932e46dfc75>`__)
 
-.. _refactor-3:
+.. _refactor-4:
 
 🚜 Refactor
 ~~~~~~~~~~~
@@ -491,7 +510,7 @@ All notable changes to this project will be documented in this file.
    to generate DB2 files. -
    (`4b0d04b <https://github.com/phonglam3103/EirVS/commit/4b0d04b56ef7b87a7c799688dcc0201655c15d2f>`__)
 
-.. _refactor-4:
+.. _refactor-5:
 
 🚜 Refactor
 ~~~~~~~~~~~
@@ -537,7 +556,7 @@ All notable changes to this project will be documented in this file.
 -  Fix an error that find_sulfonamide not function as expected -
    (`1818ea7 <https://github.com/phonglam3103/EirVS/commit/1818ea71c6b8856d0603f125c5860639d09886ab>`__)
 
-.. _refactor-5:
+.. _refactor-6:
 
 🚜 Refactor
 ~~~~~~~~~~~
@@ -639,7 +658,7 @@ All notable changes to this project will be documented in this file.
 -  :bug: Fix a typo in torsion scan that crash msani -
    (`4275824 <https://github.com/phonglam3103/EirVS/commit/4275824384d8567703a5234da77e015561a69e17>`__)
 
-.. _performance-3:
+.. _performance-4:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -665,7 +684,7 @@ All notable changes to this project will be documented in this file.
    screen to notify the user -
    (`36846e1 <https://github.com/phonglam3103/EirVS/commit/36846e13334c7c290a6620aa16a0ec75f27602c0>`__)
 
-.. _performance-4:
+.. _performance-5:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
