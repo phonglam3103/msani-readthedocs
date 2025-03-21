@@ -6,12 +6,14 @@ All notable changes to this project will be documented in this file.
 
 ### 🚀 Features
 
+- New --rigid flag, allowing the constrained docking concept. - ([f71b4aa](https://github.com/phonglam3103/EirVS/commit/f71b4aa40f5788774290160631f8a0a8cfa7688f))
 - Brings Smi2DB2 to Windows! Updated instructions on how to setup AMSOL for DB2 generation with Windows in the amsol folder. - ([c88df20](https://github.com/phonglam3103/EirVS/commit/c88df20e7a7c1875699fcec36a3fffddb8ef67a9))
 - Updated the new Ionizer class. This allows the Ionizer module to be used as a Python API from other programs. - ([25e698a](https://github.com/phonglam3103/EirVS/commit/25e698a89cb383309038e4cf6fa05011cac5dea1))
 - Updated new Tautomerizer class and new tautomers_v2 library, allowing for the enumeration of tautomers. - ([60a4c1a](https://github.com/phonglam3103/EirVS/commit/60a4c1abdbe035addbaa336c57726131fe2d182b))
 
 ### 🐛 Bug Fixes
 
+- Canonicalize the given --rigid flag if possible to find the correct ring. - ([4063713](https://github.com/phonglam3103/EirVS/commit/40637135b3cac9ff5cdfd990abadfcb39df606d2))
 - :bug: Fix a bug in tautomerizing accessing an infinite loop by limit to maximum 100 steps of standardization only. - ([a250cde](https://github.com/phonglam3103/EirVS/commit/a250cded2d20908f8ca43a8f61a3dc85d1f5f034))
 - Fix a bug so that in smi2pdbqt, it produces boat conformations. - ([30d30b9](https://github.com/phonglam3103/EirVS/commit/30d30b98429d735e99e70664db8de2d8831b9cec))
 - Fix typos in constrained minimization so that the hydrogen attached to the aromatic nitrogen not being planarized correctly. - ([6f3c43f](https://github.com/phonglam3103/EirVS/commit/6f3c43fb83a75d5dbb8399a8015cca0121414abc))
