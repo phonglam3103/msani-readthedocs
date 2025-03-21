@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  New –rigid flag, allowing the constrained docking concept. -
+   (`f71b4aa <https://github.com/phonglam3103/EirVS/commit/f71b4aa40f5788774290160631f8a0a8cfa7688f>`__)
 -  Brings Smi2DB2 to Windows! Updated instructions on how to setup AMSOL
    for DB2 generation with Windows in the amsol folder. -
    (`c88df20 <https://github.com/phonglam3103/EirVS/commit/c88df20e7a7c1875699fcec36a3fffddb8ef67a9>`__)
@@ -22,6 +24,9 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Canonicalize the given –rigid flag if possible to find the correct
+   ring. -
+   (`4063713 <https://github.com/phonglam3103/EirVS/commit/40637135b3cac9ff5cdfd990abadfcb39df606d2>`__)
 -  :bug: Fix a bug in tautomerizing accessing an infinite loop by limit
    to maximum 100 steps of standardization only. -
    (`a250cde <https://github.com/phonglam3103/EirVS/commit/a250cded2d20908f8ca43a8f61a3dc85d1f5f034>`__)
