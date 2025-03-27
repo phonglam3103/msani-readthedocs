@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Expose the options for the number of ring conformations (-nr) for
+   Smi2DB2. -
+   (`477c7a1 <https://github.com/phonglam3103/EirVS/commit/477c7a152df9e65fc7a2be45f545887c5872632c>`__)
 -  New –rigid flag, allowing the constrained docking concept. -
    (`f71b4aa <https://github.com/phonglam3103/EirVS/commit/f71b4aa40f5788774290160631f8a0a8cfa7688f>`__)
 -  Brings Smi2DB2 to Windows! Updated instructions on how to setup AMSOL
