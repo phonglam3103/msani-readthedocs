@@ -27,6 +27,9 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fix a bug in the batchmode happening when take input files from the
+   other directory than the working one. -
+   (`6043b3a <https://github.com/phonglam3103/EirVS/commit/6043b3a5912e7f486c405a25618ce89cf2a83d9a>`__)
 -  Canonicalize the given –rigid flag if possible to find the correct
    ring. -
    (`4063713 <https://github.com/phonglam3103/EirVS/commit/40637135b3cac9ff5cdfd990abadfcb39df606d2>`__)
