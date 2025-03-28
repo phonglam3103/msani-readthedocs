@@ -162,8 +162,10 @@ Help message
     --timeout, -to        Timeout for the initial embedding for each SMILES entry before
                             using OpenBabel in minutes (default: 2)
     --nocleanup           Do not clean up the temporary files
-    --energywindow, -w    Energy window for sampling the conformations (default: 25
-                            kcal/mol)
+    --energywindow, -w    Energy window for sampling the conformations (default: 25 kcal/mol)
+    --rigid               Only align the DB2 on this rigid scaffold in SMILES/SMARTS format. All 
+                            rings if not provided.
+    --nringconfs, -nr     Maximum number of ring conformers to generate (default: 1)
 
     AutoDock PDBQT related options:
     --pdbqt, -pdbqt       Generate PDBQT files for AutoDock Vina and AutoDock4
@@ -329,10 +331,10 @@ The additional flags supported by ``eirvs_batch`` so far:
 
 .. code-block:: console
 
-    -A, --projectName           The account that will be charged by the SLURM cluster for running tasks (default: naiss2023-3-39)
-    -l, --lines_per_job         Number of lines to process per job (default: 200)
-    -t, --time                  Time limit in hours for each SLURM job (default: 96)
-    -mj, --max_jobs             Maximum number of jobs to run simultaneously (default: 500)
+    --projectName, -A           The account that will be charged by the SLURM cluster for running tasks (default: naiss2024-3-45)
+    --lines_per_job, -l         Number of lines to process per job (default: 200)
+    --timelimit, -tl            Time limit in hours for each SLURM job (default: 96)
+    --max_jobs, -mj             Maximum number of jobs to run simultaneously (default: 500)
 
 Usage
 =====
@@ -341,7 +343,7 @@ Usage
 
     $ eirvs_batch -i example.smi -l 50 --db2
     $ eirvs_batch -i example.smi -l 50 --stereosiomers --protonation --db2 --nocleanup
-    $ eirvs_batch -i example.smi -l 50 -n snic2021-3-32 -t 2 --db2
+    $ eirvs_batch -i example.smi -l 50 -A snic2021-3-32 -tl 2 --db2
 
 It is also possible to submit the batch jobs for multiple input files. The program will automatically detect the input files and submit the jobs accordingly.
 
