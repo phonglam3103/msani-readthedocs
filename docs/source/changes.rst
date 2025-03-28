@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Expose numcores to smi2db2. This can help to speed up the initial
+   embedding for a molecule if the user asks for more cores. -
+   (`08ccdd7 <https://github.com/phonglam3103/EirVS/commit/08ccdd79ff6746991e1d00088319c155ccf66523>`__)
 -  Expose the options for the number of ring conformations (-nr) for
    Smi2DB2. -
    (`477c7a1 <https://github.com/phonglam3103/EirVS/commit/477c7a152df9e65fc7a2be45f545887c5872632c>`__)
