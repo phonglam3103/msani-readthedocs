@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes
 
+- Better defined the planarity of non-aromatic 6-membered rings and cleaned up the SMARTS patterns - ([fa3d1c5](https://github.com/phonglam3103/EirVS/commit/fa3d1c50dc0e8870c9d4e7e1ca14ac1825ba92c9))
 - Fix a bug in the batchmode happening when take input files from the other directory than the working one. - ([6043b3a](https://github.com/phonglam3103/EirVS/commit/6043b3a5912e7f486c405a25618ce89cf2a83d9a))
 - Canonicalize the given --rigid flag if possible to find the correct ring. - ([4063713](https://github.com/phonglam3103/EirVS/commit/40637135b3cac9ff5cdfd990abadfcb39df606d2))
 - :bug: Fix a bug in tautomerizing accessing an infinite loop by limit to maximum 100 steps of standardization only. - ([a250cde](https://github.com/phonglam3103/EirVS/commit/a250cded2d20908f8ca43a8f61a3dc85d1f5f034))
@@ -27,6 +28,8 @@ All notable changes to this project will be documented in this file.
 
 ### 🚜 Refactor
 
+- New Mol2Writer, better replicating the behaviour of CORINA. Supports aromaticity better. - ([432f8d9](https://github.com/phonglam3103/EirVS/commit/432f8d91e9b50c70fc26e6c548431bb8d979ece0))
+- Smi2db2 and smi2pdbqt are now refactored in conformers. ConformerGenerator class allows the user to generate different file formats easily. - ([933eac2](https://github.com/phonglam3103/EirVS/commit/933eac287f6b4590cc5765a67eebb87a57f305cf))
 - Reorganized the whole package. The organization now should be more intuitive. - ([6de0647](https://github.com/phonglam3103/EirVS/commit/6de0647233345c60791cda6ea07349a44d32921a))
 
 ### ⚡ Performance
