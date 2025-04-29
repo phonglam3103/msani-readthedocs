@@ -200,7 +200,6 @@ The tautomers could be generated using the ``--tautomers`` flag. EirVS uses a tw
 
 The following descriptors are supported for filtering: heavy atoms (HA), logP, hydrogen bond acceptors (HBA), hydrogen bond donors (HBD), molecular weight (MW), and number chiral centers. The descriptors can be filtered using the following flags:
 ``--ha``, ``--logp``, ``--hba``, ``--hbd``, ``--mw``, and ``--chiral``. The filtering can be done using the following formats:
-
 * Range: Specify a range using two values (e.g., "17-25").
 * Greater / Less than or equal to: Use >= or <= (e.g., ">=17", "<=25").
 * Greater than / Less than: Use > or < (e.g., ">17", "<25").
@@ -336,7 +335,6 @@ The following supported flags:
 The conformer generator platform can be triggered using the ``--gen3d`` or ``-3d`` flag. The program by default use RDKit with `srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (small-ring ETKDGv3) method to generate the initial conformer. 
 
 Three initial embeeder are supported (``-m`` or ``--method`` flag):
-
 * `RDKit srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (default) 
 * `CORINA <https://doi.org/10.1016/0898-5529(90)90156-3>`_ (``-m corina``) 
 * `Open Babel <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0372-5>`_ (``-m obabel``)
@@ -348,7 +346,6 @@ As RDKit ETKDGv3 is based on distance geometry method, it may takes a long time 
 A modified version of `TorsionLibrary v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.2c00043>`_ is used to drive the generation of conformations. The modifications made and the full library can be obtained `here <https://github.com/phonglam3103/EirVS/blob/main/EirVS/Data/modified_tor_lib_2020.xml>`_. The number of conformers are controlled by the ``--numconfs`` or ``-nconfs`` flag. The default value is 2000, but it can be modified to any number. The program will sample the conformers based on the energy window (default: 25 kcal/mol) using the ``--energywindow`` or ``-w`` flag.
 
 Three sampling modes are supported (``--mode`` or ``-mode`` flag):
-
 * vs (virtual screening): each peak combination is only sampled once.
 * extensive: each peak combination is sampled multiple times. Two conformers are regarded distinct if they differ by at least 30 degrees in any dihedral angle.
 * ignoretorlib: the program will ignore the TorsionLibrary and sample every 60 degrees.
