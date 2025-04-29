@@ -200,6 +200,7 @@ The tautomers could be generated using the ``--tautomers`` flag. EirVS uses a tw
 
 The following descriptors are supported for filtering: heavy atoms (HA), logP, hydrogen bond acceptors (HBA), hydrogen bond donors (HBD), molecular weight (MW), and number chiral centers. The descriptors can be filtered using the following flags:
 ``--ha``, ``--logp``, ``--hba``, ``--hbd``, ``--mw``, and ``--chiral``. The filtering can be done using the following formats:
+
 * Range: Specify a range using two values (e.g., "17-25").
 * Greater / Less than or equal to: Use >= or <= (e.g., ">=17", "<=25").
 * Greater than / Less than: Use > or < (e.g., ">17", "<25").
@@ -317,27 +318,26 @@ The following supported flags:
     Generate 3D conformers options:
     --gen3d, -3d          Generate 3D conformers
     --format, -f          Output file format. Multiple formats simultaneously supported.
-                            (Default: db2 - Options: sdf, db2, db2.tgz, mol2, pdbqt.)
+                          (Default: db2 - Options: sdf, db2, db2.tgz, mol2, pdbqt.)
     --method, -m          Embedding method (default: rdkit - options: rdkit, obabel, corina)
     --numconfs, -nconfs   Maximum number of conformers to generate (default: 2000)
     --randomSeed, -rs     Seed for reproducibility (default: 42)
     --timeout, -to        Timeout for the initial embedding for each SMILES entry before using OpenBabel
-                            (Default: 2 minutes)
+                          (Default: 2 minutes)
     --energywindow, -w    Energy window for sampling the conformations (default: 25 kcal/mol)
     --rigid               Only align the DB2 on this rigid scaffold in SMILES/SMARTS format. All rings if not provided.
     --nringconfs, -nr     Maximum number of ring conformers to generate (default: 1)
     --mode, -mode         Mode for generating conformers
-                            Default: vs (virtual screening) - Options: vs, extensive, ignoretorlib
+                          Default: vs (virtual screening) - Options: vs, extensive, ignoretorlib
     --tolerance, -tol     Minimum angle for differentiating two conformers (default: 30)
     --nocleanup           Do not clean up the temporary files
 
 
-The conformer generator platform can be triggered using the ``--gen3d`` or ``-3d`` flag. The program by default use RDKit with `srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (small-ring ETKDGv3) method to generate the initial conformer. 
+The conformer generator platform can be triggered using the ``--gen3d`` or ``-3d`` flag. Three initial embeeder are supported (``-m`` or ``--method`` flag):
 
-Three initial embeeder are supported (``-m`` or ``--method`` flag):
-* `RDKit srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (default) 
-* `CORINA <https://doi.org/10.1016/0898-5529(90)90156-3>`_ (``-m corina``) 
-* `Open Babel <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0372-5>`_ (``-m obabel``)
+* RDKit srETKDG-v3 (default ``-m rdkit``): `Ref <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ 
+* CORINA (``-m corina``): `Ref <https://doi.org/10.1016/0898-5529(90)90156-3>`_
+* Open Babel (``-m obabel``): `Ref <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0372-5>`_ 
 
 Multiple aliphatic ring conformations are supported for RDKit and CORINA with the ``-nr`` flag.
 
@@ -346,6 +346,7 @@ As RDKit ETKDGv3 is based on distance geometry method, it may takes a long time 
 A modified version of `TorsionLibrary v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.2c00043>`_ is used to drive the generation of conformations. The modifications made and the full library can be obtained `here <https://github.com/phonglam3103/EirVS/blob/main/EirVS/Data/modified_tor_lib_2020.xml>`_. The number of conformers are controlled by the ``--numconfs`` or ``-nconfs`` flag. The default value is 2000, but it can be modified to any number. The program will sample the conformers based on the energy window (default: 25 kcal/mol) using the ``--energywindow`` or ``-w`` flag.
 
 Three sampling modes are supported (``--mode`` or ``-mode`` flag):
+
 * vs (virtual screening): each peak combination is only sampled once.
 * extensive: each peak combination is sampled multiple times. Two conformers are regarded distinct if they differ by at least 30 degrees in any dihedral angle.
 * ignoretorlib: the program will ignore the TorsionLibrary and sample every 60 degrees.
