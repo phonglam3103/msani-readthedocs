@@ -76,18 +76,17 @@ Help message
 
 .. code-block:: console
 
-    $ usage: eirvs [--input_files INPUT_FILES [INPUT_FILES ...]]
-             [--smiles SMILES [SMILES ...]] [--enamine] [--prefix PREFIX]
-             [--enrichment] [--synthon] [--removesalts] [--create_custom]
-             [--custom CUSTOM] [--unwanted [{all,regular,special,optional} ...]]
-             [--pains] [--ha HA] [--logp LOGP] [--hba HBA] [--hbd HBD] [--mw MW]
-             [--tautomers] [--stereoisomers] [--max_stereoisomers MAX_STEREOISOMERS]
-             [--protonation] [--pH PH] [--pH_range PH_RANGE] [--noneutralize]
-             [--notaurdkit] [--conformal] [--db2] [--corina] [--långben]
-             [--numconfs NUMCONFS] [--randomSeed RANDOMSEED] [--numcores NUMCORES]
-             [--timeout TIMEOUT] [--nocleanup] [--energywindow ENERGYWINDOW] [--pdbqt]
-             [--nringconfs NRINGCONFS] [--debug] [--lazy] [--help] [--timing]
-             [--version]
+    usage: eirvs [--input_files INPUT_FILES [INPUT_FILES ...]] [--smiles SMILES [SMILES ...]] [--enamine]
+             [--prefix PREFIX] [--synthon] [--removesalts] [--create_custom]
+             [--custom CUSTOM] [--unwanted [{all,regular,special,optional} ...]] [--pains] [--ha HA]
+             [--logp LOGP] [--hba HBA] [--hbd HBD] [--mw MW] [--chiral CHIRAL] [--tautomers]
+             [--stereoisomers] [--max_stereoisomers MAX_STEREOISOMERS] [--protonation] [--pH PH]
+             [--pH_range PH_RANGE] [--noneutralize] [--notaurdkit] [--standardize] [--gen3d]
+             [--format [{db2,db2.tgz,pdbqt,sdf,mol2} ...]] [--method {rdkit,obabel,corina}]
+             [--numconfs NUMCONFS] [--randomSeed RANDOMSEED] [--timeout TIMEOUT]
+             [--energywindow ENERGYWINDOW] [--rigid RIGID] [--nringconfs NRINGCONFS]
+             [--mode {vs,extensive,ignoretorlib}] [--tolerance TOLERANCE] [--nocleanup] [--debug]
+             [--lazy] [--numcores NUMCORES] [--help] [--timing] [--version]
 
     EirVS - A package to prepare SMILES databases
 
@@ -100,17 +99,15 @@ Help message
         eirvs -i example.smi --removesalts --pains --unwanted all --stereoisomers --protonation
         eirvs -i example.smi --pdbqt --logp "<=500" --hba "<=10" --hbd "<=5" --mw "<=500"
         eirvs -i example.smi --pains --unwanted regular optional --stereoisomers --protonation
-        eirvs -i example.smi --pains --unwanted all --stereoisomers --protonation --db2
-            
+        eirvs -i example.smi --pains --unwanted all --protonation -p 7 -r 1 --tautomers --stereoisomers --gen3d -f db2.tgz
+        
 
     Input and output options:
     --input_files, -i     Input files containing chemical structures
     --smiles, -s          Input SMILES strings
     --enamine, -e         Enamine input format (default: False)
     --prefix, -pre        Prefix for the output files. (defalt: input file name).
-    --enrichment, -n      Enrichment mode (do not put in db2.tgz files)
-    --synthon, -stn       Synthon mode (Additional metadata about the capping groups
-                            required)
+    --synthon, -stn       Synthon mode (Additional metadata about the capping groups required)
 
     Filtering options:
     Supported formats for descriptor-based filters (ha, logp, hba, hbd, mw):
@@ -120,60 +117,56 @@ Help message
         Exact match: Match a specific value (e.g., 17).
         For logP, the exact match format applies as 'less than or equal to'.
 
-    --removesalts         Remove salts from the structures. Small fragments within the
-                            same molecule are also removed.
+    --removesalts         Remove salts from the structures. Small fragments within the same molecule are
+                            also removed.
     --create_custom       Generate a template for customized substructure filtering.
-    --custom              Filter out unwanted substructures using a customized list. To
-                            generate an example list, use --create_custom.
-    --unwanted            Filter out unwanted substructures using the default list
-                            (options: all, regular, special, optional).
+    --custom              Filter out unwanted substructures using a customized list. To generate an
+                            example list, use --create_custom.
+    --unwanted            Filter out unwanted substructures using the default list (options: all,
+                            regular, special, optional).
     --pains               Remove PAINS violations from the structures.
-    --ha                  Retain only compounds with a specified number of heavy atoms.
-    --logp                Retain only compounds with a specified value of cLogP (UCSF
-                            format: cLogP 3.5->350).
-    --hba                 Retain only compounds with a specified number of hydrogen bond
-                            acceptors.
-    --hbd                 Retain only compounds with a specified number of hydrogen bond
-                            donors.
-    --mw                  Retain only compounds with a specified molecular weight.
+    --ha                  Filter by the number of heavy atoms.
+    --logp                Filter by the value of cLogP*100 (UCSF format: cLogP 3.5->350).
+    --hba                 Filter by the number of hydrogen bond acceptors.
+    --hbd                 Filter by the number of hydrogen bond donors.
+    --mw                  Filter by molecular weight.
+    --chiral              Filter by the number of UNSPECIFIED chiral centers.
 
     SMILES processing options:
     --tautomers, -tau     Tautomers enumeration
-    --stereoisomers, -ste Stereoisomers enumeration (only consider unspecified chiral
-                            centers)
+    --stereoisomers, -ste
+                            Stereoisomers enumeration (only consider unspecified chiral centers)
     --max_stereoisomers, -max_stereo
-                            Maximum number of stereoisomers to consider (default: 8 = 3
-                            stereocenters)
+                            Maximum number of stereoisomers to consider (default: 8 = 3 stereocenters)
     --protonation, -prot  Apply protonation to the structures
     --pH, -p              pH for the protonation (default: 7)
     --pH_range, -r        pH range for the protonation (default: 0)
     --noneutralize        Do not neutralize the molecule before tautomerization
-    --notaurdkit          Do not use RDKit to canonicalize the tautomeric form of the
-                            input SMILES
-    --conformal, -cp      Standardize structures for conformal predictors using RDKit
+    --notaurdkit          Do not use RDKit to canonicalize the tautomeric form of the input SMILES
+    --standardize, -std   Standardize structures for machine learning using RDKit
 
-    UCSF DOCK3.8 DB2 related options:
-    --db2, -db2           Generate conformers and stored in the DB2 format for DOCK 3.8
-    --corina, -c          Use Corina for 3D structure generation (default: False)
-    --långben, -igtor     Ignore the Torsion Library - generate every possible conformer
+    Generate 3D conformers options:
+    --gen3d, -3d          Generate 3D conformers
+    --format, -f          Output file format. Multiple formats simultaneously supported. (default: db2 -
+                            options: sdf, db2, db2.tgz, mol2, pdbqt.
+    --method, -m          Embedding method (default: rdkit - options: rdkit, obabel, corina)
     --numconfs, -nconfs   Maximum number of conformers to generate (default: 2000)
     --randomSeed, -rs     Seed for reproducibility (default: 42)
-    --numcores, -j        Number of cores to use for parallel processing (default: 4)
-    --timeout, -to        Timeout for the initial embedding for each SMILES entry before
-                            using OpenBabel in minutes (default: 2)
-    --nocleanup           Do not clean up the temporary files
+    --timeout, -to        Timeout for the initial embedding for each SMILES entry before using OpenBabel
+                            in minutes (default: 2)
     --energywindow, -w    Energy window for sampling the conformations (default: 25 kcal/mol)
-    --rigid               Only align the DB2 on this rigid scaffold in SMILES/SMARTS format. All 
-                            rings if not provided.
+    --rigid               Only align the DB2 on this rigid scaffold in SMILES/SMARTS format. All rings
+                            if not provided.
     --nringconfs, -nr     Maximum number of ring conformers to generate (default: 1)
-
-    AutoDock PDBQT related options:
-    --pdbqt, -pdbqt       Generate PDBQT files for AutoDock Vina and AutoDock4
-    --nringconfs, -nr     Maximum number of ring conformers to generate (default: 1)
+    --mode, -mode         Mode for generating conformers (default: vs (virtual screening) - options: vs,
+                            extensive, ignoretorlib)
+    --tolerance, -tol     Minimum angle for differentiating two conformers (default: 30)
+    --nocleanup           Do not clean up the temporary files
 
     Miscellaneous:
     --debug, -d           Enable debugging mode
     --lazy                Implement all the processing and preparation steps
+    --numcores, -j        Number of cores to use for parallel processing (default: 4)
     --help, -h            Show this help message and exit
     --timing              Time the process
     --version, -v         Show the current version of EirVS
@@ -192,7 +185,7 @@ To use the remove salts function, simply use the ``--removesalts`` flag. The pro
 
     $ eirvs -i example.smi --removesalts
 
-2. Tautomers standardization
+2. Tautomers enumeration
 ============================
 
 
@@ -202,7 +195,26 @@ The tautomers could be generated using the ``--tautomers`` flag. EirVS uses a tw
 
     $ eirvs -i example.smi --tautomers
 
-3. PAINS filtering
+3. Descriptor-based filtering
+============================
+
+The following descriptors are supported for filtering: heavy atoms (HA), logP, hydrogen bond acceptors (HBA), hydrogen bond donors (HBD), molecular weight (MW), and number chiral centers. The descriptors can be filtered using the following flags:
+``--ha``, ``--logp``, ``--hba``, ``--hbd``, ``--mw``, and ``--chiral``. The filtering can be done using the following formats:
+
+* Range: Specify a range using two values (e.g., "17-25").
+* Greater / Less than or equal to: Use >= or <= (e.g., ">=17", "<=25").
+* Greater than / Less than: Use > or < (e.g., ">17", "<25").
+* Exact match: Match a specific value (e.g., 17).
+* For logP, the exact match format applies as 'less than or equal to'.
+
+For example, to filter the logP values less than or equal to 3.5, use the following command:
+
+.. code-block:: console
+
+    $ eirvs -i example.smi --logp "<=3.5"
+
+
+4. PAINS filtering
 ===============
 
 Molecules that contain PAINS substructures can be efficiently eliminated using the ``--pains`` flag. The violated structures will be stored in the **_rejected** file.
@@ -221,9 +233,8 @@ Example of the **_rejected** output is as below:
     COCC1(CC(=O)NCc2cc(O)ccc2O)CC1                    Z2832180283   "PAINS violation: Mannich_a(296)"
     CCCCN(Cc1ccc(OS(=O)(=O)F)cc1)Cc1ccccc1O           Z4607533150   "PAINS violation: Mannich_a(296)"
 
-4. Unwanted substructures filtering
+5. Unwanted substructures filtering
 ============================
-
 
 Molecules that contain unwanted substructures can be efficiently eliminated using the ``--unwanted`` flag. EirVS uses an expert-curated list that contains undesirable substructures, accompanied by the reasons and references for filtering. The list can be obtained from `EirVS/Data/filter_out.csv <https://github.com/phonglam3103/EirVS/blob/main/EirVS/Data/filter_out.csv>`_.
 
@@ -249,7 +260,7 @@ The first two columns (SMARTS and LABEL) are required for the program to parse, 
     $ eirvs -i example.smi --custom templates.txt
     $ eirvs -i example.smi --unwanted all --custom templates.tsv
 
-5. Protonation
+6. Protonation
 ============================
 
 EirVS supports the assignment of protonation states at various pH values using the ``--protonation`` flag. By default, the pH is set to 7 (configurable via ``-p`` or ``--pH``), and the pH range is set to 0 (specified using ``-r`` or ``--range``). This configuration protonates molecules at a specific pH of 7. However, it is also possible to enumerate potential protonation states across a pH range. For instance, setting ``--range 2`` explores pH values within 7 ± 2. The program evaluates each pH value in the specified range and assigns the possible protonation states of the molecule at those pH levels. Only unique products are output to a file. Functional groups with multiple protonation possibilities (e.g., piperazine, amidine) are expanded, with an underscore (`_`) appended to their names to indicate variations.
@@ -272,7 +283,7 @@ The program employs SMARTS-based reactions to iteratively assign protonation sta
    O=C([O-])C1C2C(O)C2CN1C(=O)CN1CC[NH2+]CC1 mol4_2
 
 
-6. Stereoisomers enumeration
+7. Stereoisomers enumeration
 ============================
 
 
@@ -297,29 +308,26 @@ It is possible to define the maximum number of stereoisomers generated for each 
 
     $ eirvs -i example.smi --stereoisomers --max_stereoisomers 32
 
-7. DB2 generation for DOCK3.8
+8. Conformer generator
 ============================
 
+The conformer generator platform can be triggered using the ``--gen3d`` or ``-3d`` flag. The program by default use RDKit with `srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (small-ring ETKDGv3) method to generate the initial conformer. Other possible initial conformer generator supported are `CORINA <https://doi.org/10.1016/0898-5529(90)90156-3>`_ (``-m corina```) and `Open Babel <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0372-5>`_(``-m obabel``). As RDKit ETKDGv3 is based on distance geometry method, it may takes a long time to generate the initial conformer for some large molecules. In this case, the program will opt for the OpenBabel method, after the timeout (default: 2 minutes) is reached. The timeout can be modified using the ``--timeout`` flag.
 
-The DB2 format ready for docking using DOCK 3.8 can be obtained using the ``--db2`` flag. EirVS employs the `srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (small-ring ETKDGv3) method of RDKit to generate 10 or 100 initial conformations, which will be energy minimized using the `MMFF94s <https://doi.org/10.1186/s13321-014-0037-3>`_ forcefield. Some systematic error from the MMFF94s such as the non-planarity of the aromatic nitrogen atoms are fixed using a set of constraints. In cases when RDKit takes too long to embed the molecule (2 minutes), the new embedding method of `Open Babel <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0372-5>`_ will be used to generate the initial conformer. 
-
-It is now also possible to generate the initial conformation using CORINA by adding the ``--corina`` flag. The user is asked to add the path to CORINA program as well as can set the default behavior of the program to use CORINA every time in the configuration file.
-
-
-The energy-minimum conformer will then be used as the initial conformer for torsional sampling using the Monte Carlo (stochastic) method.
-
-The program employs AMSOL 7.1 for assigning the desolvation penalties and partial charges of the ligand's atoms. OpenBabel is used for the conversion of SDF and MOL2 format. 
-
-Finally, the information from the solvation file and the MOL2 file is aggregated using the `mol2db2.py <https://github.com/ryancoleman/mol2db2>`_ program.
+The program employs AMSOL 7.1 for assigning the desolvation penalties and partial charges of the ligand's atoms. Finally, the information from the solvation file and the MOL2 file is aggregated using the `mol2db2.py <https://github.com/ryancoleman/mol2db2>`_ program.
 
 A modified version of `TorsionLibrary v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.2c00043>`_ is used to drive the generation of conformations. The modifications made and the full library can be obtained `here <https://github.com/phonglam3103/EirVS/blob/main/EirVS/Data/modified_tor_lib_2020.xml>`_.
 
+
+Multiple output formats are now supported, including DB2, PDBQT, SDF, and MOL2. The default output format is DB2, which could be modified by the ``--format`` or ``-f`` flag. Multiple formats at the same time is supported.
+
 .. code-block:: console
 
-    $ eirvs -i example.smi --protonation --stereoisomers --db2
+    $ eirvs -i example.smi --protonation --stereoisomers -3d -f db2  # Generate DB2 files
+    $ eirvs -i example.smi --tautomers --protonation --stereoisomers -3d -f sdf pdbqt #Generate SDF and PDBQT files
 
-It is possible to define the maximum number of conformers generated by EirVS using the ``-nconfs`` or ``--numconfs`` flag (default: 2000). By default, the intermediate files (such as files for solvation and generation of initial conformations) are deleted. To prevent this, use the ``--nocleanup`` flag. The user is also able to define the timeout for the RDKit embedding using the ``--timeout`` flag (default: 2 minutes).
+It is possible to define the maximum number of conformers generated by EirVS using the ``-nconfs`` or ``--numconfs`` flag (default: 2000). By default, the intermediate files (such as files for solvation and generation of initial conformations) are deleted. To prevent this, use the ``--nocleanup`` flag. 
 
+In several cases where the sampling is not sufficient for the molecules with a low number of rotatable bonds or fragments, it is possible to use the ``--mode extensive`` for sampling using the angle tolerance. The two conformers are regarded different if they have at least one dihedral differ at least 30 degrees. The tolerance can be modified using the ``--tolerance`` flag (default: 30 degrees). The default mode is ``--mode vs``, stands for virtual screening as we found that the mode work quite well for the DUDE-Z benchmark set. Other ``--mode`` options are ``--mode ignoretorlib``, which ignores the torsion library and generates all possible conformers. Use with caution.
 
 Running in batch mode
 *********************
