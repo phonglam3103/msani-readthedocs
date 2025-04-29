@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  New ‘extensive’ method, allowing for sampling of the same peak more
+   than once. This is specially useful for molecules with small degree
+   of freedom like fragments. Trigger via ‘-mode extensive’. -
+   (`cd50ff9 <https://github.com/phonglam3103/EirVS/commit/cd50ff984f32b5d26e51612f30d8fa778836f51b>`__)
 -  New filter by the number of unspecified chiral centers. -
    (`f1654a8 <https://github.com/phonglam3103/EirVS/commit/f1654a8a6c09984d2661c1bee82f586636572f5f>`__)
 -  Expose numcores to smi2db2. This can help to speed up the initial
