@@ -311,23 +311,58 @@ It is possible to define the maximum number of stereoisomers generated for each 
 8. Conformer generator
 ============================
 
-The conformer generator platform can be triggered using the ``--gen3d`` or ``-3d`` flag. The program by default use RDKit with `srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (small-ring ETKDGv3) method to generate the initial conformer. Other possible initial conformer generator supported are `CORINA <https://doi.org/10.1016/0898-5529(90)90156-3>`_ (``-m corina```) and `Open Babel <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0372-5>`_(``-m obabel``). As RDKit ETKDGv3 is based on distance geometry method, it may takes a long time to generate the initial conformer for some large molecules. In this case, the program will opt for the OpenBabel method, after the timeout (default: 2 minutes) is reached. The timeout can be modified using the ``--timeout`` flag.
+The following supported flags:
 
-The program employs AMSOL 7.1 for assigning the desolvation penalties and partial charges of the ligand's atoms. Finally, the information from the solvation file and the MOL2 file is aggregated using the `mol2db2.py <https://github.com/ryancoleman/mol2db2>`_ program.
+.. code-block:: console
 
-A modified version of `TorsionLibrary v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.2c00043>`_ is used to drive the generation of conformations. The modifications made and the full library can be obtained `here <https://github.com/phonglam3103/EirVS/blob/main/EirVS/Data/modified_tor_lib_2020.xml>`_.
+    Generate 3D conformers options:
+    --gen3d, -3d          Generate 3D conformers
+    --format, -f          Output file format. Multiple formats simultaneously supported.
+                            (Default: db2 - Options: sdf, db2, db2.tgz, mol2, pdbqt.)
+    --method, -m          Embedding method (default: rdkit - options: rdkit, obabel, corina)
+    --numconfs, -nconfs   Maximum number of conformers to generate (default: 2000)
+    --randomSeed, -rs     Seed for reproducibility (default: 42)
+    --timeout, -to        Timeout for the initial embedding for each SMILES entry before using OpenBabel
+                            (Default: 2 minutes)
+    --energywindow, -w    Energy window for sampling the conformations (default: 25 kcal/mol)
+    --rigid               Only align the DB2 on this rigid scaffold in SMILES/SMARTS format. All rings if not provided.
+    --nringconfs, -nr     Maximum number of ring conformers to generate (default: 1)
+    --mode, -mode         Mode for generating conformers
+                            Default: vs (virtual screening) - Options: vs, extensive, ignoretorlib
+    --tolerance, -tol     Minimum angle for differentiating two conformers (default: 30)
+    --nocleanup           Do not clean up the temporary files
+
+
+The conformer generator platform can be triggered using the ``--gen3d`` or ``-3d`` flag. The program by default use RDKit with `srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (small-ring ETKDGv3) method to generate the initial conformer. 
+
+Three initial embeeder are supported (``-m`` or ``--method`` flag):
+
+* `RDKit srETKDG-v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.0c00025>`_ (default) 
+* `CORINA <https://doi.org/10.1016/0898-5529(90)90156-3>`_ (``-m corina``) 
+* `Open Babel <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0372-5>`_ (``-m obabel``)
+
+Multiple aliphatic ring conformations are supported for RDKit and CORINA with the ``-nr`` flag.
+
+As RDKit ETKDGv3 is based on distance geometry method, it may takes a long time to generate the initial conformer for some large molecules. In this case, the program will opt for the OpenBabel method, after the timeout (default: 2 minutes) is reached. The timeout can be modified using the ``--timeout`` flag. 
+
+A modified version of `TorsionLibrary v3 <https://pubs.acs.org/doi/10.1021/acs.jcim.2c00043>`_ is used to drive the generation of conformations. The modifications made and the full library can be obtained `here <https://github.com/phonglam3103/EirVS/blob/main/EirVS/Data/modified_tor_lib_2020.xml>`_. The number of conformers are controlled by the ``--numconfs`` or ``-nconfs`` flag. The default value is 2000, but it can be modified to any number. The program will sample the conformers based on the energy window (default: 25 kcal/mol) using the ``--energywindow`` or ``-w`` flag.
+
+Three sampling modes are supported (``--mode`` or ``-mode`` flag):
+
+* vs (virtual screening): each peak combination is only sampled once.
+* extensive: each peak combination is sampled multiple times. Two conformers are regarded distinct if they differ by at least 30 degrees in any dihedral angle.
+* ignoretorlib: the program will ignore the TorsionLibrary and sample every 60 degrees.
 
 
 Multiple output formats are now supported, including DB2, PDBQT, SDF, and MOL2. The default output format is DB2, which could be modified by the ``--format`` or ``-f`` flag. Multiple formats at the same time is supported.
+
+For DB2 generation, the program employs AMSOL 7.1 for assigning the desolvation penalties and partial charges of the ligand's atoms. Finally, the information from the solvation file and the MOL2 file is aggregated using the `mol2db2.py <https://github.com/ryancoleman/mol2db2>`_ program.
 
 .. code-block:: console
 
     $ eirvs -i example.smi --protonation --stereoisomers -3d -f db2  # Generate DB2 files
     $ eirvs -i example.smi --tautomers --protonation --stereoisomers -3d -f sdf pdbqt #Generate SDF and PDBQT files
 
-It is possible to define the maximum number of conformers generated by EirVS using the ``-nconfs`` or ``--numconfs`` flag (default: 2000). By default, the intermediate files (such as files for solvation and generation of initial conformations) are deleted. To prevent this, use the ``--nocleanup`` flag. 
-
-In several cases where the sampling is not sufficient for the molecules with a low number of rotatable bonds or fragments, it is possible to use the ``--mode extensive`` for sampling using the angle tolerance. The two conformers are regarded different if they have at least one dihedral differ at least 30 degrees. The tolerance can be modified using the ``--tolerance`` flag (default: 30 degrees). The default mode is ``--mode vs``, stands for virtual screening as we found that the mode work quite well for the DUDE-Z benchmark set. Other ``--mode`` options are ``--mode ignoretorlib``, which ignores the torsion library and generates all possible conformers. Use with caution.
 
 Running in batch mode
 *********************
