@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  New tautomerization rules version 3 with improved performance. -
+   (`cc9b224 <https://github.com/phonglam3103/EirVS/commit/cc9b2244f4c307456fa0b1c0bafdf2cc6d67ee1c>`__)
 -  New ‘extensive’ method, allowing for sampling of the same peak more
    than once. This is specially useful for molecules with small degree
    of freedom like fragments. Trigger via ‘-mode extensive’. -
