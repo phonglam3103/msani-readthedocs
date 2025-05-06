@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🚀 Features
 
+- Make CLI for confgen - ([741ec82](https://github.com/phonglam3103/EirVS/commit/741ec82b0753fd0985d690e74e78ed16337b52ef))
 - Incorporate molvs tautomer enumerator into tautomerizer. This allows us more freedom to modify the scoring function. - ([0416ce3](https://github.com/phonglam3103/EirVS/commit/0416ce35caa865d0a4ce7023a68e0a23a06453f0))
 - New tautomerization rules version 3 with improved performance. - ([cc9b224](https://github.com/phonglam3103/EirVS/commit/cc9b2244f4c307456fa0b1c0bafdf2cc6d67ee1c))
 - New 'extensive' method, allowing for sampling of the same peak more than once. This is specially useful for molecules with small degree of freedom like fragments. Trigger via '-mode extensive'. - ([cd50ff9](https://github.com/phonglam3103/EirVS/commit/cd50ff984f32b5d26e51612f30d8fa778836f51b))
@@ -19,6 +20,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes
 
+- Fallback to RDKit tautomerizer with the customized scoring function. Now it requires that the RDKit version over 2024.9.3 to run the tautomerizer. - ([1f9ae46](https://github.com/phonglam3103/EirVS/commit/1f9ae463241dc165f05fa62149f823f3b532504b))
 - Better defined the planarity of non-aromatic 6-membered rings and cleaned up the SMARTS patterns - ([fa3d1c5](https://github.com/phonglam3103/EirVS/commit/fa3d1c50dc0e8870c9d4e7e1ca14ac1825ba92c9))
 - Fix a bug in the batchmode happening when take input files from the other directory than the working one. - ([6043b3a](https://github.com/phonglam3103/EirVS/commit/6043b3a5912e7f486c405a25618ce89cf2a83d9a))
 - Canonicalize the given --rigid flag if possible to find the correct ring. - ([4063713](https://github.com/phonglam3103/EirVS/commit/40637135b3cac9ff5cdfd990abadfcb39df606d2))
