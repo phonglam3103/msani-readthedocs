@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Make CLI for confgen -
+   (`741ec82 <https://github.com/phonglam3103/EirVS/commit/741ec82b0753fd0985d690e74e78ed16337b52ef>`__)
 -  Incorporate molvs tautomer enumerator into tautomerizer. This allows
    us more freedom to modify the scoring function. -
    (`0416ce3 <https://github.com/phonglam3103/EirVS/commit/0416ce35caa865d0a4ce7023a68e0a23a06453f0>`__)
@@ -41,6 +43,10 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fallback to RDKit tautomerizer with the customized scoring function.
+   Now it requires that the RDKit version over 2024.9.3 to run the
+   tautomerizer. -
+   (`1f9ae46 <https://github.com/phonglam3103/EirVS/commit/1f9ae463241dc165f05fa62149f823f3b532504b>`__)
 -  Better defined the planarity of non-aromatic 6-membered rings and
    cleaned up the SMARTS patterns -
    (`fa3d1c5 <https://github.com/phonglam3103/EirVS/commit/fa3d1c50dc0e8870c9d4e7e1ca14ac1825ba92c9>`__)
