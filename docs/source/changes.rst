@@ -43,6 +43,8 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fix a bug that cannot produce small aliphatic compounds. -
+   (`4f67f20 <https://github.com/phonglam3103/EirVS/commit/4f67f203dcbbed606cdbc160a532399cfa60a982>`__)
 -  Corrections to barbiturates and hydantoin-like structures planarity -
    (`f204ccc <https://github.com/phonglam3103/EirVS/commit/f204ccc4bd6923dee5cb0fa63d14020cd88531cd>`__)
 -  Fallback to RDKit tautomerizer with the customized scoring function.
