@@ -6,8 +6,8 @@ project = 'EirVS'
 copyright = "2024, Carlsson's Lab, Uppsala University"
 author = 'Phong Lam, Szymon Pach, Israel Cabeza de Vaca, Ruth Brenk, Jens Carlsson'
 
-release = '0.2.3'
-version = '0.2.3'
+release = '0.3.0'
+version = '0.3.0'
 
 # -- General configuration
 
