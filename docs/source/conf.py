@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'EirVS'
+project = 'MolSanitizer'
 copyright = "2024, Carlsson's Lab, Uppsala University"
 author = 'Phong Lam, Szymon Pach, Israel Cabeza de Vaca, Ruth Brenk, Jens Carlsson'
 

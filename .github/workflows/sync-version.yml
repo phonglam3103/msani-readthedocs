@@ -24,7 +24,7 @@ jobs:
       env:
         TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       run: |
-        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/eirvs-readthedocs.git
+        git clone https://x-access-token:${TOKEN}@github.com/phonglam3103/msani-readthedocs.git
 
     - name: Update conf.py with the latest tag
       run: |

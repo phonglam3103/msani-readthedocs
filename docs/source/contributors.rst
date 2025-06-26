@@ -5,7 +5,7 @@ Contributors
 Development
 ~~~~~~~~~~~
 
-The following have contributed by writing and/or designing the code base of EirVS.
+The following have contributed by writing and/or designing the code base of MolSanitizer.
 
 Current team
 ------------
@@ -13,6 +13,7 @@ Current team
 * Phong Lam, phong.lam@icm.uu.se (maintainer)
 * Szymon Pach, szymon.pach@icm.uu.se
 * Israel Cabeza de Vaca Lopez, israel.cabezadevaca@icm.uu.se
+* Philip Ullmann, philip.ullmann@icm.uu.se
 
 All developers past and present
 -------------------------------
@@ -20,6 +21,7 @@ All developers past and present
 * Phong Lam
 * Szymon Pach
 * Israel Cabeza de Vaca Lopez
+* Philip Ullmann
 * Ruth Brenk
 
 Scientific input
