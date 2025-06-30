@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  More general approach for reducing redundant symmetric rotations
+   using graph traversing method. -
+   (`263a452 <https://github.com/phonglam3103/EirVS/commit/263a4521847b27dd32973c7f4e6ee15d9b97148f>`__)
 -  Allow the modification of Dielectric constant from the CLI and the
    API -
    (`d978f58 <https://github.com/phonglam3103/EirVS/commit/d978f58781fd03389f05d9111063340b8a082fb4>`__)
