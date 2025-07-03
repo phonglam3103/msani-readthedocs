@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Updated ionizer so that more probable (de)protonation sites get
+   (de)protonated first (eg. guanidines > amines > imidazoles) -
+   (`b66bed6 <https://github.com/phonglam3103/EirVS/commit/b66bed6cec9001cfed513a09297b16a42f29a225>`__)
 -  More general approach for reducing redundant symmetric rotations
    using graph traversing method. -
    (`263a452 <https://github.com/phonglam3103/EirVS/commit/263a4521847b27dd32973c7f4e6ee15d9b97148f>`__)
