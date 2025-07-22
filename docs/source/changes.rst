@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Support the extraction of the protonation/tautomerization rules and
+   allow the use of customized transformation rules. -
+   (`85a10ba <https://github.com/phonglam3103/MolSanitizer/commit/85a10ba4fd682f6f88a3d858232da19d384d7710>`__)
+-  Hide advanced options in the help text by default, enabled by the -xh
+   or –help_advanced flag. -
+   (`a11c1de <https://github.com/phonglam3103/MolSanitizer/commit/a11c1dec3b6fdafff227db3de23ea66c2c1340bd>`__)
 -  Updated ionizer so that more probable (de)protonation sites get
    (de)protonated first (eg. guanidines > amines > imidazoles) -
    (`b66bed6 <https://github.com/phonglam3103/MolSanitizer/commit/b66bed6cec9001cfed513a09297b16a42f29a225>`__)
