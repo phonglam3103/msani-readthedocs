@@ -24,6 +24,7 @@ The compiled version contains of the full functionality of MolSanitizer, includi
 By default, the help message of MolSanitizer will only produce basic options, but could be extended by using the ``--advanced_help`` flag, where the user can find options to create and run customized rule libraries like:
 
 .. code-block:: console
+    
     ./msani --advanced_help
 
     Miscellaneous:
@@ -37,6 +38,7 @@ By default, the help message of MolSanitizer will only produce basic options, bu
     --create_taulib       Create a template for customized tautomerization scheme
     --protlib             Path to the protonation library file (default: msani/Data/ionizations_v3.txt).
     --taulib              Path to the tautomer library file (default:  msani/Data/tautomers_v3.txt).
+
 
 The ``--create_protlib`` and ``--create_taulib`` options will extract the currently compiled protonation and tautomerization libraries, respectively, for the user to customize. The user can then modify the libraries and use them with the ``--protlib`` and ``--taulib`` options.
 
