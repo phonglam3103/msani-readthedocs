@@ -37,10 +37,7 @@ The **Ionizer** class is responsible for handling the ionization of molecules. I
     from rdkit import Chem
     from msani.moltransform.ionizer import Ionizer
 
-    ionizer = Ionizer(pH = 7, 
-                      smartsFile = None, # leave as None to use the default ionization library
-                      pH_range = 0, 
-                      num_cores = 1)
+    ionizer = Ionizer(pH = 7, pH_range = 0, num_cores = 1)
     #ionize a single molecule from SMILES string:\n
     results = ionizer.ionize(smiles = 'CCc1ccc(CCOc2ccc(CC3SC(=O)NC3=O)cc2)nc1')
 
@@ -61,7 +58,7 @@ The **Tautomerizer** class is responsible for generating tautomers of molecules.
     from rdkit import Chem
     from msani.moltransform.tautomerizer import Tautomerizer
 
-    tautomerizer = Tautomerizer(numcores= 4, neutralize= False)
+    tautomerizer = Tautomerizer(numcores= 4)
     #Tautomerize a molecule from a SMILES
     tautomers = tautomerizer.tautomerize(smiles='c1ccccc1O')
 
@@ -81,24 +78,20 @@ The **Filters** class provides methods for applying various filters to molecules
 .. code-block:: python
 
     from msani.filtering.filters import Filters
-    filters = Filters(removesalts=True,
-                            ha='>=5',
-                            logp='<=3.5',
-                            hba='1-3',
-                            hbd='1-2',
-                            mw='200-500',
-                            chiral='0-2',
-                            custom='path/to/custom.smarts',
-                            unwanted=['regular'],
-                            pains=True,
-                            rejectedFile='rejected.txt',
-                            debug=True)
+    # Unused arguments could be removed, but kept for clarity
+    filters = Filters(removesalts=True, ha='>=5',
+                      logp='<=3.5', hba='1-3',
+                      hbd='1-2', mw='200-500',
+                      chiral='0-2', custom='path/to/custom.smarts',
+                      unwanted=['regular'], pains=True,
+                      rejectedFile='rejected.txt', debug=True)
 
     filtered_df = filters.filter_df(df)
     
-the Filters class also has multiple static methods that can be used independently:\n
+the Filters class also has multiple static methods that can be used independently:
 
 .. code-block:: python
+
     import pandas as pd
     from msani.filtering.filters import Filters
 
