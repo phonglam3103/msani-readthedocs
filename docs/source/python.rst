@@ -37,7 +37,7 @@ The **Ionizer** class is responsible for handling the ionization of molecules. I
     from rdkit import Chem
     from msani.moltransform.ionizer import Ionizer
 
-    ionizer = Ionizer(pH = 7, pH_range = 0, num_cores = 1)
+    ionizer = Ionizer(pH = 7, pH_range = 0, numcores = 4)
     #ionize a single molecule from SMILES string:\n
     results = ionizer.ionize(smiles = 'CCc1ccc(CCOc2ccc(CC3SC(=O)NC3=O)cc2)nc1')
 
