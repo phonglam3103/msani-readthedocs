@@ -24,8 +24,8 @@ The compiled version contains of the full functionality of MolSanitizer, includi
 By default, the help message of MolSanitizer will only produce basic options, but could be extended by using the ``--advanced_help`` flag, where the user can find options to create and run customized rule libraries like:
 
 .. code-block:: console
-    
-    ./msani --advanced_help
+
+    $./msani --advanced_help
 
     Miscellaneous:
     --debug, -d           Enable debugging mode
