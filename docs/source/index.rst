@@ -30,7 +30,8 @@ Contents
 .. toctree::
    :maxdepth: 1
    :caption: Advanced Topics
-
+   
    changes
+   python
    evaluation
    contributors
