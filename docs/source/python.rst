@@ -38,14 +38,14 @@ The **Ionizer** class is responsible for handling the ionization of molecules. I
     from msani.moltransform.ionizer import Ionizer
 
     ionizer = Ionizer(pH = 7, pH_range = 0, numcores = 4)
-    #ionize a single molecule from SMILES string:\n
+    #ionize a single molecule from SMILES string:
     results = ionizer.ionize(smiles = 'CCc1ccc(CCOc2ccc(CC3SC(=O)NC3=O)cc2)nc1')
 
-    #ionize a single molecule from RDKit Mol object:\n
+    #ionize a single molecule from RDKit Mol object:
     mol = Chem.MolFromSmiles('CCc1ccc(CCOc2ccc(CC3SC(=O)NC3=O)cc2)nc1')
     results = ionizer.ionize(mol = mol)
 
-    #ionize a DataFrame of molecules with SMILES strings:\n
+    #ionize a DataFrame of molecules with SMILES strings:
     df = df = ionizer.ionize_df(mol_df)
 
 Tautomerizer
@@ -113,5 +113,26 @@ ConformerGenerator
 
 The **ConformerGenerator** class is responsible for generating conformers of molecules. It provides methods to generate conformers from a SMILES string, from RDKit Mol object, or a DataFrame. The conformer generation process can be customized by specifying the number of conformers to generate and the conformer generation method to use.
 
-Two main steps are involved, first, initial embedding of the molecule (generate 3D), then torsional sampling.
+Two main steps are involved, first, initial embedding of the molecule (generate 3D), then torsional sampling. Finally, the conformers can be saved in various formats such as PDBQT, SDF, MOL2, or DB2.
 
+.. code-block:: python
+
+    from msani.conformers.conformers import ConformerGenerator
+
+    smiles = 'CC(=O)C1=CC=CC=C1C(=O)O'
+    name = 'test'
+
+    # Initial embedding of the molecule
+    confgen = ConformerGenerator(smiles = smiles,
+                                 name =  name, 
+                                 method = 'rdkit', # Options: 'rdkit', 'openbabel', 'corina'
+                                 )
+
+    # Torsional driving
+    confgen.conf_sampling(numConfs=2000, energywindow=25)
+
+    # Save conformers to different formats
+    confgen.to_pdbqt()
+    confgen.to_sdf()
+    confgen.to_mol2()
+    confgen.to_db2()
