@@ -4,7 +4,7 @@ Usage
 Preparing the input file
 ************************
 
-The program requires a white-space or tab-delimited file containing two columns (SMILES, moleculeID) without headers. The program also supports the Enamine file format by the added `-e` or `--enamine` flag.
+The program requires a white-space or tab-delimited file containing two columns (SMILES, moleculeID) without headers. 
 
 .. code-block:: console
    
@@ -14,6 +14,12 @@ The program requires a white-space or tab-delimited file containing two columns 
    c1c(coc1Br)C(=O)NC2CCSC2  CP000001645677
    c1c(c([nH]n1)C(=O)NCC2(CC2)N)Br  CP000001647414
 
+Extended SMILES is supported (by the `-e` or `--extended` flag, but the database needs to be tab-separated.
+
+.. code-block:: console
+    CC[C@H]1[C@H](C(=O)N[C@H](C)CCCC(=O)NOCC(F)(F)F)CCN1C |&1:2,3|	Cmp0001
+    CCC(CC(=O)N(CC)CCC(=O)N1CCO[C@H]2COC[C@H]21)C(F)F |&1:17,21|	Cmp0002
+    CC(C)CC(CNC(=O)C1CSC1)C(=O)N[C@H]1C[C@@H](O)[C@H](F)C1 |&1:16,18,20|	Cmp0003
 
 Overview
 ************************
@@ -52,7 +58,7 @@ Below is the default configuration file:
 .. code-block:: yaml
     
     #===============SINGLE MODE================
-    USE_CORINA: False
+    EMBED_METHOD: 'rdkit' # choose from 'rdkit', 'obabel', 'corina'
     CORINA: '/proj/carlssonlab/corina/corina-4.2/corina'
     ENERGY_WINDOW: 25
     NUMCONFS: 2000
@@ -69,6 +75,7 @@ Below is the default configuration file:
     MAX_JOBS: 1000
     MAX_LIMIT_PROJECT: 5000
 
+
 Help message
 ************
 
@@ -76,9 +83,9 @@ Help message
 
 .. code-block:: console
 
-    usage: msani [--input_files INPUT_FILES [INPUT_FILES ...]] [--smiles SMILES [SMILES ...]] [--enamine]
-             [--prefix PREFIX] [--synthon] [--removesalts] [--create_custom]
-             [--custom CUSTOM] [--unwanted [{all,regular,special,optional} ...]] [--pains] [--ha HA]
+    usage: msani [--input_files INPUT_FILES [INPUT_FILES ...]] [--smiles SMILES [SMILES ...]] [--extended]
+             [--prefix PREFIX] [--synthon] [--removesalts] [--create_custom] [--custom CUSTOM] 
+             [--unwanted [{all,regular,special,optional} ...]] [--pains] [--ha HA]
              [--logp LOGP] [--hba HBA] [--hbd HBD] [--mw MW] [--chiral CHIRAL] [--tautomers]
              [--stereoisomers] [--max_stereoisomers MAX_STEREOISOMERS] [--protonation] [--pH PH]
              [--pH_range PH_RANGE] [--noneutralize] [--notaurdkit] [--standardize] [--gen3d]
@@ -105,71 +112,59 @@ Help message
     Input and output options:
     --input_files, -i     Input files containing chemical structures
     --smiles, -s          Input SMILES strings
-    --enamine, -e         Enamine input format (default: False)
+    --extended, -e        Extended SMILES reading (tab-separated files supported only) (default: False)
     --prefix, -pre        Prefix for the output files. (defalt: input file name).
     --synthon, -stn       Synthon mode (Additional metadata about the capping groups required)
 
     Filtering options:
-    Supported formats for descriptor-based filters (ha, logp, hba, hbd, mw):
+    Supported formats for descriptor-based filters (ha, logp, hba, hbd, mw, chiral):
         Range: Specify a range using two values (e.g., "17-25").
         Greater / Less than or equal to: Use >= or <= (e.g., ">=17", "<=25").
         Greater than / Less than: Use > or < (e.g., ">17", "<25").
         Exact match: Match a specific value (e.g., 17).
         For logP, the exact match format applies as 'less than or equal to'.
+        
+        Use --ha, --logp, --hba, --hbd, --mw, --chiral to apply these filters.
 
-    --removesalts         Remove salts from the structures. Small fragments within the same molecule are
-                            also removed.
+    --removesalts         Remove salts from the structures.
+                            Small fragments within the same molecule are also removed.
     --create_custom       Generate a template for customized substructure filtering.
-    --custom              Filter out unwanted substructures using a customized list. To generate an
-                            example list, use --create_custom.
-    --unwanted            Filter out unwanted substructures using the default list (options: all,
-                            regular, special, optional).
+    --custom              Filter out unwanted substructures using a customized list.
+                            To generate an example list, use --create_custom.
+    --unwanted            Filter out unwanted substructures using the default list
+                            (Options: all, regular, special, optional).
     --pains               Remove PAINS violations from the structures.
-    --ha                  Filter by the number of heavy atoms.
-    --logp                Filter by the value of cLogP*100 (UCSF format: cLogP 3.5->350).
-    --hba                 Filter by the number of hydrogen bond acceptors.
-    --hbd                 Filter by the number of hydrogen bond donors.
-    --mw                  Filter by molecular weight.
-    --chiral              Filter by the number of UNSPECIFIED chiral centers.
 
     SMILES processing options:
     --tautomers, -tau     Tautomers enumeration
-    --stereoisomers, -ste
-                            Stereoisomers enumeration (only consider unspecified chiral centers)
-    --max_stereoisomers, -max_stereo
-                            Maximum number of stereoisomers to consider (default: 8 = 3 stereocenters)
+    --stereoisomers, -ste Stereoisomers enumeration (only consider unspecified chiral centers)
+    --max_stereoisomers, -ms
+                          Maximum number of stereoisomers to consider (default: 8
     --protonation, -prot  Apply protonation to the structures
     --pH, -p              pH for the protonation (default: 7)
     --pH_range, -r        pH range for the protonation (default: 0)
-    --noneutralize        Do not neutralize the molecule before tautomerization
-    --notaurdkit          Do not use RDKit to canonicalize the tautomeric form of the input SMILES
     --standardize, -std   Standardize structures for machine learning using RDKit
 
     Generate 3D conformers options:
     --gen3d, -3d          Generate 3D conformers
-    --format, -f          Output file format. Multiple formats simultaneously supported. (default: db2 -
-                            options: sdf, db2, db2.tgz, mol2, pdbqt.
+    --format, -f          Output file format. Multiple formats simultaneously supported.
+                            (Default: db2.tgz - Options: sdf, db2, db2.tgz, mol2, pdbqt.)
     --method, -m          Embedding method (default: rdkit - options: rdkit, obabel, corina)
     --numconfs, -nconfs   Maximum number of conformers to generate (default: 2000)
-    --randomSeed, -rs     Seed for reproducibility (default: 42)
     --timeout, -to        Timeout for the initial embedding for each SMILES entry before using OpenBabel
-                            in minutes (default: 2)
+                            Default: 2 minutes
     --energywindow, -w    Energy window for sampling the conformations (default: 25 kcal/mol)
-    --rigid               Only align the DB2 on this rigid scaffold in SMILES/SMARTS format. All rings
-                            if not provided.
     --nringconfs, -nr     Maximum number of ring conformers to generate (default: 1)
-    --mode, -mode         Mode for generating conformers (default: vs (virtual screening) - options: vs,
-                            extensive, ignoretorlib)
-    --tolerance, -tol     Minimum angle for differentiating two conformers (default: 30)
-    --nocleanup           Do not clean up the temporary files
+    --mode, -mode         Mode for generating conformers
+                            Default: fixed - Options: fixed, random, ignoretorlib
+    --allowNonring        Allow the full sampling of non-ring compounds (default undersample to 30 confs).
 
     Miscellaneous:
-    --debug, -d           Enable debugging mode
     --lazy                Implement all the processing and preparation steps
     --numcores, -j        Number of cores to use for parallel processing (default: 4)
     --help, -h            Show this help message and exit
-    --timing              Time the process
-    --version, -v         Show the current version of msani
+    --help_advanced, -xh  Show advanced help message with additional options
+    --version, -v         Show the current version of MolSanitizer
 
 Available filters and preparation steps
 ***************************************
