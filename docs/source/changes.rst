@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Allow the definition of custom torsions ``-tor`` or ``--torsion``
+   flags. Use ``--create_torsion`` to create a template. -
+   (`875d1e9 <https://github.com/phonglam3103/MolSanitizer/commit/875d1e928b6f59eccba8dc238132a37e30b58a03>`__)
 -  New flags supported: –extended for extended SMILES supports, –torsion
    for customized torsion definitions. -
    (`7d6b4fd <https://github.com/phonglam3103/MolSanitizer/commit/7d6b4fd89cc0a950609e788aac95ba62ca65f351>`__)
@@ -54,6 +57,9 @@ All notable changes to this project will be documented in this file.
 🚜 Refactor
 ~~~~~~~~~~~
 
+-  Refactored Torlib and SrLib into classes that can accept or add
+   customized rules, supporting the customized rules. -
+   (`c0fd9a4 <https://github.com/phonglam3103/MolSanitizer/commit/c0fd9a40ac4b53999c94e31f1aa5b95be2058482>`__)
 -  Updated imports according to PEP8 -
    (`bc857fb <https://github.com/phonglam3103/MolSanitizer/commit/bc857fbf34d23f23e413e96bc606cd7083e5bf95>`__)
 -  Change the name back to MolSanitizer -
