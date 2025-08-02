@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Don’t enumerate sulfonamides with non-puckering N and merged the
+   flippable Cs SMARTS. -
+   (`56b518f <https://github.com/phonglam3103/MolSanitizer/commit/56b518f49a78416971e213764461ac6ceb818022>`__)
 -  Allow the definition of custom torsions ``-tor`` or ``--torsion``
    flags. Use ``--create_torsion`` to create a template. -
    (`875d1e9 <https://github.com/phonglam3103/MolSanitizer/commit/875d1e928b6f59eccba8dc238132a37e30b58a03>`__)
