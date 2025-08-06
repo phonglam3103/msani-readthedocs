@@ -9,6 +9,13 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  The customized torsion definition will first try to replace the
+   existing ones in the Torlib first before putting it in the top of the
+   priority. This aims to ensure that the customized definitions would
+   not overwrite the hierrarchy of the Torlib match. -
+   (`a763293 <https://github.com/phonglam3103/MolSanitizer/commit/a76329330b127b66e9ab93040ddd737b11a5d426>`__)
+-  Added new small ring entries and modified cycloheptadiene entries -
+   (`a9823be <https://github.com/phonglam3103/MolSanitizer/commit/a9823be385d2751774eaf5fdd79a5b4fa0996e7a>`__)
 -  Don’t enumerate sulfonamides with non-puckering N and merged the
    flippable Cs SMARTS. -
    (`56b518f <https://github.com/phonglam3103/MolSanitizer/commit/56b518f49a78416971e213764461ac6ceb818022>`__)
