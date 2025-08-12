@@ -53,6 +53,9 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fix #20, “‘list’ object has no attribute ‘update’” in ionizer. This
+   should not crash the whole program. -
+   (`e8ddca9 <https://github.com/phonglam3103/MolSanitizer/commit/e8ddca91c79b7f7f9996f6e9562edcef88911d31>`__)
 -  Trials to neutralize molecules breaking aromaticity should not fail
    now -
    (`5b07800 <https://github.com/phonglam3103/MolSanitizer/commit/5b0780016ff29bd0229ca654c6aa28b4f2f335d8>`__)
