@@ -9,6 +9,14 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  SMILES strings with name are now supported (for example: msani -s ‘CN
+   methylamine’ -prot). Multiple SMILES strings once is also supported
+   (msani -s ‘CO methanol’ ‘CCCC’) -
+   (`5ab2842 <https://github.com/phonglam3103/MolSanitizer/commit/5ab2842697d748cad58cc2698febee32e8132c0c>`__)
+-  Supports the parsing of CLI arguments from a yaml file. This could be
+   triggered using the ‘–config’ or ‘-c’ flag. The template could be
+   obtained using the ‘–create_config’ flag. -
+   (`ceff762 <https://github.com/phonglam3103/MolSanitizer/commit/ceff7623e96734124b2d88e49de261845ae2add6>`__)
 -  The customized torsion definition will first try to replace the
    existing ones in the Torlib first before putting it in the top of the
    priority. This aims to ensure that the customized definitions would
