@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  Multiple input files can now be imported via a file containing paths
+   to these input files (use –input_list or -il). -
+   (`7de4546 <https://github.com/phonglam3103/MolSanitizer/commit/7de4546520e4213902310e333ad835a84a5680eb>`__)
 -  SMILES strings with name are now supported (for example: msani -s ‘CN
    methylamine’ -prot). Multiple SMILES strings once is also supported
    (msani -s ‘CO methanol’ ‘CCCC’) -
