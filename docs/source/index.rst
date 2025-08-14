@@ -25,6 +25,7 @@ Contents
    validation
    installation
    usage
+   config
    feedback
 
 .. toctree::
