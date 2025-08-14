@@ -9,6 +9,30 @@ All notable changes to this project will be documented in this file.
 🚀 Features
 ~~~~~~~~~~~
 
+-  SMILES strings with name are now supported (for example: msani -s ‘CN
+   methylamine’ -prot). Multiple SMILES strings once is also supported
+   (msani -s ‘CO methanol’ ‘CCCC’) -
+   (`5ab2842 <https://github.com/phonglam3103/MolSanitizer/commit/5ab2842697d748cad58cc2698febee32e8132c0c>`__)
+-  Supports the parsing of CLI arguments from a yaml file. This could be
+   triggered using the ‘–config’ or ‘-c’ flag. The template could be
+   obtained using the ‘–create_config’ flag. -
+   (`ceff762 <https://github.com/phonglam3103/MolSanitizer/commit/ceff7623e96734124b2d88e49de261845ae2add6>`__)
+-  The customized torsion definition will first try to replace the
+   existing ones in the Torlib first before putting it in the top of the
+   priority. This aims to ensure that the customized definitions would
+   not overwrite the hierrarchy of the Torlib match. -
+   (`a763293 <https://github.com/phonglam3103/MolSanitizer/commit/a76329330b127b66e9ab93040ddd737b11a5d426>`__)
+-  Added new small ring entries and modified cycloheptadiene entries -
+   (`a9823be <https://github.com/phonglam3103/MolSanitizer/commit/a9823be385d2751774eaf5fdd79a5b4fa0996e7a>`__)
+-  Don’t enumerate sulfonamides with non-puckering N and merged the
+   flippable Cs SMARTS. -
+   (`56b518f <https://github.com/phonglam3103/MolSanitizer/commit/56b518f49a78416971e213764461ac6ceb818022>`__)
+-  Allow the definition of custom torsions ``-tor`` or ``--torsion``
+   flags. Use ``--create_torsion`` to create a template. -
+   (`875d1e9 <https://github.com/phonglam3103/MolSanitizer/commit/875d1e928b6f59eccba8dc238132a37e30b58a03>`__)
+-  New flags supported: –extended for extended SMILES supports, –torsion
+   for customized torsion definitions. -
+   (`7d6b4fd <https://github.com/phonglam3103/MolSanitizer/commit/7d6b4fd89cc0a950609e788aac95ba62ca65f351>`__)
 -  Support the extraction of the protonation/tautomerization rules and
    allow the use of customized transformation rules. -
    (`85a10ba <https://github.com/phonglam3103/MolSanitizer/commit/85a10ba4fd682f6f88a3d858232da19d384d7710>`__)
@@ -37,6 +61,12 @@ All notable changes to this project will be documented in this file.
 🐛 Bug Fixes
 ~~~~~~~~~~~~
 
+-  Fix #20, “‘list’ object has no attribute ‘update’” in ionizer. This
+   should not crash the whole program. -
+   (`e8ddca9 <https://github.com/phonglam3103/MolSanitizer/commit/e8ddca91c79b7f7f9996f6e9562edcef88911d31>`__)
+-  Trials to neutralize molecules breaking aromaticity should not fail
+   now -
+   (`5b07800 <https://github.com/phonglam3103/MolSanitizer/commit/5b0780016ff29bd0229ca654c6aa28b4f2f335d8>`__)
 -  Unify the score of benzene to other aromatic rings. This should fix
    the prioritization of benzene over pyridine. -
    (`f5e60f1 <https://github.com/phonglam3103/MolSanitizer/commit/f5e60f166ac56eed9e56802e2e5214c7bd10669c>`__)
@@ -48,6 +78,9 @@ All notable changes to this project will be documented in this file.
 🚜 Refactor
 ~~~~~~~~~~~
 
+-  Refactored Torlib and SrLib into classes that can accept or add
+   customized rules, supporting the customized rules. -
+   (`c0fd9a4 <https://github.com/phonglam3103/MolSanitizer/commit/c0fd9a40ac4b53999c94e31f1aa5b95be2058482>`__)
 -  Updated imports according to PEP8 -
    (`bc857fb <https://github.com/phonglam3103/MolSanitizer/commit/bc857fbf34d23f23e413e96bc606cd7083e5bf95>`__)
 -  Change the name back to MolSanitizer -
