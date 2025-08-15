@@ -21,7 +21,7 @@ Contents
    :maxdepth: 2
    :caption: General Documentation
 
-   theory
+   introduction
    validation
    installation
    usage
