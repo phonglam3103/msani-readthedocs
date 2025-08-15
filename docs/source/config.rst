@@ -5,10 +5,10 @@ Config file
 The config file is designed to be reused across different projects. It is a YAML file that contains the configuration for the MolSanitizer. The file can be customized to suit specific needs, such as defining the chemical space of interest, setting up the protonation, tautomerization, 3D generation options, and specifying the output format.
 
 
-Nearly all the options are available, except ones that are designed to be triggered once only like `--version`, `--help`, or `--smiles`.
+Nearly all the options are available, except ones that are designed to be triggered once only like ```--version``, ```--help``, or ``--smiles``.
 
 
-The keywords in the config file need to match that with the long_name of the command line options. For example, if you want to set the `--protonation` option, you would use `protonation: true` in the config file. 
+The keywords in the config file need to match that with the long_name of the command line options. For example, if you want to set the ```--protonation``` option, you would use `protonation: true` in the config file. 
 
 Template
 ~~~~~~~~~~
@@ -19,9 +19,9 @@ To create a template for the config file, you can run the following command:
 
     $ msani --create_config
 
-The file will be created in the current working directory with the name `config.yaml`. You can then edit this file to customize the settings for your project. Here is the template of the config file:
+The file will be created in the current working directory with the name ``config.yaml``. You can then edit this file to customize the settings for your project. Here is the template of the config file:
 
-.. code-block:: text
+.. code-block:: yaml
 
     # Input-output options
     input_files: [file1.smi, file2.smi]
@@ -62,24 +62,25 @@ The following arguments accept multiple values and can be specified as a list in
 
 These arguments can be specified as a list in the config file in the Python format:
 
-.. code-block:: text
+.. code-block:: yaml
 
     input_files: [file1.smi, file2.smi, file3.smi]
 
 or as multiple lines:
 
-.. code-block:: text
-input_files:
-- file1.smi
-- file2.smi
+.. code-block:: yaml
+
+    input_files:
+    - file1.smi
+    - file2.smi
 
 Usage
 ~~~~~~~~~~~
 
-To use the config file, you can use the `-c` or `--config` option followed by the path to your config file when running the MolSanitizer command. For example, if you have a config file named `config.yaml`, you can run:
+To use the config file, you can use the ``-c`` or ``--config`` option followed by the path to your config file when running the MolSanitizer command. For example, if you have a config file named `config.yaml`, you can run:
 
 .. code-block:: console
 
     $ msani -c config.yaml
 
-This will read the configuration from the `config.yaml` file and apply the settings specified in it. You can also specify additional command line options if needed, which will override the settings in the config file.
+This will read the configuration from the ``config.yaml`` file and apply the settings specified in it. You can also specify additional command line options if needed, which will override the settings in the config file.
