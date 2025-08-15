@@ -69,9 +69,9 @@ These arguments can be specified as a list in the config file in the Python form
 or as multiple lines:
 
 .. code-block:: text
-    input_files:
-    - file1.smi
-    - file2.smi
+input_files:
+- file1.smi
+- file2.smi
 
 Usage
 ~~~~~~~~~~~
