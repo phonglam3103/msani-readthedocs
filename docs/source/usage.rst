@@ -294,8 +294,8 @@ Stereoisomers enumeration will be considered for unspecified chiral centers usin
    C1C2CC3CC1CC(C2)(C3O)N                            mol8
 
    Output:
-   N[C@@]12C[C@@H]3C[C@@H](C[C@@H](C3)[C@H]1O)C2     mol8_1
-   N[C@@]12C[C@@H]3C[C@@H](C[C@@H](C3)[C@@H]1O)C2    mol8_2
+   N[C@@]12C[C@@H]3C[C@@H](C[C@@H](C3)[C@H]1O)C2     mol8.1
+   N[C@@]12C[C@@H]3C[C@@H](C[C@@H](C3)[C@@H]1O)C2    mol8.2
 
 It is possible to define the maximum number of stereoisomers generated for each molecule by adding the ``--max_stereoisomers`` flag.
 
@@ -377,14 +377,14 @@ Usage
 
 .. code-block:: console
 
-    $ msani_batch -i example.smi -l 50 --db2
-    $ msani_batch -i example.smi -l 50 --stereosiomers --protonation --db2 --nocleanup
-    $ msani_batch -i example.smi -l 50 -A snic2021-3-32 -tl 2 --db2
+    $ msani_batch -i example.smi -l 50 -3d -f db2
+    $ msani_batch -i example.smi -l 50 --stereosiomers --protonation -3d -f db2 --nocleanup
+    $ msani_batch -i example.smi -l 50 -A snic2021-3-32 -tl 2 -3d -f db2
 
 It is also possible to submit the batch jobs for multiple input files. The program will automatically detect the input files and submit the jobs accordingly.
 
 .. code-block:: console
 
-    $ msani_batch -i example.smi example2.smi --db2 --protonation --stereoisomers
+    $ msani_batch -i example.smi example2.smi -3d -f db2 --protonation --stereoisomers
 
 
