@@ -60,23 +60,24 @@ The following arguments accept multiple values and can be specified as a list in
 - unwanted: choice of category for unwanted substructures filtering (all, regular, special, optional)
 - format: 3D output formats (options: db2.tgz, db2, mol2, pdbqt, sdf)
 
-These arguments can be specified as a list in the config file in the Python format, or as multiple lines:
+These arguments can be specified as a list in the config file in the Python format:
 
 .. code-block:: text
 
     input_files: [file1.smi, file2.smi, file3.smi]
 
-or
+or as multiple lines:
 
 .. code-block:: text
     input_files:
-        - file1.smi
-        - file2.smi
+    - file1.smi
+    - file2.smi
 
 Usage
 ~~~~~~~~~~~
 
 To use the config file, you can use the `-c` or `--config` option followed by the path to your config file when running the MolSanitizer command. For example, if you have a config file named `config.yaml`, you can run:
+
 .. code-block:: console
 
     $ msani -c config.yaml
