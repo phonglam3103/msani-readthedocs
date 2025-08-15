@@ -84,6 +84,11 @@ a:visited {
     max-width: 100%;
 }
 
+/* Version number in the navigation sidebar */
+.wy-side-nav-search .version {
+    color: #000000 !important;
+}
+
 .review {
     background-color: yellow;
 }
