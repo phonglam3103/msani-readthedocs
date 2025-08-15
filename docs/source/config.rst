@@ -5,10 +5,10 @@ Config file
 The config file is designed to be reused across different projects. It is a YAML file that contains the configuration for the MolSanitizer. The file can be customized to suit specific needs, such as defining the chemical space of interest, setting up the protonation, tautomerization, 3D generation options, and specifying the output format.
 
 
-Nearly all the options are available, except ones that are designed to be triggered once only like ```--version``, ```--help``, or ``--smiles``.
+Nearly all the options are available, except ones that are designed to be triggered once only like ``--version``, ``--help``, or ``--smiles``.
 
 
-The keywords in the config file need to match that with the long_name of the command line options. For example, if you want to set the ```--protonation``` option, you would use `protonation: true` in the config file. 
+The keywords in the config file need to match that with the long_name of the command line options. For example, if you want to set the ``--protonation`` option, you would use `protonation: true` in the config file. 
 
 Template
 ~~~~~~~~~~
@@ -19,7 +19,7 @@ To create a template for the config file, you can run the following command:
 
     $ msani --create_config
 
-The file will be created in the current working directory with the name ``config.yaml``. You can then edit this file to customize the settings for your project. Here is the template of the config file:
+The file will be created in the current working directory with the name ``config.yaml``. You can then edit this file to customize the settings for your project. Lines start with '#' are commented out. Here is the template of the config file:
 
 .. code-block:: yaml
 
