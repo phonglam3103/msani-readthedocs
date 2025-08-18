@@ -311,6 +311,9 @@ It is possible to define the maximum number of stereoisomers generated for each 
 8. Conformer generator
 ============================
 
+Basic usage
+---------------------------------------
+
 The following supported flags:
 
 .. code-block:: console
@@ -358,9 +361,9 @@ For DB2 generation, the program employs AMSOL 7.1 for assigning the desolvation 
     $ msani -i example.smi --tautomers --protonation --stereoisomers -3d -f sdf pdbqt #Generate SDF and PDBQT files
 
 Customization of the torsion definition
-=============================
+---------------------------------------
 
-It is possible to add and/or modify the torsion definitions in the TorsionLibrary without modifying the original file by the ``--torsion`` flag. The flag accepts a file which defines multiple SMARTS patterns definining rotatable bonds with the expected dihedral angles. To create a template for the torsion definition file, use the ``--create_torsion`` flag. The template will be saved in the **custom_torsion_templates.txt** file:
+It is possible to add and/or modify the torsion definitions in the TorsionLibrary without modifying the Torlib file by the ``--torsion`` flag. The flag accepts a file which defines multiple SMARTS patterns definining rotatable bonds with the expected dihedral angles. To create a template for the torsion definition file, use the ``--create_torsion`` flag. The template will be saved in the **custom_torsion_templates.txt** file:
 
 .. code-block:: console
 
@@ -380,6 +383,7 @@ The template file will look like this:
     # [*:1]~[CX4:2]!@[OX2:3]~[*:4], 0 120 240, 1 1 1
 
 To apply the torsion definition file, use the ``--torsion`` flag with the path to the file:
+
 .. code-block:: console
 
     $ msani -i example.smi --torsion custom_torsion_templates.txt -3d -f db2
