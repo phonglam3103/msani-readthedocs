@@ -76,6 +76,11 @@ Below is the default configuration file:
     MAX_LIMIT_PROJECT: 5000
 
 
+Reproducible setup by the configuration file
+***************************************
+
+The program can be run with the configuration file by using the ``--config`` flag. The path to the configuration file should be provided. Refer to the :doc:`config` section for more details on the configuration file.
+
 Help message
 ************
 
@@ -313,20 +318,16 @@ The following supported flags:
     Generate 3D conformers options:
     --gen3d, -3d          Generate 3D conformers
     --format, -f          Output file format. Multiple formats simultaneously supported.
-                          (Default: db2 - Options: sdf, db2, db2.tgz, mol2, pdbqt.)
+                            (Default: db2.tgz - Options: sdf, db2, db2.tgz, mol2, pdbqt.)
     --method, -m          Embedding method (default: rdkit - options: rdkit, obabel, corina)
     --numconfs, -nconfs   Maximum number of conformers to generate (default: 2000)
-    --randomSeed, -rs     Seed for reproducibility (default: 42)
-    --timeout, -to        Timeout for the initial embedding for each SMILES entry before using OpenBabel
-                          (Default: 2 minutes)
+    --timeout, -to        Timeout for the initial embedding for each entry before using OpenBabel
+                            Default: 2 minutes
     --energywindow, -w    Energy window for sampling the conformations (default: 25 kcal/mol)
-    --rigid               Only align the DB2 on this rigid scaffold in SMILES/SMARTS format. All rings if not provided.
     --nringconfs, -nr     Maximum number of ring conformers to generate (default: 1)
     --mode, -mode         Mode for generating conformers
-                          Default: vs (virtual screening) - Options: vs, extensive, ignoretorlib
-    --tolerance, -tol     Minimum angle for differentiating two conformers (default: 30)
-    --nocleanup           Do not clean up the temporary files
-
+                            Default: fixed - Options: fixed, random, ignoretorlib
+    --allowNonring        Allow the full sampling of non-ring comdpounds (default undersample to 30 confs).
 
 The conformer generator platform can be triggered using the ``--gen3d`` or ``-3d`` flag. Three initial embeeder are supported (``-m`` or ``--method`` flag):
 
@@ -342,9 +343,9 @@ A modified version of `TorsionLibrary v3 <https://pubs.acs.org/doi/10.1021/acs.j
 
 Three sampling modes are supported (``--mode`` or ``-mode`` flag):
 
-* vs (virtual screening): each peak combination is only sampled once.
-* extensive: each peak combination is sampled multiple times. Two conformers are regarded distinct if they differ by at least 30 degrees in any dihedral angle.
-* ignoretorlib: the program will ignore the TorsionLibrary and sample every 60 degrees.
+* fixed (default): the peaks (with tolerance) in the TorsionLibrary is discretinized into central angles with +-30 degrees offset (as long as they are within the tolernace 2), then combinatorially sampled to generate the conformers until the number of conformers is reached. Symmetric substructures (such as phenyl, carboxylates, etc.) are removed by SMARTS matching in advance.
+* random: each peak combination is sampled multiple times. Two conformers are regarded distinct if they differ by at least 30 degrees in any dihedral angle.
+* ignoretorlib: the program will ignore the TorsionLibrary and sample every 30 degrees.
 
 
 Multiple output formats are now supported, including DB2, PDBQT, SDF, and MOL2. The default output format is DB2, which could be modified by the ``--format`` or ``-f`` flag. Multiple formats at the same time is supported.
@@ -355,6 +356,56 @@ For DB2 generation, the program employs AMSOL 7.1 for assigning the desolvation 
 
     $ msani -i example.smi --protonation --stereoisomers -3d -f db2  # Generate DB2 files
     $ msani -i example.smi --tautomers --protonation --stereoisomers -3d -f sdf pdbqt #Generate SDF and PDBQT files
+
+Customization of the torsion definition
+=============================
+
+It is possible to add and/or modify the torsion definitions in the TorsionLibrary without modifying the original file by the ``--torsion`` flag. The flag accepts a file which defines multiple SMARTS patterns definining rotatable bonds with the expected dihedral angles. To create a template for the torsion definition file, use the ``--create_torsion`` flag. The template will be saved in the **custom_torsion_templates.txt** file:
+
+.. code-block:: console
+
+    $ msani --create_torsion
+
+The template file will look like this:
+
+.. code-block:: text
+
+    # Template for customized torsion driving
+    # Format: Comma separated. Weight is optional, not set = equal weights
+    # In case using commas in SMARTS, put it in quotation marks ("text") 
+    # SMARTS, possible angle values (sep by space), weight (optional)
+    # Example:
+    # [O:1]=[C:2]-[N:3][H:4], 180
+    # "[O:1]=[C:2]-[N,O,X:3][!H:4]", 0 180
+    # [*:1]~[CX4:2]!@[OX2:3]~[*:4], 0 120 240, 1 1 1
+
+To apply the torsion definition file, use the ``--torsion`` flag with the path to the file:
+.. code-block:: console
+
+    $ msani -i example.smi --torsion custom_torsion_templates.txt -3d -f db2
+
+Advanced options
+*********************
+
+The advanced options can be accessed using the ``--help_advanced`` or ``-xh`` flag. The advanced options are not recommended for general users, but they can be useful for advanced users who want to customize the program's behavior. The following advanced options are available:
+
+.. code-block:: console
+
+    --noneutralize          Do not neutralize the molecule before tautomerization and protonation
+    --notaurdkit            Do not use RDKit to canonicalize the tautomeric form of the input SMILES
+    --rigid, -r             Only align the DB2 on this rigid scaffold in SMARTS format. All rings if not provided.
+    --tolerance, -tol       Minimum angle for differentiating two conformers (default: 30)
+    --nringconfs, -nr       Maximum number of ring conformers to generate (default: 1)
+    --allowNonring          Allow the full sampling of non-ring compounds (default undersample to 30 confs).
+    --eps                   The dielectric constant for electrostatic calculations (default: 1 - vacuum).
+    --debug                 Enable debug mode
+    --timing                Enable timing information
+    --create_protlib      Create a template for customized protonation scheme
+    --create_taulib       Create a template for customized tautomerization scheme
+    --create_torsion      Create a template for customized torsion definition
+    --protlib             Path to the protonation library file (default: msani/Data/ionizations_v3.txt).
+    --taulib              Path to the tautomer library file (default:  msani/Data/tautomers_v3.txt).
+    --torsion, -tor       Path to the customized torsion definitions.
 
 
 Running in batch mode
