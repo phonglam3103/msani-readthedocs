@@ -3,6 +3,18 @@ Changelog
 
 All notable changes to this project will be documented in this file.
 
+[unreleased - most recent changes come first]
+---------------------------------------------
+
+⚡ Performance
+~~~~~~~~~~~~~~
+
+-  Do not try to embed the molecule when not flipping any
+   stereocenteres. This help to replicate the behavior of
+   StereoIsomerEnumerator in RDKit Python version and can speed up the
+   enumerating process. -
+   (`cb805eb <https://github.com/phonglam3103/MolSanitizer/commit/cb805eba9a609f8f90026487a0be478bf7accfe0>`__)
+
 [0.5.0] - 2025-10-18
 --------------------
 
@@ -11,6 +23,8 @@ All notable changes to this project will be documented in this file.
 
 -  Fix a typo in confgen that makes embedding using CORINA is broken -
    (`69e0ef9 <https://github.com/phonglam3103/MolSanitizer/commit/69e0ef9b9813ee788996a1b4f858fd7fb36013f8>`__)
+
+.. _performance-1:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -215,7 +229,7 @@ All notable changes to this project will be documented in this file.
    intuitive. -
    (`6de0647 <https://github.com/phonglam3103/MolSanitizer/commit/6de0647233345c60791cda6ea07349a44d32921a>`__)
 
-.. _performance-1:
+.. _performance-2:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -324,7 +338,7 @@ All notable changes to this project will be documented in this file.
    method. -
    (`9497d19 <https://github.com/phonglam3103/MolSanitizer/commit/9497d19224f416690974b99022d05d7caa31fbe7>`__)
 
-.. _performance-2:
+.. _performance-3:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -381,7 +395,7 @@ All notable changes to this project will be documented in this file.
    stereocenters. -
    (`907e799 <https://github.com/phonglam3103/MolSanitizer/commit/907e7994bb15de84401d6b06fae3f1b970d11d47>`__)
 
-.. _performance-3:
+.. _performance-4:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -483,7 +497,7 @@ All notable changes to this project will be documented in this file.
 -  Redirect MolSanitizer README to the read-the-docs page. -
    (`6e6bc43 <https://github.com/phonglam3103/MolSanitizer/commit/6e6bc434bc69180c67b24950fb476b21898907ea>`__)
 
-.. _performance-4:
+.. _performance-5:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -829,7 +843,7 @@ All notable changes to this project will be documented in this file.
 -  :bug: Fix a typo in torsion scan that crash msani -
    (`4275824 <https://github.com/phonglam3103/MolSanitizer/commit/4275824384d8567703a5234da77e015561a69e17>`__)
 
-.. _performance-5:
+.. _performance-6:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
@@ -855,7 +869,7 @@ All notable changes to this project will be documented in this file.
    screen to notify the user -
    (`36846e1 <https://github.com/phonglam3103/MolSanitizer/commit/36846e13334c7c290a6620aa16a0ec75f27602c0>`__)
 
-.. _performance-6:
+.. _performance-7:
 
 ⚡ Performance
 ~~~~~~~~~~~~~~
